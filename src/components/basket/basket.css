@@ -1,0 +1,113 @@
+.basket-page{
+	max-width: 100%;
+	background: #E5E5E5;
+	padding: 10px;
+}
+
+.basket-page-center{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.basket-page-center > div{
+	background-color: white;
+	margin: 5px;
+}
+
+.basket-item{
+	width: 50%; 
+	display: flex;
+	flex-direction: column;
+	padding: 20px 20px 65px 20px;
+}
+.basket-card{
+  position: relative;
+  display: block;
+  flex: 40%;
+  max-width: 40%;
+  border-radius: 26px;
+}
+.basket-card-description{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin-left: 30px;
+}
+.basket-card-count{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+.basket-card-count > div{
+	width: 40px;
+	height: 20px;
+	border: 1px solid;
+	border-radius: 10px;
+	background-color: transparent;
+}
+.basket-card-count i{
+	display: flex;
+	justify-content: center;
+	cursor: pointer;
+	align-items: center;
+}
+.basket-cancel{
+	margin-left: 50px;
+	display: flex;
+	flex-direction: column;
+	cursor: pointer;
+	align-items: center;
+	justify-content: center;
+	color: #580707;
+}
+.basket-price{
+	font-size: 24px;
+	font-weight: bold;
+	color: #580707;
+}
+.basket-pay{
+	width: 30%;
+	padding: 20px;
+}
+
+.basket-general{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;	
+}
+
+.basket-hr{
+	width: 80%;
+	margin: 10%;
+}
+
+.basket-price-btn{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+}
+.basket-price-btn button{
+	border: none;
+	outline: none;
+	background: #C61212;
+	width: 200px;
+	height: 45px;
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 18px;	
+	border-radius: 30px;
+}
+
+.basket-pay-versions{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin-top:  40px;
+}
+
+.basket-pay-versions img{
+	width: 70px;
+	height: 41px;
+}

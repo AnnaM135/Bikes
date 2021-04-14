@@ -1,0 +1,1 @@
+export default {CHANGE_LANG_ID: "CHANGE_LANG_ID"}
