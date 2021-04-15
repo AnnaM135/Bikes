@@ -24,8 +24,15 @@ export class Filter extends Component {
              currentPage: 1,
              startIndex: 0,
              showList: false,
-             types: [],
              show: [],
+             filterTypes: [],
+             repDisc: [],
+             repSizes: [],
+             discounts: [],
+             sizes: [],
+             price: [],
+             types: [],
+             colors: [],
              filterInp: {
                 prodType: "",
                 price: "",
@@ -39,19 +46,38 @@ export class Filter extends Component {
     
      componentDidMount(){
         AdminServices.getProducts(this.props.langData.langId).then((r) => {
+            this.state.filterTypes = r.data
+            this.state.filterTypes.map(elem => {
+                    // console.log(elem.productType)
+                    this.state.discounts.push(elem.discounts)
+                    this.state.sizes.push(elem.sizes)
+                    this.state.price.push(elem.price)
+                    this.state.types.push(elem.productType)
+                    this.state.colors.push(elem.colors)
+                    this.state.discounts = this.state.discounts.filter((c, i) => {
+                        return this.state.discounts.indexOf(c) === i
+                    })
+                    this.state.sizes = this.state.sizes.filter((c, i) => {
+                        return this.state.sizes.indexOf(c) === i
+                    })
+                    this.state.price = this.state.price.filter((c, i) => {
+                        return this.state.price.indexOf(c) === i
+                    })
+                    this.state.types = this.state.types.filter((c, i) => {
+                        return this.state.types.indexOf(c) === i
+                    })
+                    this.state.colors = this.state.colors.filter((c, i) => {
+                        return this.state.colors.indexOf(c) === i
+                    })
+            })
+            console.log(this.state.discounts)  // zeghch-i krknvoxn e, cikl ev cucadrum ev value
+            console.log(this.state.sizes)    // size-i krknvoxn e, cikl ev cucadrum ev value
+            console.log(this.state.price)   // price-i krknvoxn e, cikl ev cucadrum ev value
            
-            
-            // this.state.data.forEach(elem => (
-            //     this.state.types.push(elem.productType)
-            // ))
-            // this.state.types = this.state.types.filter((c, index) => {
-            //     return this.state.types.indexOf(c) === index;
-            // });
             this.setState({})
             AdminServices.getProductType(this.props.langData.langId, {productType:this.props.match.params.type})
             .then(r => {
                this.state.product = r.data.data
-
                this.state.show = this.state.product.slice(this.state.startIndex, this.state.startIndex + 9)
                let n = Math.ceil(this.state.product.length/9)
                for(let i = 1; i<=n; i++){
@@ -84,19 +110,14 @@ export class Filter extends Component {
             this.state.data = r.data
             let arr = []
             for (let key in this.state.filterInp) {
+                console.log(key)
+                
                 if(!key){
-                    this.state.data = this.state.data.filter((a) => a[key] !== this.state.filterInp[key]) 
+                    this.state.data = this.state.data.filter((a) => a[key] === this.state.filterInp[key]) 
                 }
                 console.log(this.state.data)
             }
             this.setState({})
-
-            // this.state.data.forEach(elem =>{
-            //     // this.state.filterInp.size = elem.size
-            //     // this.state.filterInp.height = elem.height
-            //     this.state.filterInp.discounts = elem.discounts
-            //    // console.log(this.state.filterInp)
-            // })
         })
       }
     openPage(x){
@@ -136,6 +157,7 @@ export class Filter extends Component {
                                         <p className="label">Տեսակ<i className="fa fa-chevron-down"></i></p>
                                     </button>
                                     <ul className = {cnUl}>
+                                        
                                           {
                                             this.state.types.map(a => {
                                                 return (
@@ -148,7 +170,8 @@ export class Filter extends Component {
                                                 })
                                         }                                   
                                     </ul>
-                                    <i className="fa fa-chevron-down" aria-hidden="true"></i>
+                                    
+                                    {/* <i className="fa fa-chevron-down" aria-hidden="true"></i> */}
 
                                 </div>						
                             </div>
@@ -184,11 +207,15 @@ export class Filter extends Component {
                                     <p className="fa fa-chevron-down" aria-hidden="true"></p>
                                 </div>	
                                 <div className="color-buttons">
-                                    <div style = {{backgroundColor: "red"}}></div>
-                                    <div style={{backgroundColor: "yellow"}}></div>
-                                    <div style={{backgroundColor: "silver"}}></div>
-                                    <div style={{backgroundColor: "grey"}}></div>
-                                    <div style={{backgroundColor: "black"}}></div> 
+                                    {
+                                        this.state.colors.map(a => {
+                                            return(
+                                                <div style = {{backgroundColor: `${a}`}}></div>
+                                            )
+                                                    {/* <input type="radio" id = "c" name = "color" value={a} onChange = {this.change.bind(this)}/>
+                                                    <label id = "c" style = {{backgroundColor: `${a}`}} value = {a}></label> */}
+                                        })
+                                    }
                                 </div>
                             </div>
                             <hr />
@@ -198,20 +225,16 @@ export class Filter extends Component {
                                     <p className="fa fa-chevron-down" aria-hidden="true"></p>
                                 </div>
                                     <div className="sale-buttons">
-                                        <div>
-                                            <input type="radio" id="male" name="discounts" value={this.state.filterInp.discounts}  onChange={this.change.bind(this)}/>
-                                            <label for="male">20%</label>
-                                        </div>
-                                        <div>
-                                            <input type="radio" id="female" name="discounts" value="female" onChange={this.change.bind(this)}/>
-                                            <label for="female">25%</label>
-                                        </div>
-                                        <div>
-                                            <input type="radio" id="other" name="discounts" value="other" onChange={this.change.bind(this)}/>
-                                            <label for="other">60%</label>
-                                        </div>                                        
-                                        
-
+                                        {
+                                            this.state.discounts.map(a => {
+                                                return(
+                                                    <div key = {a}>
+                                                        <input type="radio" id="male" name="discounts" value={a}  onChange={this.change.bind(this)}/>
+                                                        <label for="male">{a}</label>
+                                                    </div>
+                                                )
+                                            })
+                                        }
                                     </div>
                             </div>
                             <hr />
@@ -237,23 +260,22 @@ export class Filter extends Component {
                             </div>
                             <hr />
                             <div className="select-sale">
-                                <div className="price">
-                                    <p>Չափ</p>
-                                    <p className="fa fa-chevron-down" aria-hidden="true"></p>
-                                </div>
+                                    <div className="price">
+                                        <p>Չափ</p>
+                                        <p className="fa fa-chevron-down" aria-hidden="true"></p>
+                                    </div>
+                                        
                                     <div className="sale-buttons">
-                                        <div>
-                                            <input type="radio" id="size1" name="size" value="size1" onChange={this.change.bind(this)}/>
-                                            <label for="size1">20%</label>
-                                        </div>
-                                        <div>
-                                            <input type="radio" id="size2" name="size" value="size2" onChange={this.change.bind(this)} />
-                                            <label for="size2">25%</label>
-                                        </div>
-                                        <div>
-                                            <input type="radio" id="size3" name="size" value="size3" onChange={this.change.bind(this)}/>
-                                            <label for="size3">60%</label>
-                                        </div>  
+                                        {
+                                            this.state.sizes.map(a => {
+                                                return(
+                                                    <div key = {a}>
+                                                        <input type="radio" id="size1" name="size" value="size1" value = {a} onChange={this.change.bind(this)}/>
+                                                        <label for="size1">{a}</label>
+                                                    </div>
+                                                )
+                                            })
+                                        }
                                     </div>
                             </div>
 

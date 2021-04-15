@@ -75,6 +75,9 @@ export class Header extends Component {
                     <div className="one header-card">
                         <Link className="list-item-link" to = "/">LOGOBIKE</Link>
                     </div>
+                    <div className = "one-menu header-card">
+                      <img src = "../images/menu.svg" onClick = {this.handelClickMenu}/>
+                    </div>
                     <div className="two header-card">
                         <i className="fa fa-phone" ></i>
                         <a className="phone" href="tel" >+374 444444</a>

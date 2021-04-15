@@ -25,7 +25,8 @@ export class Home extends Component {
       sale: [],
       bestProducts: [], 
       search: "",
-      searchProducts: []
+      searchProducts: [],
+      showMenu: true,
     }
 }
     componentDidMount() {
@@ -48,10 +49,15 @@ export class Home extends Component {
         })
     }
 
-    handelClick = (event) => {
+  handelClick = (event) => {
       this.setState((prevState) => ({
           showList: !prevState.showList,
       }))
+  }
+  handelClickMenu = (event) => {
+    this.setState((prevState) => ({
+      showMenu: !prevState.showMenu,
+    }))
   }
   handelChangeLang = (id) =>{
     this.props.changeData(id)
@@ -80,7 +86,8 @@ export class Home extends Component {
   }
 
     render() {
-      const cnUl = classnames({ "flag-list": true, "not-active": !this.state.showList, })
+      const cnMenu = classnames({ "nav-bar": true, "not-active": !this.state.showMenu,})
+      const cnUl = classnames({ "flag-list": true, "not-active": !this.state.showList,})
       const currentFlag = flags.find((flag) => flag.id === this.props.langData.langId)
       if (!currentFlag) {
           return null
@@ -91,12 +98,15 @@ export class Home extends Component {
               <div className="header-line">
                 <div className="wrapper">
                   <div className="one header-card">LOGOBIKE</div>
+                  <div className = "one-menu header-card">
+                    <img src = "./images/menu.svg" onClick = {this.handelClickMenu}/>
+                  </div>
                   <div className="two header-card">
                     <i className="fa fa-phone"></i>
                     <a className="phone" href="tel">+374 444444</a>
                   </div>
                   <div className="three header-card">
-                    <input type="text" id="header-input" data-id="search" value={this.state.search} onChange={this.changeSearch.bind(this)} placeholder="search peoples" />
+                    <input type="text" id="header-input" data-id="search" value={this.state.search} onChange={this.changeSearch.bind(this)} placeholder="Search" />
                     <i className="fa fa-search"></i>
                     {
                       this.state.searchProducts.map((a) => (
@@ -140,34 +150,39 @@ export class Home extends Component {
                   </div>				
                 </div>
               </div>
-              <nav className="nav-bar">
-              <ul className="header-menu-list">
-                {
-                  this.state.types.map((elem, i) => (
-                    <li key = {i} className="list-item">
-                      {console.log(elem)}
-                      <Link to = {`/filter/${elem}`} className="list-item-link">
-                          {elem}
-                      </Link>
-                    </li>
-                  ))
-                }
-                {/* <Link to = {`/filter/${this.state.hy[0]}`} className="list-item-link">{this.state.hy[0]}</Link> */}
-                
-                <li className="list-item">
-                <Link>
-                  <select name="cars" id="cars">
-                    <option value="volvo">Ավելին</option>
-                    <option value="saab">sjkg</option>
-                    <option value="opel">sfn</option>
-                    <option value="audi">sdgnk</option>
-                  </select></Link>
-                </li>
-                <li className="list-item">
-                  <Link to = "/contact" className="list-item-link">Կոնտակներ</Link>
-                </li>
-              </ul>
-            </nav>
+              {
+                this.state.showMenu ?
+                    <nav  style={{display:'flex'}} className="nav-bar">
+                    <ul className="header-menu-list">
+                      {
+                        this.state.types.map((elem, i) => (
+                          <li key = {i} className="list-item">
+                            {console.log(elem)}
+                            <Link to = {`/filter/${elem}`} className="list-item-link">
+                                {elem}
+                            </Link>
+                          </li>
+                        ))
+                      }
+                      {/* <Link to = {`/filter/${this.state.hy[0]}`} className="list-item-link">{this.state.hy[0]}</Link> */}
+                    
+                      <li className="list-item">
+                      <Link>
+                        <select name="cars" id="cars">
+                          <option value="volvo">Ավելին</option>
+                          <option value="saab">sjkg</option>
+                          <option value="opel">sfn</option>
+                          <option value="audi">sdgnk</option>
+                        </select></Link>
+                      </li>
+                      <li className="list-item">
+                        <Link to = "/contact" className="list-item-link">Կոնտակներ</Link>
+                      </li>
+                    </ul>
+                  </nav>
+                :null
+              }
+             
             </header>
             <div className="slogan-area">
               <h1 className="one-line">ԼԱՎԱԳՈՒՅՆ ՆՎԵՐԸ </h1>
@@ -201,7 +216,9 @@ export class Home extends Component {
                     {
                       this.state.bestProducts.map((elem, i) => (
                         <div key = {i} className="best-slide-cards bast-cards">
-                          <div className="slide-card-left">{elem.productName}</div>
+                          <div className="slide-card-left">
+                                {/* card */}
+                          </div>
                           <div className="slide-card-center">2</div>
                           <div className="slide-card-right">3</div>
                        </div>

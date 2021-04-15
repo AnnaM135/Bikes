@@ -235,3 +235,12 @@ input[name='r']{
 	margin-left: -110%;
 	cursor: pointer;
 }
+
+
+@media only screen and (max-width: 1200px){
+    .slides{
+		width: 200%;
+		height: 100%;
+		display: flex;
+	  }
+}

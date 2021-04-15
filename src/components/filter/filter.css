@@ -314,6 +314,11 @@ hr{
 	margin: 10px;
 }
 
+
+input[name='color']{
+	position: absolute;
+	visibility: hidden;
+  }
 /*.cont{
 	width: 100%;
 	background-color: yellow;
