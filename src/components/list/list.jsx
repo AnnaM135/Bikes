@@ -83,17 +83,29 @@ export class List extends Component {
              <Swiper  pagination={{ clickable: true }} >
                  <SwiperSlide>
 						<h1>H4</h1> 
-                        <div class='slide'
+                        <div className='slide'
                         style={{width:"100%"}}
                         >
 
-                            <div class="product-slider-img">
+                            <div className="product-slider-img" style={{background:"none"}}>
                                 <img src="/images/card-background.svg" className="product-slider-back-img" />
                                 <img src="/images/bicycle.svg" className="product-bicycle-img" />
                             </div>
                         </div>
                  </SwiperSlide>
-                     <div class="swiper-pagination"></div>
+                   <SwiperSlide>
+						<h1>H4</h1> 
+                        <div classNmae='slide'
+                        style={{width:"100%"}}
+                        >
+
+                            <div classNmae="product-slider-img" style={{background:"none"}}>
+                                <img src="/images/card-background.svg" className="product-slider-back-img" />
+                                <img src="/images/bicycle.svg" className="product-bicycle-img" />
+                            </div>
+                        </div>
+                 </SwiperSlide>
+                     <div className="swiper-pagination"></div>
              </Swiper>
              <div className="about-product">
                  <h3>{this.state.data.productName}</h3>

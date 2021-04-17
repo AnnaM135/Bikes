@@ -2,6 +2,11 @@
 .assortment{
 	width: 100%;
 }
+
+.best-offer .swiper-pagination-bullet {
+	background-color:red;
+}
+
 .assortment-row{
 	display: flex;
 }

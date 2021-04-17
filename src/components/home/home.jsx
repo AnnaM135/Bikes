@@ -21,6 +21,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
 
 
+import SwiperCore, { Pagination} from 'swiper';
+SwiperCore.use([ Pagination]);
+
 export class Home extends Component {
   constructor(props) {
     super(props);
@@ -224,6 +227,7 @@ export class Home extends Component {
                   {this.state.sale?.length > 0 && <Swiper
                     spaceBetween={50}
                     slidesPerView={3}
+                    pagination={{ clickable: true }} 
                     onSlideChange={(swiper) => this.setState({
                       bestProductsSwiperActiveIdx:swiper.realIndex
                     })}

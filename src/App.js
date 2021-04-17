@@ -21,7 +21,12 @@ export class App extends Component {
       
         {/* <Route path='/admin-login' component={AdminLogin}/> */}
         <Route path = "/" exact component = {Home}/>
-        <Route path = "/filter/:type" exact  component = {Filter} />
+        {/* <Route path = "/filter/:type" exact  component = {Filter} /> */}
+
+        <Route path="/filter/:type" render={(props) => (
+         <Filter key={props.match.params.type} {...props} />)
+        } />
+
         <Route path = "/filter/:type/:item" component = {List} />
         <Route path = "/contact" component ={Contact} />
         <Route path = "/basket" component = {Basket} /> 

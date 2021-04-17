@@ -27,7 +27,8 @@ function getTypes(data) {
 }
 
 function getDiscounts(data) {
-    let disc = data.map(e => e.discounts);
+    let disc = data.map(e => e.discounts)
+    .filter(e => e !== '');
     return [...new Set(disc)];
 }
 
