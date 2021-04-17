@@ -3,13 +3,14 @@ import Header from "../header/header"
 import Footer from "../footer/Footer"
 import "./filter.css"
 import { Link } from 'react-router-dom';
-import List from "../list/list"
 import "../../App.css"
 import AdminServices from '../../services/AdminServices';
 import {connect} from "react-redux"
 import {changeData} from "../../store/languages/action"
 import {lang} from "../../lang"
 import classnames from "classnames";
+import { getAllFilters } from '../../services/FilterUtils';
+import ProductItem from '../productItem/ProductItem';
 
 
 
@@ -25,17 +26,18 @@ export class Filter extends Component {
              startIndex: 0,
              showList: false,
              show: [],
-             filterTypes: [],
-             repDisc: [],
-             repSizes: [],
-             discounts: [],
-             sizes: [],
-             price: [],
-             types: [],
-             colors: [],
+             filterValues : {
+                colors: [],
+                types: [],
+                discounts: [],
+                sizes: [],
+                heights: []
+        
+            },
              filterInp: {
                 prodType: "",
-                price: "",
+                minPrice: "60000",
+                maxPrice: "65000",
                 colors: "",
                 discounts: "",
                 size: "",
@@ -44,37 +46,20 @@ export class Filter extends Component {
         }
     }
     
+
+    
+
+
      componentDidMount(){
         AdminServices.getProducts(this.props.langData.langId).then((r) => {
             this.state.filterTypes = r.data
-            this.state.filterTypes.map(elem => {
-                    // console.log(elem.productType)
-                    this.state.discounts.push(elem.discounts)
-                    this.state.sizes.push(elem.sizes)
-                    this.state.price.push(elem.price)
-                    this.state.types.push(elem.productType)
-                    this.state.colors.push(elem.colors)
-                    this.state.discounts = this.state.discounts.filter((c, i) => {
-                        return this.state.discounts.indexOf(c) === i
-                    })
-                    this.state.sizes = this.state.sizes.filter((c, i) => {
-                        return this.state.sizes.indexOf(c) === i
-                    })
-                    this.state.price = this.state.price.filter((c, i) => {
-                        return this.state.price.indexOf(c) === i
-                    })
-                    this.state.types = this.state.types.filter((c, i) => {
-                        return this.state.types.indexOf(c) === i
-                    })
-                    this.state.colors = this.state.colors.filter((c, i) => {
-                        return this.state.colors.indexOf(c) === i
-                    })
-            })
-            console.log(this.state.discounts)  // zeghch-i krknvoxn e, cikl ev cucadrum ev value
-            console.log(this.state.sizes)    // size-i krknvoxn e, cikl ev cucadrum ev value
-            console.log(this.state.price)   // price-i krknvoxn e, cikl ev cucadrum ev value
-           
-            this.setState({})
+  
+            //this.state.filterValues = getAllFilters(r.data);
+            this.setState({
+                filterValues :  getAllFilters(r.data)
+            });
+            
+     
             AdminServices.getProductType(this.props.langData.langId, {productType:this.props.match.params.type})
             .then(r => {
                this.state.product = r.data.data
@@ -99,27 +84,33 @@ export class Filter extends Component {
         this.props.changeData(id)
     }
     change(e) {
-        console.log(e.target.checked, e.target.value)
-       this.state.filterInp[e.target.name] = [e.target.value] 
-       console.log(this.state.filterInp.discounts)
-      
+        if(( e.target.name === 'minPrice' || e.target.name === 'maxPrice') && isNaN(+e.target.value)){
+            return 
+        }
+        this.state.filterInp[e.target.name] = e.target.value 
         this.setState({});
-      }
-      filter(){
-        AdminServices.getProducts(this.props.langData.langId).then(r => {
-            this.state.data = r.data
-            let arr = []
-            for (let key in this.state.filterInp) {
-                console.log(key)
-                
-                if(!key){
-                    this.state.data = this.state.data.filter((a) => a[key] === this.state.filterInp[key]) 
-                }
-                console.log(this.state.data)
-            }
-            this.setState({})
-        })
-      }
+    }
+    filter(){
+
+        console.log("TETTTTTTTTTTTTTTt");
+        console.log(this.state.filterInp);
+
+
+        // AdminServices.getProducts(this.props.langData.langId).then(r => {
+        //     const { data } = r;
+        //     const { colors, minPrice, maxPrice, prodType, discounts, size, height } = this.state.filterInp
+        //     let arr = [...data]
+            
+        //     console.log(JSON.stringify(this.state.filterInp));
+         
+        //     this.setState({})
+        // })
+
+    }
+    setTypes(a){
+        this.state.filterInp.prodType = a
+        this.setState({})
+    }
     openPage(x){
         this.state.currentPage = x
         this.state.startIndex = (x-1) * 9 
@@ -136,6 +127,18 @@ export class Filter extends Component {
         this.state.startIndex = (this.state.currentPage-1)*9
         this.setState({})
     }
+    changeColor(a) {
+        this.state.filterInp.colors = a
+this.setState({})
+        // const elem = this.state.filterInp.colors.find(elem => elem === a)
+        // if(elem) {
+        //     this.state.filterInp.colors = this.state.filterInp.colors.filter(elem => elem !== a)
+        //     this.setState({})
+        //     return 
+        // }
+        // this.state.filterInp.colors = [...this.state.filterInp.colors, a]
+    }
+
     render() {
         const cnUl = classnames({ "flag-list": true, "not-active": !this.state.showList, })
         return (
@@ -147,6 +150,7 @@ export class Filter extends Component {
                             <Link to = "/"><p className="fa fa-long-arrow-left"></p></Link>
                             <p>Գլխավոր</p>
                         </div>	
+                        
                     
                         <div className="filter">
                         <div>                                          
@@ -159,10 +163,10 @@ export class Filter extends Component {
                                     <ul className = {cnUl}>
                                         
                                           {
-                                            this.state.types.map(a => {
+                                            this.state.filterValues.types.map(a => {
                                                 return (
                                                     <li key = {a}>
-                                                      <button  type="button">
+                                                      <button onClick={this.setTypes.bind(this, a)} type="button">
                                                         <p>{a}</p>
                                                       </button>
                                                     </li>
@@ -184,21 +188,21 @@ export class Filter extends Component {
                                 <div className="type-price">					
                                     <p>Սկսած</p>
                                     <div className="before">
-                                        <input type="" name="" placeholder="0" />
+                                        <input type="text" name="minPrice" placeholder="0" value = {this.state.filterInp.minPrice} onChange = {this.change.bind(this)} />
                                     </div>
                                     <p>Մինչև</p>
                                     <div className="after">
-                                        <input type="" name="" placeholder="1260" />
+                                        <input type="text" name="maxPrice" placeholder="1260" value = {this.state.filterInp.maxPrice} onChange = {this.change.bind(this)}/>
                                     </div>
                                 </div>	
-                                <div className="select-range">
+                                {/* <div className="select-range">
                                     <div className="rangeslider">
                                         <input className="min" name="range_1" type="range" min="1" max="100" value="10" />
                                         <input className="max" name="range_1" type="range" min="1" max="100" value="90" />
                                         <span className="range_min light left">10.000 €</span>
                                         <span className="range_max light right">90.000 €</span>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>					
                             <hr />
                             <div className="select-color">
@@ -208,12 +212,10 @@ export class Filter extends Component {
                                 </div>	
                                 <div className="color-buttons">
                                     {
-                                        this.state.colors.map(a => {
+                                        this.state.filterValues.colors.map(a => {
                                             return(
-                                                <div style = {{backgroundColor: `${a}`}}></div>
+                                                <div onClick = {this.changeColor.bind(this, a)} style = {{backgroundColor: `${a}`}}></div>
                                             )
-                                                    {/* <input type="radio" id = "c" name = "color" value={a} onChange = {this.change.bind(this)}/>
-                                                    <label id = "c" style = {{backgroundColor: `${a}`}} value = {a}></label> */}
                                         })
                                     }
                                 </div>
@@ -226,7 +228,7 @@ export class Filter extends Component {
                                 </div>
                                     <div className="sale-buttons">
                                         {
-                                            this.state.discounts.map(a => {
+                                            this.state.filterValues.discounts.map(a => {
                                                 return(
                                                     <div key = {a}>
                                                         <input type="radio" id="male" name="discounts" value={a}  onChange={this.change.bind(this)}/>
@@ -244,18 +246,17 @@ export class Filter extends Component {
                                     <p className="fa fa-chevron-down" aria-hidden="true"></p>
                                 </div>
                                     <div className="sale-buttons">
-                                        <div>
-                                            <input type="radio" id="height1" name="height" value="height1" onChange={this.change.bind(this)} />
-                                            <label for="height1">20%</label>
-                                        </div>
-                                        <div>
-                                            <input type="radio" id="heghit2" name="height" value="heghit2" onChange={this.change.bind(this)}/>
-                                            <label for="heghit2">25%</label>
-                                        </div>
-                                        <div>
-                                            <input type="radio" id="height3" name="height" value="height3" onChange={this.change.bind(this)}/>
-                                            <label for="height3">60%</label>
-                                        </div>  
+                                       
+                                        {
+                                            this.state.filterValues.heights.map(a => {
+                                                return (
+                                            <div key = {a}>
+                                                <input type="radio" id="height1" name="height" value={a} onChange={this.change.bind(this)} />
+                                                <label for="height1">{a}</label>
+                                            </div>
+                                                )
+                                            })
+                                        }
                                     </div>
                             </div>
                             <hr />
@@ -267,7 +268,7 @@ export class Filter extends Component {
                                         
                                     <div className="sale-buttons">
                                         {
-                                            this.state.sizes.map(a => {
+                                            this.state.filterValues.sizes.map(a => {
                                                 return(
                                                     <div key = {a}>
                                                         <input type="radio" id="size1" name="size" value="size1" value = {a} onChange={this.change.bind(this)}/>
@@ -314,38 +315,10 @@ export class Filter extends Component {
                         </div>	
                         <div className="assortment-area-cards">
                            {
-                               this.state.show.map((elem, i) => (
+                               this.state.show.map((cur, i) => (
                                    
-                                    <div key ={i} className="discount-cards-one">    
-                                        {JSON.parse(elem.imagePath).map((elem,i) => 
-                                            <div className="discount-img">
-                                                <img src="/images/card-background.svg" />
-                                                <Link to = "/basket"><i className="fa fa-shopping-cart" aria-hidden="true"></i></Link>
-                                                <img src="/images/bicycle.svg" className="bicycle-img" />
-                                                {/* <img src={elem} className="bicycle-img" /> */}
-                                            </div>
-                                        )}             
-                                       
-                                        <div>
-                                            <div>
-                                                <Link to = {`/filter/${elem.productType}/${elem.productName}`}>
-                                                <p>Գույն</p> </Link>
-                                                <div className="color-buttons">
-                                                    <div style = {{backgroundColor: `${elem.colors}`}}></div>
-                                                    <div style={{backgroundColor: "yellow"}}></div>
-                                                    <div style={{backgroundColor: "silver"}}></div>
-                                                    <div style={{backgroundColor: "grey"}}></div>
-                                                    <div style={{backgroundColor: "black"}}></div> 
-                                                </div>
-                                            </div>
-                                            <div>{elem.productType}</div>
-                                            <div>{elem.description}</div>
-                                            <div className="price-add">
-                                                <p>{elem.price} Դր</p>
-                                                <button className="price-btn">Գնել</button>
-                                            </div>      
-                                        </div>
-                                    </div>
+                                <ProductItem elem={cur} />
+                                  
                                ))
                            }
                    

@@ -69,7 +69,17 @@
 	margin-left: 20px;
 	margin-right: 20px;
 }
-
+.select-more{
+	width: 100px;
+	height: auto;
+	padding: 5px;
+	font-size: 18px;
+	font-weight: bold;
+}
+.select-more option{
+	color: #000000;
+	border: none;
+}
 .list-item-link{
 	color: #FFFFFF;
 	text-decoration: none;

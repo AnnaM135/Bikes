@@ -43,3 +43,34 @@
 	font-size: 18px;
 	margin: 10px;
 }
+
+@media screen and (max-width: 768px){
+	.contact-main-head h3{
+		font-size: 20px;
+	}
+	.contact-main{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	.contatc-main-left img{
+		width: 290px;
+		height: 310px;
+	}
+}
+@media screen and (max-width: 375px){
+	.contact-main-head h3{
+		font-size: 15px;
+	}
+	.contact-main{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	.contatc-main-left img{
+		width: 190px;
+		height: 210px;
+	}
+}

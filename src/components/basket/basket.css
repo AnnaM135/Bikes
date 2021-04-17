@@ -8,6 +8,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	width: 100%;
 }
 
 .basket-page-center > div{
@@ -15,12 +16,16 @@
 	margin: 5px;
 }
 
-.basket-item{
-	width: 50%; 
+.basket-cards-col{
 	display: flex;
 	flex-direction: column;
+}
+.basket-item{
+	width: 70%; 
+	display: flex;
 	padding: 20px 20px 65px 20px;
 }
+
 .basket-card{
   position: relative;
   display: block;
@@ -68,6 +73,7 @@
 }
 .basket-pay{
 	width: 30%;
+	height: auto;
 	padding: 20px;
 }
 
@@ -110,4 +116,50 @@
 .basket-pay-versions img{
 	width: 70px;
 	height: 41px;
+}
+
+@media screen and (max-width: 800px){
+	.basket-page-center{
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
+	}
+	.basket-item{
+		max-width: 80%; 
+		display: flex;
+		padding: 20px 20px 65px 20px;
+	}
+	.basket-pay{
+		width: 80%;
+		padding: 20px;
+	}
+}
+
+
+@media screen and (max-width: 560px){
+	.basket-card{
+		position: relative;
+		display: block;
+		flex: 60%;
+		max-width: 60%;
+		border-radius: 26px;
+	  }
+}
+
+@media screen and (max-width: 425px){
+	.basket-page{
+		max-width: 80%;
+		background: #E5E5E5;
+		padding: 10px;
+	}
+}
+
+@media screen and (max-width: 300px){
+	.basket-page{
+		max-width: 65%;
+		background: #E5E5E5;
+		padding: 10px;
+	}
 }

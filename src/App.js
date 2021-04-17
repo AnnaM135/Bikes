@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {BrowserRouter, Route } from 'react-router-dom';
+import {BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import "./App.css"
 import "./components/filter/filter.css"
 import Filter from "./components/filter/filter"
@@ -9,7 +9,6 @@ import Contact from "./components/contact/contact"
 import Basket from "./components/basket/basket"
 import {Provider} from "react-redux";
 import configStore from "./store/config";
-
 let store = configStore()
 console.log(store)
 
@@ -18,11 +17,16 @@ export class App extends Component {
     return (
       <Provider store = {store}>
       <BrowserRouter>
+      <Switch>
+      
+        {/* <Route path='/admin-login' component={AdminLogin}/> */}
         <Route path = "/" exact component = {Home}/>
         <Route path = "/filter/:type" exact  component = {Filter} />
         <Route path = "/filter/:type/:item" component = {List} />
         <Route path = "/contact" component ={Contact} />
         <Route path = "/basket" component = {Basket} /> 
+        <Redirect to='/' />
+      </Switch>
       </BrowserRouter>
       </Provider>
     )

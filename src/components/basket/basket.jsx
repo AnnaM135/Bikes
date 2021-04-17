@@ -16,54 +16,47 @@ export class Basket extends Component {
         this.state = {
             data: [],
             card: [],
-            productCount: 1,
             sum: 0,
         }
     }
     componentDidMount() {
        let item = JSON.parse(localStorage.getItem("item"))
-       this.state.data = item
+       this.state.data = item || []
        this.sum()
        this.setState({})
     }
     minusProd(elem){
-        this.state.productCount--
-        if(this.state.productCount <= 1){
+        elem.count--
+        if(elem.count === 0){
             let existingEntries = JSON.parse(localStorage.getItem("item"));
-            existingEntries  = existingEntries.filter(e => e.id != elem); 
-            localStorage.setItem("item",JSON.stringify(existingEntries) )
+            existingEntries  = existingEntries.filter(e => e.id != elem.id); 
+           localStorage.setItem("item",JSON.stringify(existingEntries) )
+           this.setState({})
         }
         this.sum()
         this.componentDidMount()
         this.setState({})
     }
     plusProd(elem){
-        let b = this.state.data.find(y =>{
-            return y.id === elem
-        })        
-         if(this.state.productCount > 0){
-            this.state.productCount++
-          }
-          this.sum()
-          this.setState({})
+        elem.count++
+        this.sum()
+        this.setState({})
     }
     cancel(elem){
         let existingEntries = JSON.parse(localStorage.getItem("item"));
         existingEntries  = existingEntries.filter(e => e.id != elem); 
         localStorage.setItem("item",JSON.stringify(existingEntries) )
+        this.sum()
         this.componentDidMount()
         this.setState({})
     }
-    handelChangeLang = (id) =>{
-        this.props.changeData(id)
-    }
+    handelChangeLang = (id) => this.props.changeData(id)
     sum(){
         let s = 0
-        this.state.data.forEach(item => {
-            s += this.state.productCount*item.price
+        this.state.data.forEach(item => {            
+            s += item.count*item.price
         })
-        this.state.sum = s;
-        console.log(this.state.sum)
+        this.state.sum = s
         this.setState({})
     }
     render() {
@@ -71,9 +64,9 @@ export class Basket extends Component {
             <div class="basket-page">
                 <Header  handelChangeLang = {this.handelChangeLang} langId = {this.props.langData.langId}/>
             <div class="basket-page-center">
+                <div className = "basket-cards-col">
                 {
                     this.state.data.map((elem,id) => (
-                    
                         <div key = {id} class="basket-item">
                            
                             {JSON.parse(elem.imagePath).map((elem,i) => 
@@ -92,21 +85,22 @@ export class Basket extends Component {
                         </div>
                         <div class="basket-card-count">
                             <div>
-                                <i class="fa fa-minus" aria-hidden="true" onClick = {this.minusProd.bind(this, elem.id)}></i>
+                                <i class="fa fa-minus" aria-hidden="true" onClick = {this.minusProd.bind(this, elem)}></i>
                             </div>
-                            <p>{this.state.productCount}</p>
+                                <p>{elem.count}</p>
                             <div>
-                                <i class="fa fa-plus" aria-hidden="true" onClick = {this.plusProd.bind(this, elem.id)}></i>
+                                <i class="fa fa-plus" aria-hidden="true" onClick = {this.plusProd.bind(this, elem)}></i>
                             </div>
                         </div>
                     </div>
                     <div class="basket-cancel">
                         <i class="fa fa-times" aria-hidden="true" onClick = {this.cancel.bind(this, elem.id)}></i>
-                        <p class="basket-price">{elem.price} ֏</p>
+                        <p class="basket-price">{elem.price}</p>
                     </div>
                         </div>
                     ))
                 }
+                </div>
                
                 <div class="basket-pay">
                     <div class="basket-general">

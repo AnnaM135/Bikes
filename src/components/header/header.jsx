@@ -125,36 +125,41 @@ export class Header extends Component {
 
                 </div>
             </div>
-                <nav className="nav-bar">
-                <ul className="header-menu-list">
-                    {
-                    this.state.types.map((elem, i) => (
-                        <li key = {i} className="list-item">
-                        <Link to = {`/filter/${elem}`} className="list-item-link">
-                            {elem}
-                        </Link>
-                        </li>
-                    ))
-                    }
-                   
+                 <nav  style={{display:'flex'}} className="nav-bar">
+                    <ul className="header-menu-list">
                     <li className="list-item">
-                        <Link className="list-item-link">Եռանիվ հեծանիվներ</Link>
-                    </li>
-                    <li className="list-item">
-                    <Link>
-                        <select name="cars" id="cars">
-                            <option value="volvo">Ավելին</option>
-                            <option value="saab">Saab</option>
-                            <option value="opel">Opel</option>
-                            <option value="audi">Audi</option>
+                            <Link to = {`/filter/${this.state.types[0]}`} className="list-item-link">
+                                {this.state.types[0]}
+                            </Link>
+                            </li>
+                            <li  className="list-item">
+                            <Link to = {`/filter/${this.state.types[1]}`} className="list-item-link">
+                                {this.state.types[1]}
+                            </Link>
+                            </li>
+                            <li className="list-item">
+                            <Link to = {`/filter/${this.state.types[2]}`} className="list-item-link">
+                                {this.state.types[2]}
+                            </Link>
+                            </li>
+                      
+                      <li className="list-item">
+                        <select className = "select-more">
+                            <option value="" selected disabled hidden>Ավելին</option>
+                          {
+                            this.state.types.slice(3).map((elem) => 
+                               <option value={elem} >{elem}</option>
+
+                            )
+                          }                          
                         </select>
-                    </Link>
-                    </li>
-                    <li className="list-item">
-                        <Link to = "/contact" className="list-item-link" >Կոնտակներ</Link>
-                    </li>
-                </ul>
-            </nav>
+                      </li>
+                     
+                      <li className="list-item">
+                        <Link to = "/contact" className="list-item-link">Կոնտակներ</Link>
+                      </li>
+                    </ul>
+                  </nav>
         </header>
         )
     }

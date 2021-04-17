@@ -14,6 +14,13 @@ import {connect} from "react-redux"
 import {changeData} from "../../store/languages/action"
 
 
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/swiper-bundle.css';
+
+
 export class Home extends Component {
   constructor(props) {
     super(props);
@@ -27,17 +34,28 @@ export class Home extends Component {
       search: "",
       searchProducts: [],
       showMenu: true,
+      bestProductsSwiperActiveIdx:1,
     }
 }
     componentDidMount() {
+      console.log(this.state.bestProducts)
       AdminServices.getProducts(this.props.langData.langId).then((r) => {
         this.state.data = r.data
-        this.state.data.forEach(elem => (
-         this.state.types.push(elem.productType),
-         elem.promotions !== "" ?  this.state.promo.push(elem.promotions)  : null,
-         elem.discounts !== "" ? this.state.sale.push(elem)  : null,
-         elem.theBestProduct !== false ? this.state.bestProducts.push(elem) : null
-        ))
+        
+        this.state.data.forEach(elem => {
+          this.state.types.push(elem.productType)
+          if(elem.promotions !== "") this.state.promo.push(elem.promotions)
+          if(elem.discounts !== "") this.state.sale.push(elem)
+          if(elem.theBestProduct) this.state.bestProducts.push(elem)
+        })
+
+        // this.state.data.forEach(elem => (
+        //  this.state.types.push(elem.productType),
+        //  elem.promotions !== "" ?  this.state.promo.push(elem.promotions)  : null,
+        //  elem.discounts !== "" ? this.state.sale.push(elem)  : null,
+        //  elem.theBestProduct !== false ? this.state.bestProducts.push(elem) : null
+        // ))
+
         this.state.types = this.state.types.filter((c, index) => {
           return this.state.types.indexOf(c) === index;
       });
@@ -154,27 +172,34 @@ export class Home extends Component {
                 this.state.showMenu ?
                     <nav  style={{display:'flex'}} className="nav-bar">
                     <ul className="header-menu-list">
-                      {
-                        this.state.types.map((elem, i) => (
-                          <li key = {i} className="list-item">
-                            {console.log(elem)}
-                            <Link to = {`/filter/${elem}`} className="list-item-link">
-                                {elem}
+                    <li className="list-item">
+                            <Link to = {`/filter/${this.state.types[0]}`} className="list-item-link">
+                                {this.state.types[0]}
                             </Link>
-                          </li>
-                        ))
-                      }
-                      {/* <Link to = {`/filter/${this.state.hy[0]}`} className="list-item-link">{this.state.hy[0]}</Link> */}
-                    
+                            </li>
+                            <li  className="list-item">
+                            <Link to = {`/filter/${this.state.types[1]}`} className="list-item-link">
+                                {this.state.types[1]}
+                            </Link>
+                            </li>
+                            <li className="list-item">
+                            <Link to = {`/filter/${this.state.types[2]}`} className="list-item-link">
+                                {this.state.types[2]}
+                            </Link>
+                            </li>
+                      
                       <li className="list-item">
-                      <Link>
-                        <select name="cars" id="cars">
-                          <option value="volvo">Ավելին</option>
-                          <option value="saab">sjkg</option>
-                          <option value="opel">sfn</option>
-                          <option value="audi">sdgnk</option>
-                        </select></Link>
+                        <select className = "select-more">
+                            <option value="" selected disabled hidden>Ավելին</option>
+                          {
+                            this.state.types.slice(3).map((elem) => 
+                               <option value={elem} >{elem}</option>
+
+                            )
+                          }                          
+                        </select>
                       </li>
+                     
                       <li className="list-item">
                         <Link to = "/contact" className="list-item-link">Կոնտակներ</Link>
                       </li>
@@ -192,70 +217,56 @@ export class Home extends Component {
               <div className="icon-down">
                 <a href = "#footer"><i className="fa fa-chevron-down"></i></a>
               </div>
-    
-              {/* <div className="slide-label">
-                <div className="slide-navigate">
-                  <label className="bar"></label>
-                  <label className="bar"></label>
-                  <label className="bar"></label>
-                </div>
-              </div>	 */}
             </div>
-            <div className="best-offer">
-              <h1 className="best-title">Լավագույն Առաջարկներ</h1>
-              <div className="slider middle">
-                {/* <div className="best-slide-buttons  bast-cards">
-                  <i className="fa fa-chevron-left"></i>
-                </div> */}
-                <div className = "slides">
-                  <input type="radio" name="r" id="r1"  checked/>
-                  <input type="radio" name="r" id="r2" checked/>
-                  <input type="radio" name="r" id="r3" checked/>
 
-                  <div className = "slide s1">
-                    {
-                      this.state.bestProducts.map((elem, i) => (
-                        <div key = {i} className="best-slide-cards bast-cards">
-                          <div className="slide-card-left">
-                                {/* card */}
+          <div className="best-offer">
+              <h1 className="best-title">Լավագույն Առաջարկներ</h1>
+                  {this.state.sale?.length > 0 && <Swiper
+                    spaceBetween={50}
+                    slidesPerView={3}
+                    onSlideChange={(swiper) => this.setState({
+                      bestProductsSwiperActiveIdx:swiper.realIndex
+                    })}
+                    loop={true}
+                    onSwiper={(swiper) => console.log(swiper)}
+                    centeredSlides={true}
+                    initialSlide={1}
+                    style={{
+                      padding:'30px 20px'
+                    }}
+                  >
+                    {this.state.bestProducts.map((product,idx) => <SwiperSlide>
+                      <div className="discount-home-cards-one" style={{maxWidth:'initial',margin:0,border:"none"}}>
+                      <div className="discount-home-img" style={{
+                        transform: `scale(
+                          ${this.state.bestProductsSwiperActiveIdx == idx ? 1 : 0.7}
+                          )`,
+                      }}>
+                        <img src="./images/card-background.svg" />
+                        <i className="fa fa-shopping-cart"></i>
+                        <img src="./images/bicycle.svg" className="bicycle-img" />
+                      </div>
+                        {this.state.bestProductsSwiperActiveIdx === idx && <div>
+                          <div>
+                            <p>{product.discounts}</p>
+                            <p>Գույն</p>
+                            <div className="color-buttons">
+                              <div style = {{backgroundColor: `${product.colors}`}}></div>
+                            </div>
                           </div>
-                          <div className="slide-card-center">2</div>
-                          <div className="slide-card-right">3</div>
-                       </div>
-                      ))
-                    }
-                   
-                  </div>
-                  <div className = "slide">
-                    <div className="best-slide-cards bast-cards">
-                      <div className="slide-card-left">1</div>
-                      <div className="slide-card-center">2</div>
-                      <div className="slide-card-right">3</div>
-                    </div>
-                  </div>
-                  <div className = "slide">
-                    <div className="best-slide-cards bast-cards">
-                      <div className="slide-card-left">1</div>
-                      <div className="slide-card-center">2</div>
-                      <div className="slide-card-right">3</div>
-                    </div>
-                  </div>
-                 
-                </div>
-                {/* <div className="best-slide-buttons bast-cards">
-                  <i className="fa fa-chevron-right"></i>
-                </div> */}
-                
-                <div className="slide-label">
-                  <div className="slide-navigate">
-                    <label for="r1" className="bar"></label>
-                    <label for="r2" className="bar"></label>
-                    <label for="r3" className="bar"></label>
-                  </div>
-              </div>
-              </div>
-              
-            </div>
+                          <div>{product.productName}</div>
+                          <div>{product.description}</div>
+                          <div className="price-add">
+                            <p>{product.price} Դր</p>
+                            <button className="price-btn">Գնել</button>
+                          </div>
+                        </div>}
+                      </div>
+                    </SwiperSlide>
+                    )}
+                  </Swiper>    
+    }
+          </div>
     
             <div className="promotions">
               <h1 className="best-title">Ակցիաներ</h1>
@@ -269,9 +280,7 @@ export class Home extends Component {
                   ))
                 }
                 
-                {/* <div className="promotions-card-two">
-                  <img src="./images/img2.svg" />
-                </div> */}
+                
               </div>
             </div>
             <div className="discount">
@@ -280,7 +289,6 @@ export class Home extends Component {
                 {
                   this.state.sale.map(elem => (
                   <div className="discount-home-cards-one">
-                    {console.log(elem)}
                   <div className="discount-home-img">
                     <img src="./images/card-background.svg" />
                     <i className="fa fa-shopping-cart"></i>

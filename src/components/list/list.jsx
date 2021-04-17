@@ -10,6 +10,17 @@ import {lang} from "../../lang"
 import AdminServices from '../../services/AdminServices';
 
 
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+import SwiperCore, { Pagination} from 'swiper';
+
+// Import Swiper styles
+import 'swiper/swiper-bundle.css';
+
+// install Swiper modules
+SwiperCore.use([ Pagination]);
+
 export class List extends Component {
     
     constructor(props) {
@@ -20,8 +31,8 @@ export class List extends Component {
              card: [],
              product: [],
              slideImg: [],
-             sum: 0,
-        }
+
+            }
     }
     
     componentDidMount(){
@@ -42,20 +53,23 @@ export class List extends Component {
     }
 
     addCard(item){
+        item.count = 1
         let local = localStorage.getItem("item")
         let names;
         if(local === null){
             names = []
         }else{
             names = JSON.parse(local)
+            let d = names.find(elem => elem.id == item.id)
+            if(d) {
+                item.count = 2
+                names = names.filter(elem => elem !== item)
+                return 
+            }
         }
-        names.push(item)
-        localStorage.setItem("item", JSON.stringify(names)) 
-        let s = 0
-        s += 1*item.price
-        this.state.sum = s;
-
-        this.setState({})
+         names.push(item)
+         localStorage.setItem("item", JSON.stringify(names)) 
+        this.setState({})  
     }
    
 
@@ -66,53 +80,21 @@ export class List extends Component {
  <div className="product-page-area">
      <div className="product-img-area">
          <div className="product-slider">
-             <div className="product-slider-img">
-                 <div className = "slides">
-                    <input type="radio" name="r" id="r1" checked />
-					<input type="radio" name="r" id="r2" checked/>
-					<input type="radio" name="r" id="r3" checked/>
-					<input type="radio" name="r" id="r4" checked/>
-                    {console.log(this.state.slideImg)}                 
-                            <div class="slide s1">
-                                  <div class="product-slider-img">
-                                    <img src="/images/card-background.svg" className="product-slider-back-img" />
-                                </div>                      
-                            </div>               
-                    <div class="slide">
-						<h1>H2</h1> 
-						<div class="product-slider-img">
-                            <img src="/images/card-background.svg" className="product-slider-back-img" />
-                            <img src={this.state.slideImg} className="product-bicycle-img" />
-			            </div>
-						
-					</div>
-                    <div class="slide">
-						<h1>H3</h1> 
-						<div class="product-slider-img">
-                            <img src="/images/card-background.svg" className="product-slider-back-img" />
-                            <img src="/images/bicycle.svg" className="product-bicycle-img" />
-			            </div>
-						
-					</div>
-                    <div class="slide">
+             <Swiper  pagination={{ clickable: true }} >
+                 <SwiperSlide>
 						<h1>H4</h1> 
-						<div class="product-slider-img">
-                            <img src="/images/card-background.svg" className="product-slider-back-img" />
-                            <img src="/images/bicycle.svg" className="product-bicycle-img" />
-			            </div>
-						
-					</div>
-                   
-                 </div>
-             </div>
-             <div className="product-slide-label">
-                 <div className="product-slide-navigate">
-                     <label className="product-bar" htmlFor="r1"></label>
-                     <label className="product-bar" htmlFor="r2"></label>
-                     <label className="product-bar" htmlFor="r3"></label>
-                     <label className="product-bar" htmlFor="r4"></label>
-                 </div>
-             </div>	
+                        <div class='slide'
+                        style={{width:"100%"}}
+                        >
+
+                            <div class="product-slider-img">
+                                <img src="/images/card-background.svg" className="product-slider-back-img" />
+                                <img src="/images/bicycle.svg" className="product-bicycle-img" />
+                            </div>
+                        </div>
+                 </SwiperSlide>
+                     <div class="swiper-pagination"></div>
+             </Swiper>
              <div className="about-product">
                  <h3>{this.state.data.productName}</h3>
                  <p>{this.state.data.description}</p>             
