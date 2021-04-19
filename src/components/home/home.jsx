@@ -37,11 +37,11 @@ export class Home extends Component {
       search: "",
       searchProducts: [],
       showMenu: true,
+      showStore: false,
       bestProductsSwiperActiveIdx:1,
     }
 }
     componentDidMount() {
-      console.log(this.state.bestProducts)
       AdminServices.getProducts(this.props.langData.langId).then((r) => {
         this.state.data = r.data
         
@@ -75,11 +75,11 @@ export class Home extends Component {
           showList: !prevState.showList,
       }))
   }
-  handelClickMenu = (event) => {
-    this.setState((prevState) => ({
-      showMenu: !prevState.showMenu,
-    }))
-  }
+  // handelClickMenu = (event) => {
+  //   this.setState((prevState) => ({
+  //     showMenu: !prevState.showMenu,
+  //   }))
+  // }
   handelChangeLang = (id) =>{
     this.props.changeData(id)
   }
@@ -105,6 +105,21 @@ export class Home extends Component {
       }
     })
   }
+  more(elem){
+    let d  = elem.find(item => item == elem)
+    console.log(d)
+    this.setState({})
+  }
+
+  showMenu(){
+    if(this.state.showStore === false){
+        this.state.showStore = true;
+    }
+    else{
+        this.state.showStore = false;
+    }
+    this.setState({})
+}
 
     render() {
       const cnMenu = classnames({ "nav-bar": true, "not-active": !this.state.showMenu,})
@@ -118,10 +133,12 @@ export class Home extends Component {
             <header className="header">
               <div className="header-line">
                 <div className="wrapper">
-                  <div className="one header-card">LOGOBIKE</div>
-                  <div className = "one-menu header-card">
-                    <img src = "./images/menu.svg" onClick = {this.handelClickMenu}/>
-                  </div>
+                <div className="one header-card">
+              <Link className="list-item-link" to="/">LOGOBIKE</Link>
+            </div>
+            <div className="one-menu header-card" onClick = {this.showMenu.bind(this)}>
+              <img src="../images/menu.svg" />
+            </div>
                   <div className="two header-card">
                     <i className="fa fa-phone"></i>
                     <a className="phone" href="tel">+374 444444</a>
@@ -145,8 +162,8 @@ export class Home extends Component {
                     <Link to = "/basket"><i className="fa fa-shopping-cart" aria-hidden="true"></i></Link>
                   </div>
                   <div className="five header-card">
-                    <div className="header-bus"> 24 ժամյա առաքում </div>
-                    {/* {lang[this.props.langData.langId].color} */}
+                    <div className="header-bus"> {lang[this.props.langData.langId].trac} </div>
+                    {/* {lang[this.props.langData.langId].} */}
                     <img src="./images/delivery-truck.png"/>
                   </div>
                   <div className="six header-card">
@@ -173,8 +190,8 @@ export class Home extends Component {
               </div>
               {
                 this.state.showMenu ?
-                    <nav  style={{display:'flex'}} className="nav-bar">
-                    <ul className="header-menu-list">
+                    <nav  style={{display:  this.state.showStore === true ? 'none' : 'flex' }} className="nav-bar">
+                    <ul className="header-menu-list dropdown">
                     <li className="list-item">
                             <Link to = {`/filter/${this.state.types[0]}`} className="list-item-link">
                                 {this.state.types[0]}
@@ -192,19 +209,22 @@ export class Home extends Component {
                             </li>
                       
                       <li className="list-item">
-                        <select className = "select-more">
-                            <option value="" selected disabled hidden>Ավելին</option>
+                        <select className = "select-more" onClick = {this.more.bind(this, this.state.types)}>
+                            <option value="elem" selected disabled hidden>Ավելին</option>
                           {
                             this.state.types.slice(3).map((elem) => 
-                               <option value={elem} >{elem}</option>
+                                <option key = {elem}  defaultValue={elem} >
+                                 {elem}
+                                </option>
 
                             )
                           }                          
                         </select>
                       </li>
                      
+                     
                       <li className="list-item">
-                        <Link to = "/contact" className="list-item-link">Կոնտակներ</Link>
+                        <Link to = "/contact" className="list-item-link">{lang[this.props.langData.langId].contact}</Link>
                       </li>
                     </ul>
                   </nav>
@@ -223,7 +243,7 @@ export class Home extends Component {
             </div>
 
           <div className="best-offer">
-              <h1 className="best-title">Լավագույն Առաջարկներ</h1>
+              <h1 className="best-title">{lang[this.props.langData.langId].title}</h1>
                   {this.state.sale?.length > 0 && <Swiper
                     spaceBetween={50}
                     slidesPerView={3}
@@ -247,7 +267,7 @@ export class Home extends Component {
                           )`,
                       }}>
                         <img src="./images/card-background.svg" />
-                        <i className="fa fa-shopping-cart"></i>
+                        {/* <i className="fa fa-shopping-cart"></i> */}
                         <img src="./images/bicycle.svg" className="bicycle-img" />
                       </div>
                         {this.state.bestProductsSwiperActiveIdx === idx && <div>
@@ -262,7 +282,7 @@ export class Home extends Component {
                           <div>{product.description}</div>
                           <div className="price-add">
                             <p>{product.price} Դր</p>
-                            <button className="price-btn">Գնել</button>
+                            <button className="price-btn">{lang[this.props.langData.langId].buy}</button>
                           </div>
                         </div>}
                       </div>
@@ -273,7 +293,7 @@ export class Home extends Component {
           </div>
     
             <div className="promotions">
-              <h1 className="best-title">Ակցիաներ</h1>
+              <h1 className="best-title">{lang[this.props.langData.langId].promotion}</h1>
               <div className="promotion-cards">
                 {
                   this.state.promo.map(elem => (
@@ -295,7 +315,7 @@ export class Home extends Component {
                   <div className="discount-home-cards-one">
                   <div className="discount-home-img">
                     <img src="./images/card-background.svg" />
-                    <i className="fa fa-shopping-cart"></i>
+                    {/* <i className="fa fa-shopping-cart"></i> */}
                     <img src="./images/bicycle.svg" className="bicycle-img" />
                   </div>
                     <div>
@@ -311,7 +331,7 @@ export class Home extends Component {
                     <div>{elem.description}</div>
                     <div className="price-add">
                       <p>{elem.price} Դր</p>
-                      <button className="price-btn">Գնել</button>
+                      <button className="price-btn">{lang[this.props.langData.langId].buy}</button>
                     </div>
                         
                     </div>

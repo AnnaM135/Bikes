@@ -37,8 +37,8 @@ export class Filter extends Component {
             },
             filterInp: {
                 type: "",
-                minPrice: "60000",
-                maxPrice: "65000",
+                minPrice: "",
+                maxPrice: "",
                 color: "",
                 discount: "",
                 size: "",
@@ -227,7 +227,7 @@ export class Filter extends Component {
                                     </div>
                                 </div>
                                 <hr />
-                                <div className="select-proce">
+                                <div className="select-price">
                                     <div className="price">
                                         <p>Գինը</p>
                                         <p className="fa fa-chevron-down" aria-hidden="true"></p>
@@ -288,7 +288,7 @@ export class Filter extends Component {
                                         }
                                         <div >
                                             <input type="radio" name="discount" value='' onChange={this.change.bind(this)} />
-                                            <label htmlFor="male">All</label>
+                                            <label htmlFor="male">Բոլորը</label>
                                         </div>
                                     </div>
                                 </div>
@@ -310,6 +310,10 @@ export class Filter extends Component {
                                                 )
                                             })
                                         }
+                                        <div >
+                                            <input type="radio" name="height1" value='' onChange={this.change.bind(this)} />
+                                            <label htmlFor="height1">Բոլորը</label>
+                                        </div>
                                     </div>
                                 </div>
                                 <hr />
@@ -330,6 +334,10 @@ export class Filter extends Component {
                                                 )
                                             })
                                         }
+                                        <div >
+                                            <input type="radio" name="size" value='' onChange={this.change.bind(this)} />
+                                            <label htmlFor="size">Բոլորը</label>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -338,9 +346,9 @@ export class Filter extends Component {
                                         <button onClick={this.filter.bind(this)}>Կիրառել</button>
                                     </div>
                                 </div>
-                                <div className="select-update">
+                                {/* <div className="select-update">
                                     <a href="">Թարմացնել</a>
-                                </div>
+                                </div> */}
                             </div>
 
                         </div>

@@ -41,7 +41,7 @@
 .filter{
 	background: rgba(196, 196, 196, 0.29);
 }
-.filter > .filter-title{
+ .filter-title{
 	text-align: center;
 	padding: 20px;
 }
@@ -51,6 +51,9 @@
 	justify-content: center;
 	align-items: center;
 	text-align: center;
+}
+.select-center button{
+	outline: none;
 }
 .select-center{
 	width: 250px;
@@ -100,10 +103,23 @@
 .price{
 	display: flex;
 	justify-content: space-between;
+	margin: 20px;
+}
+.our-pluses-icon {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 307px;
+    margin-left: 20px;
+    padding: 5px;
+    color: green;
 }
 .type-price{
 	display: flex;
 	align-items: center;
+	margin: 20px;
 	justify-content: space-around;
 }
 .type-price > div{
@@ -247,6 +263,12 @@ hr{
 
 .our-pluses{
 	text-align: right;
+	width: 255px;
+}
+.our-pluses img{
+	text-align: right;
+	width: 200px;
+
 }
 .assortment-col-three{
 	display: flex;
@@ -259,15 +281,13 @@ hr{
 	background: rgba(196, 196, 196, 0.29);
 }
 
-.discount-cards-one{
-  position: relative;
-  flex: 30%;
-  max-width: 30%;
-  margin: 5px;
-  border: 1px solid #C4C4C4;
-  border-radius: 26px;
+.discount-cards-one {
+    position: relative;
+    max-width: 30%;
+    margin: 15px;
+    border: 1px solid #C4C4C4;
+    border-radius: 26px;
 }
-
 .discount-img{
   display: block;
   width: 100%;
@@ -324,21 +344,151 @@ input[name='color']{
 	position: absolute;
 	visibility: hidden;
   }
-/*.cont{
-	width: 100%;
-	background-color: yellow;
-}
-.row{
+
+
+  @media screen and (max-width: 1200px){
+	.discount-cards-one {
+		position: relative;
+		max-width: 40%;
+		margin: 15px;
+		border: 1px solid #C4C4C4;
+		border-radius: 26px;
+	}
+	.select-center{
+		width: 200px;
+	}
+	.select-btn{
+		width: 170px;
+		padding: 10px;
+		border-radius: 20px;
+		border: 2px solid grey;
+		background: #C61212;
 		display: flex;
-}
-.row > div{
-	background-color: red;
-}
+		justify-content: space-around;	
+		margin-top: 30px;
+	}
+	.select-btn button{
+		border: none;
+		outline: none;
+		background-color: transparent;
+		width: 170px;
+		color: #FFFFFF;
+		text-align: center;
+		font-size: 18px;	
+	}
+	.type-price{
+		display: flex;
+		flex-direction: column;
+	}
+	.our-pluses-icon{
+		padding: 0;
+	}
+  }
 
-.col-one{
-	width: 30%;
-}
+  @media screen and (max-width: 768px){
+	.discount-cards-one {
+		position: relative;
+		max-width: 60%;
+		margin: 15px;
+		border: 1px solid #C4C4C4;
+		border-radius: 26px;
+	}
+	.our-pluses img{
+		text-align: right;
+		width: 150px;
+	}
+	.our-pluses p{
+		font-size: 10px;
+	}
+	.select-center{
+		width: 140px;
+	}
+	.select-btn{
+		width: 110px;
+		padding: 5px;
+		border-radius: 20px;
+		border: 2px solid grey;
+		background: #C61212;
+		display: flex;
+		justify-content: space-around;	
+		margin-top: 30px;
+	}
+	.our-pluses-icon{
+		margin-top: 220px;
+		margin-left: 5px;
+		padding: 10px;
+	}
+	
+  }
 
-.col-two{
-	width: 70%;
-}*/
+  @media screen and (max-width: 600px){
+	.our-pluses{
+		width: 100px;
+	}
+	.our-pluses p{
+		font-size: 10px;
+	}
+	.select-center{
+		width: 100px;
+	}
+	.select-btn{
+		width: 80px;
+		padding: 5px;
+		display: flex;
+		margin-top: 30px;
+	}
+	.select-btn button{
+		font-size: 15px;	
+	}
+	.our-pluses-icon{
+		margin-top: 116px;
+		margin-left: 5px;
+	}
+  }
+
+  @media screen and (max-width: 425px){
+	.discount-cards-one {
+		position: relative;
+		max-width: 80%;
+		margin: 10px;
+		border: 1px solid #C4C4C4;
+		border-radius: 26px;
+	}
+	.select-center{
+		width: 70px;
+	}
+	.our-pluses{
+		width: 80px;
+	}
+	.our-pluses img{
+		text-align: right;
+		width: 80px;
+	}
+	.type-price div{
+		width: 60px;
+	}
+	.our-pluses-icon{
+		margin-top: 116px;
+		margin-left: 5px;
+	}
+  }
+
+  @media screen and (max-width: 376px){
+	.select-btn{
+		width: 60px;
+		padding: 5px;
+		border-radius: 20px;
+		border: 2px solid grey;
+		background: #C61212;
+		display: flex;
+		justify-content: space-around;	
+		margin-top: 30px;
+	}
+	.select-center{
+		width: 60px;
+	}
+	.our-pluses-icon{
+		margin-top: 116px;
+		margin-left: 5px;
+	}
+  }

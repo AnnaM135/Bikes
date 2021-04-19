@@ -9,7 +9,7 @@ import {lang} from "../../lang"
 export class Contact extends Component {
     handelChangeLang = (id) =>{
         this.props.changeData(id)
-        console.log(id)
+        
     }
     render() {
         return (

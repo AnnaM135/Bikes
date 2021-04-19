@@ -49,7 +49,7 @@ export class List extends Component {
     }
     handelChangeLang = (id) =>{
         this.props.changeData(id)
-        console.log(id)
+        
     }
 
     addCard(item){
@@ -82,7 +82,6 @@ export class List extends Component {
          <div className="product-slider">
              <Swiper  pagination={{ clickable: true }} >
                  <SwiperSlide>
-						<h1>H4</h1> 
                         <div className='slide'
                         style={{width:"100%"}}
                         >
@@ -94,7 +93,6 @@ export class List extends Component {
                         </div>
                  </SwiperSlide>
                    <SwiperSlide>
-						<h1>H4</h1> 
                         <div classNmae='slide'
                         style={{width:"100%"}}
                         >
@@ -114,13 +112,14 @@ export class List extends Component {
          </div>
      </div>
      <div className="product-description-area">
-         <div className="product-star">
+         <br /> <br />
+         {/* <div className="product-star">
              <i className="fa fa-star-o" aria-hidden="true"></i>
              <i className="fa fa-star-o" aria-hidden="true"></i>
              <i className="fa fa-star-o" aria-hidden="true"></i>
              <i className="fa fa-star-o" aria-hidden="true"></i>
              <i className="fa fa-star-o" aria-hidden="true"></i>
-         </div>
+         </div> */}
          <div className="product-code">
              <p>Կոդ 654236853</p>
              <h5>{this.state.data.productName}</h5>
@@ -142,10 +141,7 @@ export class List extends Component {
              </div>	
              <div className="color-buttons">
              <div style = {{backgroundColor: "red"}}></div>
-                                     <div style={{backgroundColor: `${this.state.data.colors}`}}></div>
-                                     <div style={{backgroundColor: "silver"}}></div>
-                                     <div style={{backgroundColor: "grey"}}></div>
-                    <div style={{backgroundColor: "black"}}></div> 
+                    <div style={{backgroundColor: `${this.state.data.colors}`}}></div>               
              </div>
          </div>
          <hr />
@@ -179,13 +175,13 @@ export class List extends Component {
                      </div>
              </div>
              <div className="product-buttons">
-                 <button className="product-add-btn" onClick = {this.addCard.bind(this, this.state.data)}>ԱՎԵԼԱՑՆԵԼ</button>
-                 <button className="product-buy-btn">ԳՆԵԼ</button>
+                 <button className="product-add-btn" onClick = {this.addCard.bind(this, this.state.data)}>{lang[this.props.langData.langId].add}</button>
+                 <button className="product-buy-btn">{lang[this.props.langData.langId].buy}</button>
              </div>
      </div>
  </div>
  <div className="same-product">
-     <h1 className="same-product-title">Նմանատիպ ապրանքներ</h1>
+     <h1 className="same-product-title">{lang[this.props.langData.langId].similar}</h1>
       <div className="same-product-cards">
           {
               this.state.product.map((elem, i) => (
@@ -193,7 +189,7 @@ export class List extends Component {
                     {JSON.parse(elem.imagePath).map((elem,i) => 
                     <div className="same-product-img">
                         <img src="/images/card-background.svg" />
-                        <i className="fa fa-shopping-cart" aria-hidden="true"></i>
+                        {/* <i className="fa fa-shopping-cart" aria-hidden="true"></i> */}
                         <img src="/images/bicycle.svg" className="bicycle-img" />
                     </div>
                     )}
@@ -208,7 +204,7 @@ export class List extends Component {
                  <div>{elem.description}</div>
                  <div className="price-add">
                      <p>{elem.price} Դր</p>
-                     <button className="price-btn">Գնել</button>
+                     <button className="price-btn">{lang[this.props.langData.langId].buy}</button>
                  </div>
                          
              </div>

@@ -1,0 +1,135 @@
+.admin-header{
+	max-width: 100%;
+	background-color: #000000;
+	padding: 20px;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.admin-header i{
+	color: #FFFFFF;
+	margin-left: 25px;
+	font-size: 20px;
+}
+
+.create-area{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	max-width: 100%;
+	padding: 100px;
+}
+
+.create-area-center{
+	width: 70%;
+	background-color: white;
+    box-shadow: 0 33px 40px rgba(169,169,169, 0.3), 0 15px 12px rgba(169,169,169, 0.3), 0 15px 12px rgba(169,169,169, 0.3);
+}
+
+.create-area-center> h1{
+	text-align: center;
+}
+.add-form-group{
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	padding: 40px 35px 40px 35px;
+    justify-content: space-between;
+}
+
+.add-form-group > input {
+    border: 1px solid #666666;
+    border-radius: 6px;
+    box-sizing: border-box;
+    width: 40%;
+    padding: 15px 20px;  
+    margin-top: 20px;
+}
+.add-form-group > input:focus {
+    outline: none;
+    border: 4px solid #1475A2;
+}
+
+.add-btn{
+    border: none;
+    outline: none;
+    background: #1475A2;
+    border-radius: 4px;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+
+
+.assortment-area-cards{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	background: rgba(196, 196, 196, 0.29);
+}
+
+.discount-cards-one{
+  position: relative;
+  flex: 30%;
+  max-width: 30%;
+  margin: 5px;
+  border: 1px solid #C4C4C4;
+  border-radius: 26px;
+}
+
+.discount-img{
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+.discount-img > img{
+	width: 100%;
+	border-radius: 10px;
+}
+.discount-img i {
+    position: absolute;
+    margin-left: -50px;
+    margin-top: 20px;
+    font-size: 18px;
+    color: #C61212;
+}
+.bicycle-img {
+    position: absolute;
+    margin-left: -100%;
+    margin-top: 20px;
+}
+
+.best-input{
+    height: 60px;
+   color: yellowgreen;
+}
+.best-label{
+    font-size: 25px;
+    color: yellowgreen;
+    font-weight: bold;
+    margin-top: 40px;
+    background-color: cornsilk;
+}
+
+.info-languages{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: center;
+}
+
+.info-languages h1{
+    background-color: yellowgreen;
+    padding: 20px;
+}

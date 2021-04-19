@@ -4,6 +4,7 @@ import classnames from "classnames";
 import { flags } from "../languages/data";
 import AdminServices from '../../services/AdminServices';
 import { getAllFilters } from '../../services/FilterOptionUtils';
+import {lang} from "../../lang"
 
 
 
@@ -99,7 +100,7 @@ export class Header extends Component {
 
             </div>
             <div className="five header-card">
-              <div className="header-bus"> 24 ժամյա առաքում</div>
+            <div className="header-bus"> {lang[this.props.langId].trac} </div>
               <img src="/images/delivery-truck.png" />
             </div>
             <div className="six header-card">
@@ -154,7 +155,7 @@ export class Header extends Component {
             </li>
 
             <li className="list-item">
-              <Link to="/contact" className="list-item-link">Կոնտակներ</Link>
+              <Link to="/contact" className="list-item-link">{lang[this.props.langId].contact}</Link>
             </li>
           </ul>
         </nav>

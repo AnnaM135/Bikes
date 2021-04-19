@@ -20,7 +20,7 @@ export class ProductItem extends Component {
             {JSON.parse(this.props.elem.imagePath).map((elem,i) => 
                 <div key = {elem} className="discount-img">
                     <img src="/images/card-background.svg" />
-                    <Link to = "/basket"><i className="fa fa-shopping-cart" aria-hidden="true"></i></Link>
+                    {/* <Link to = "/basket"><i className="fa fa-shopping-cart" aria-hidden="true"></i></Link> */}
                     <img src="/images/bicycle.svg" className="bicycle-img" />
                     {/* <img src={elem} className="bicycle-img" /> */}
                 </div>

@@ -13,6 +13,7 @@
 .header-black{
 	background-color: #000000;
 }
+
 .home-body::before {
   max-width: 100%;
   background: url(./components/images/background.jpg);
@@ -38,7 +39,8 @@
 	border-bottom: 2px solid #C4C4C4;
 }
 .nav-bar{
-	display: flex; justify-content: center;
+	display: flex; 
+	justify-content: center;
 }
 .wrapper{
 	display: flex;
@@ -159,15 +161,15 @@
 	background-color: transparent;
 	color: #FFFFFF;
 }
-.slogan-area{
-	margin-top: 100px;
-	margin-left: 200px;
-	color: #FFFFFF;
-	font-weight: bold;
-	width: 60%;
-	font-size: 27px;
-}
 
+.slogan-area {
+    margin-top: 200px;
+    margin-left: 200px;
+    color: #FFFFFF;
+    font-weight: bold;
+    width: 60%;
+    font-size: 27px;
+}
 .icon-down-area{
 	display: flex;
 	justify-content: flex-end;
@@ -319,6 +321,18 @@
 	display: flex;
 	align-items: center;
   }
+
+  .dropdown {
+    /* display: none; */
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    /* background-color: #1475A2; */
+    min-width: 226px;
+    margin-top: 30px;
+    height: auto;
+    z-index: 1;
+  }
   
 /* promotions */
 .promotions{
@@ -361,9 +375,8 @@
 .discount-home-cards-one{
   position: relative;
   display: block;
-  flex: 22%;
-  max-width: 22%;
-  margin: 31px;
+ 	max-width: 80%;
+		margin: 10px;
   border: 1px solid #C4C4C4;
   border-radius: 26px;
 
@@ -426,6 +439,10 @@
 	.one-menu{
 		display: flex;
 	}
+	.nav-bar{
+		display: flex; 
+		justify-content: flex-start;
+	}
 	
 	.header-menu-list{
 		display: flex;
@@ -438,6 +455,10 @@
 	}
 	.list-item-link{
 		color: #000000;
+	}
+	.header-menu-list > li > select {
+		color: #000000;
+		width: auto;
 	}
 	.slogan-area {
 		margin-top: 249px;
@@ -509,7 +530,8 @@
 	}
 
 	.discount-home-cards-one{
-	  max-width: 40%;
+		max-width: 60%;
+		margin: 15px;
 	}
 	
 
@@ -522,6 +544,10 @@
 		height: 600px;
 		overflow: hidden;
 		margin: 5px;
+	}
+
+	.slogan-area h1{
+		font-size: 30px;
 	}
 
 	.middle {
@@ -545,7 +571,8 @@
 	}
 
 	.discount-home-cards-one{
-		max-width: 30%;
+		max-width: 65%;
+		margin: 15px;
 	  }
 
 }
@@ -559,8 +586,12 @@
 		width: 100%;
 		font-size: 13px;
 	}
+	.one-line h1{
+		font-size: 13px;
+	}
 	.discount-home-cards-one{
-		max-width: 40%;
+		max-width: 80%;
+		margin: 10px;
 	  }
 }
 

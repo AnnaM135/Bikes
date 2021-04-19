@@ -12,7 +12,7 @@
 
 export function filterData(data, filter) {
 
-    console.log("Input data" + JSON.stringify(data));
+    
     let resultData = [...data];
     if (filter.color) {
      resultData = resultData.filter(e => e.colors.includes(filter.color));
@@ -43,7 +43,8 @@ export function filterData(data, filter) {
         resultData = resultData.filter(e => e.price <= filter.maxPrice);
     }
 
-    console.log("result data " + JSON.stringify(resultData));
+    
+    
     return resultData;
 }
 
