@@ -16,7 +16,7 @@ export class Contact extends Component {
             <div className="contact-page">
             <Header  handelChangeLang = {this.handelChangeLang} langId = {this.props.langData.langId}/>
  <div className="contact-main-head">
-     <h3 className="">Կապ հաստատեք մեզ հետ {lang[this.props.langData.langId].color}</h3>			
+     <h3 className="">Կապ հաստատեք մեզ հետ </h3>			
  </div>
  <div className="contact-main">
      <div className="contatc-main-left">

@@ -59,18 +59,12 @@ export class Filter extends Component {
                 filterValues: getAllFilters(r.data),
                 data: r.data
             });
-
-
             this.setState({
                 filterInp: {
                     type: this.props.match.params.type
                 }
             });
-
-
             this.filter();
-
-           
         })
 
     }
@@ -201,7 +195,7 @@ export class Filter extends Component {
 
                         <div className="filter">
                             <div>
-                                <div className="filter-title">Ֆիլտր {lang[this.props.langData.langId].color}</div>
+                                <div className="filter-title">Ֆիլտր </div>
                                 <div className="select">
                                     <div className="select-center">
                                         <button onClick={this.handelClick}>
@@ -212,7 +206,7 @@ export class Filter extends Component {
                                             {
                                                 this.state.filterValues.types.map(a => {
                                                     return (
-                                                        <li key={a}>
+                                                        <li key={a} class = "type-button">
                                                             <button onClick={this.setTypes.bind(this, a)} type="button">
                                                                 <p>{a}</p>
                                                             </button>
@@ -229,15 +223,15 @@ export class Filter extends Component {
                                 <hr />
                                 <div className="select-price">
                                     <div className="price">
-                                        <p>Գինը</p>
+                                        <p>{lang[this.props.langData.langId].price}</p>
                                         <p className="fa fa-chevron-down" aria-hidden="true"></p>
                                     </div>
                                     <div className="type-price">
-                                        <p>Սկսած</p>
+                                        <p>{lang[this.props.langData.langId].from}</p>
                                         <div className="before">
                                             <input type="text" name="minPrice" placeholder="0" value={this.state.filterInp.minPrice} onChange={this.change.bind(this)} />
                                         </div>
-                                        <p>Մինչև</p>
+                                        <p>{lang[this.props.langData.langId].to}</p>
                                         <div className="after">
                                             <input type="text" name="maxPrice" placeholder="1260" value={this.state.filterInp.maxPrice} onChange={this.change.bind(this)} />
                                         </div>
@@ -254,7 +248,7 @@ export class Filter extends Component {
                                 <hr />
                                 <div className="select-color">
                                     <div className="price">
-                                        <p>Գույն</p>
+                                        <p>{lang[this.props.langData.langId].color}</p>
                                         <p className="fa fa-chevron-down" aria-hidden="true"></p>
                                     </div>
                                     <div className="color-buttons">
@@ -270,7 +264,7 @@ export class Filter extends Component {
                                 <hr />
                                 <div className="select-sale">
                                     <div className="price">
-                                        <p>Զեղչ</p>
+                                        <p>{lang[this.props.langData.langId].discount}</p>
                                         <p className="fa fa-chevron-down" aria-hidden="true"></p>
                                     </div>
                                     <div className="sale-buttons">
@@ -288,14 +282,14 @@ export class Filter extends Component {
                                         }
                                         <div >
                                             <input type="radio" name="discount" value='' onChange={this.change.bind(this)} />
-                                            <label htmlFor="male">Բոլորը</label>
+                                            <label htmlFor="male">{lang[this.props.langData.langId].all}</label>
                                         </div>
                                     </div>
                                 </div>
                                 <hr />
                                 <div className="select-sale">
                                     <div className="price">
-                                        <p>Հասակ</p>
+                                        <p>{lang[this.props.langData.langId].height}</p>
                                         <p className="fa fa-chevron-down" aria-hidden="true"></p>
                                     </div>
                                     <div className="sale-buttons">
@@ -312,14 +306,14 @@ export class Filter extends Component {
                                         }
                                         <div >
                                             <input type="radio" name="height1" value='' onChange={this.change.bind(this)} />
-                                            <label htmlFor="height1">Բոլորը</label>
+                                            <label htmlFor="height1">{lang[this.props.langData.langId].all}</label>
                                         </div>
                                     </div>
                                 </div>
                                 <hr />
                                 <div className="select-sale">
                                     <div className="price">
-                                        <p>Չափ</p>
+                                        <p>{lang[this.props.langData.langId].size}</p>
                                         <p className="fa fa-chevron-down" aria-hidden="true"></p>
                                     </div>
 
@@ -336,14 +330,14 @@ export class Filter extends Component {
                                         }
                                         <div >
                                             <input type="radio" name="size" value='' onChange={this.change.bind(this)} />
-                                            <label htmlFor="size">Բոլորը</label>
+                                            <label htmlFor="size">{lang[this.props.langData.langId].all}</label>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div className="select">
                                     <div className="select-btn">
-                                        <button onClick={this.filter.bind(this)}>Կիրառել</button>
+                                        <button onClick={this.filter.bind(this)}>{lang[this.props.langData.langId].apply}</button>
                                     </div>
                                 </div>
                                 {/* <div className="select-update">
@@ -355,18 +349,18 @@ export class Filter extends Component {
                         <div className="assortment-col-three">
                             <div className="our-pluses">
                                 <img src="/images/filter-bike.svg" />
-                                <p>Ցածր գներ</p>
-                                <p>Մեծ տեսականի</p>
-                                <p>Արագ առաքում</p>
-                                <p>Հարմարավետ սպասարկում</p>
+                                <p>{lang[this.props.langData.langId].low}</p>
+                                <p>{lang[this.props.langData.langId].big}</p>
+                                <p>{lang[this.props.langData.langId].fast}</p>
+                                <p>{lang[this.props.langData.langId].service}</p>
                             </div>
-                            <div className="our-pluses-icon">
+                            {/* <div className="our-pluses-icon">
                                 <i className="fa fa-chevron-down" aria-hidden="true"></i>
                                 <i className="fa fa-chevron-down" aria-hidden="true"></i>
                                 <i className="fa fa-chevron-down" aria-hidden="true"></i>
                                 <i className="fa fa-chevron-down" aria-hidden="true"></i>
                                 <i className="fa fa-chevron-down" aria-hidden="true"></i>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                     <div className="assortment-col-two">

@@ -121,7 +121,7 @@ export class List extends Component {
              <i className="fa fa-star-o" aria-hidden="true"></i>
          </div> */}
          <div className="product-code">
-             <p>Կոդ 654236853</p>
+             <p>Code 654236853</p>
              <h5>{this.state.data.productName}</h5>
          </div>
          <div className="product-price">
@@ -137,7 +137,7 @@ export class List extends Component {
          </div>
          <div className="select-color">
              <div className="price">
-                 <p>Գույն</p>
+                 <p>{lang[this.props.langData.langId].color}</p>
              </div>	
              <div className="color-buttons">
              <div style = {{backgroundColor: "red"}}></div>
@@ -147,7 +147,7 @@ export class List extends Component {
          <hr />
          <div className="select-sale">
                  <div className="price">
-                     <p>Չափ</p>
+                     <p>{lang[this.props.langData.langId].size}</p>
                      <p>15"</p>
                      <p className="fa fa-chevron-down" aria-hidden="true"></p>
                  </div>
@@ -156,7 +156,7 @@ export class List extends Component {
          <hr />
              <div className="select-sale">
                  <div className="price">
-                     <p>Հասակ</p>
+                     <p>{lang[this.props.langData.langId].height}</p>
                      <p className="fa fa-chevron-down" aria-hidden="true"></p>
                  </div>
                      <div className="sale-buttons">
@@ -195,7 +195,7 @@ export class List extends Component {
                     )}
                      <div>
                  <div>
-                     <p>Գույն</p>
+                     <p>{lang[this.props.langData.langId].color}</p>
                      <div className="color-buttons">
                          <div style = {{backgroundColor: `${elem.colors}`}}></div>
                      </div>

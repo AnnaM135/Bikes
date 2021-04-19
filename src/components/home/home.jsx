@@ -233,8 +233,8 @@ export class Home extends Component {
              
             </header>
             <div className="slogan-area">
-              <h1 className="one-line">ԼԱՎԱԳՈՒՅՆ ՆՎԵՐԸ </h1>
-              <h1>ԱԿՏԻՎ ԿՅԱՆՔԸ ՍԻՐՈՂՆԵՐԻՆ</h1>
+              <h1 className="one-line">{lang[this.props.langData.langId].titleOne}</h1>
+              <h1>{lang[this.props.langData.langId].titleTwo}</h1>
             </div>
             <div className="icon-down-area">
               <div className="icon-down">
@@ -273,7 +273,7 @@ export class Home extends Component {
                         {this.state.bestProductsSwiperActiveIdx === idx && <div>
                           <div>
                             <p>{product.discounts}</p>
-                            <p>Գույն</p>
+                            <p>{lang[this.props.langData.langId].color}</p>
                             <div className="color-buttons">
                               <div style = {{backgroundColor: `${product.colors}`}}></div>
                             </div>
@@ -308,7 +308,7 @@ export class Home extends Component {
               </div>
             </div>
             <div className="discount">
-              <h1 className="best-title">Զեղչեր</h1>
+              <h1 className="best-title">{lang[this.props.langData.langId].discount}</h1>
               <div className="discount-cards">
                 {
                   this.state.sale.map(elem => (
@@ -321,7 +321,7 @@ export class Home extends Component {
                     <div>
                       <div>
                       <p>{elem.discounts}</p>
-                        <p>Գույն</p>
+                        <p>{lang[this.props.langData.langId].color}</p>
                         <div className="color-buttons">
                           <div style = {{backgroundColor: `${elem.colors}`}}></div>
                           

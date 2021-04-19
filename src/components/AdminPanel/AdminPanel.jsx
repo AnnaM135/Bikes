@@ -135,7 +135,7 @@ const AdminPanel = () => {
         <>
             <header className="admin-header">
                 <i className="fa fa-pencil-square-o" aria-hidden="true" onClick={()=> setForm(prev=>!prev)}></i>
-                <i className="fa fa-trash-o" aria-hidden="true"></i>
+                {/* <i className="fa fa-trash-o" aria-hidden="true"></i> */}
                 <button name='hy' onClick={changeLanguage}>հայերեն</button>
                 <button name='en' onClick={changeLanguage}>english</button>
                 <button name='ru' onClick={changeLanguage}>русский</button>

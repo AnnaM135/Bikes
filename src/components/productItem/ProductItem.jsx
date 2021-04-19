@@ -1,6 +1,10 @@
 
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
+import { lang } from "../../lang"
+import { connect } from "react-redux"
+import { changeData } from "../../store/languages/action"
+
 
 
 export class ProductItem extends Component {
@@ -29,25 +33,28 @@ export class ProductItem extends Component {
             <div>
                 <div>
                     <Link to = {`/filter/${this.props.elem.productType}/${this.props.elem.productName}`}>
-                    <p>Գույն</p> </Link>
+                    <p>Ավելին</p> </Link>
                     <div className="color-buttons">
                         <div style = {{backgroundColor: `${this.props.elem.colors}`}}></div>
-                        <div style={{backgroundColor: "yellow"}}></div>
-                        <div style={{backgroundColor: "silver"}}></div>
-                        <div style={{backgroundColor: "grey"}}></div>
-                        <div style={{backgroundColor: "black"}}></div> 
                     </div>
                 </div>
                 <div>{this.props.elem.productType}</div>
                 <div>{this.props.elem.description}</div>
                 <div className="price-add">
                     <p>{this.props.elem.price} Դր</p>
-                    <button className="price-btn">Գնել</button>
+                    <button className="price-btn">{lang[this.props.langData.langId].buy}</button>
                 </div>      
             </div>
         </div>
         )
     }
 }
-
-export default ProductItem
+function mapstatetoprops(state) {
+    return {
+        langData: state.langReducer
+    }
+}
+const mapDispatchToProps = {
+    changeData
+}
+export default connect(mapstatetoprops, mapDispatchToProps)(ProductItem)

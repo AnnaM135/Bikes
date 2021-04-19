@@ -230,6 +230,10 @@ input[type='checkbox']{
    margin-right: -5px;
 }
 
+.type-button button:active:focus{
+	border: 1px solid;
+}
+
 /**/
 hr{
 	width: 90%;
@@ -244,7 +248,10 @@ hr{
 	border: 1px solid black;
 	border-radius: 4px;
 	margin: 5px;
-
+	
+}
+.color-buttons >  div:active{
+	border: 5px solid;
 }
 .sale-buttons > div{
 	display: flex;
