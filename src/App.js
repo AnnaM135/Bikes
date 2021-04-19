@@ -9,8 +9,8 @@ import Contact from "./components/contact/contact"
 import Basket from "./components/basket/basket"
 import {Provider} from "react-redux";
 import configStore from "./store/config";
-// import AdminLogin from './components/AdminLogin/AdminLogin.jsx';
-// import AdminPanel from './components/AdminPanel/AdminPanel.jsx';
+import AdminLogin from './components/AdminLogin/AdminLogin.jsx';
+import AdminPanel from './components/AdminPanel/AdminPanel.jsx';
 let store = configStore()
 
 
@@ -20,8 +20,8 @@ export class App extends Component {
       <Provider store = {store}>
       <BrowserRouter>
       <Switch>
-      {/* <Route  path='/login'><AdminLogin/></Route>
-                <Route path='/admin'><AdminPanel/></Route>  */}
+      <Route  path='/login'><AdminLogin/></Route>
+                <Route path='/admin'><AdminPanel/></Route> 
                
         <Route path = "/" exact component = {Home}/>
 
