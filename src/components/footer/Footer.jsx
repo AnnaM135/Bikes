@@ -1,15 +1,18 @@
 import React, { Component } from 'react'
+import ModalFooter from '../Modal/ModalCallBack'
+import ModalRules from '../Modal/ModalRules'
 import "./footer.css"
-
 export class Footer extends Component {
     render() {
         return (
             <footer className="footer" id = "footer">
                 <div className="footer-contacts">
                     <div className="call-back">
-                        <h1>ՀԵՏԱԴԱՐՁ ԿԱՊ</h1>
-                        <h1>ՊԱՅՄԱՆՆԵՐ և ԿԱՆՈՆՆԵՐ</h1>
+                        <h1><ModalFooter /></h1>
+                        <h1></h1>
+                        <ModalRules />
                     </div>
+                    
                     <div className="fotter-line"></div>
                     <div className="call-back">
                         <div className="contact-icons">

@@ -61,7 +61,7 @@ let  AdminLogin = () =>{
                         </div>
                         <label htmlFor="password">Password</label>
                         <input className = "login-input" id='LoginPassword' placeholder='Enter you password' value={state.LoginPassword} onChange={changeValue} type="text"/>
-                        <button onClick={AdminLogin} type="button" className="login-btn">login</button>
+                        <button onClick={AdminLogin} type="button" className="login-btn">Login</button>
                     </div>
                 </div>
             </section>
@@ -71,4 +71,3 @@ let  AdminLogin = () =>{
 
 
 export default AdminLogin = memo(AdminLogin);
-        

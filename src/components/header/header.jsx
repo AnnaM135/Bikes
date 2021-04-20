@@ -4,7 +4,7 @@ import classnames from "classnames";
 import { flags } from "../languages/data";
 import AdminServices from '../../services/AdminServices';
 import { getAllFilters } from '../../services/FilterOptionUtils';
-import {lang} from "../../lang"
+import { lang } from "../../lang"
 
 
 
@@ -15,8 +15,6 @@ export class Header extends Component {
     this.state = {
       data: {},
       types: [],
-      bikes_hy: [],
-      bikes_en: [],
       showList: false,
       search: "",
       searchProducts: []
@@ -24,10 +22,11 @@ export class Header extends Component {
   }
   componentDidMount() {
     AdminServices.getProducts(this.props.langId).then(r => {
-
+      //console.log(this.props.langId)
       let filtObj = getAllFilters(r.data);
-    
-      this.setState({types : filtObj.types})
+
+      this.setState({ types: filtObj.types })
+
     })
     this.setState({
       active: flags[0].id,
@@ -58,6 +57,7 @@ export class Header extends Component {
       this.setState({
         showList: false,
       })
+      console.log(this.props.langId, id)
     }
   }
   render() {
@@ -100,7 +100,7 @@ export class Header extends Component {
 
             </div>
             <div className="five header-card">
-            <div className="header-bus"> {lang[this.props.langId].trac} </div>
+              <div className="header-bus"> {lang[this.props.langId].trac} </div>
               <img src="/images/delivery-truck.png" />
             </div>
             <div className="six header-card">

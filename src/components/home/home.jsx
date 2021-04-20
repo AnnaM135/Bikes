@@ -42,23 +42,15 @@ export class Home extends Component {
     }
 }
     componentDidMount() {
+      console.log('componentDidMount homeeeee  ' + this.props.langData.langId);
       AdminServices.getProducts(this.props.langData.langId).then((r) => {
         this.state.data = r.data
-        
         this.state.data.forEach(elem => {
           this.state.types.push(elem.productType)
           if(elem.promotions !== "") this.state.promo.push(elem.promotions)
           if(elem.discounts !== "") this.state.sale.push(elem)
           if(elem.theBestProduct) this.state.bestProducts.push(elem)
         })
-
-        // this.state.data.forEach(elem => (
-        //  this.state.types.push(elem.productType),
-        //  elem.promotions !== "" ?  this.state.promo.push(elem.promotions)  : null,
-        //  elem.discounts !== "" ? this.state.sale.push(elem)  : null,
-        //  elem.theBestProduct !== false ? this.state.bestProducts.push(elem) : null
-        // ))
-
         this.state.types = this.state.types.filter((c, index) => {
           return this.state.types.indexOf(c) === index;
       });
@@ -82,14 +74,18 @@ export class Home extends Component {
   // }
   handelChangeLang = (id) =>{
     this.props.changeData(id)
+    this.componentDidMount()
   }
+
   handelClickFlag = (event) => {
     const {id} = event.target.dataset;
     if(this.props.langData.langId !== id){
-    this.handelChangeLang(id)
+      this.handelChangeLang(id)
       this.setState({
-          showList: false,
+        showList: false,
       })
+      console.log(this.props.langData.langId);
+      
     }
   }
   
@@ -141,7 +137,7 @@ export class Home extends Component {
             </div>
                   <div className="two header-card">
                     <i className="fa fa-phone"></i>
-                    <a className="phone" href="tel">+374 444444</a>
+                    <a className="phone" href="tel:+374444444">+374 444444</a>
                   </div>
                   <div className="three header-card">
                     <input type="text" id="header-input" data-id="search" value={this.state.search} onChange={this.changeSearch.bind(this)} placeholder="Search" />
@@ -359,6 +355,15 @@ function mapstatetoprops(state){
       langData: state.langReducer
   }
 }
+
+// const mapStateToProps = function(state) {
+//   console.log( 'State is ' + JSON.stringify(state))
+//   return {
+//     gg: state.langId,
+   
+//   }
+// }
+
 const mapDispatchToProps = {
    changeData
 }

@@ -113,6 +113,7 @@ export class Basket extends Component {
                         <img src="images/master-card.svg" />
                         <img src="images/visa.svg" />
                         <img src="images/idram.svg" />
+                        <img src="images/ameria.png"     width= "42px" />
                     </div>
                 </div>
             </div>

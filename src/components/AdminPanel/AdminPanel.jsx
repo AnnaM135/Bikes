@@ -55,6 +55,7 @@ const AdminPanel = () => {
         setproducts(data.data)
         setchangeProducts(data.data)
     }
+    
     useEffect(() => {
         getProducts()        
     }, [load, language]);;

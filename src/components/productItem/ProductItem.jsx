@@ -49,6 +49,7 @@ export class ProductItem extends Component {
         )
     }
 }
+
 function mapstatetoprops(state) {
     return {
         langData: state.langReducer
