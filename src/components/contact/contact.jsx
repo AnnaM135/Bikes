@@ -27,12 +27,17 @@ export class Contact extends Component {
                             <i className="fa fa-phone"></i>
                             <i className="fa fa-instagram"></i>
                             <i className="fa fa-facebook"></i>
-                            <i className="fa fa-mail"></i>
+                            <i className="fa fa-envelope"></i>
+                            <i >T</i>
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
                         </div>
                         <div className="contact-main-info">
                             <a href="tel:+374444444">+374 44 44 44</a>
                             <a href="https://www.instagram.com/hecaniv.am/">hecaniv.am</a>
                             <a href="https://www.facebook.com/BestBikesInArmenia/">hecaniv.am</a>
+                            <a href="https://www.facebook.com/BestBikesInArmenia/">hecaniv@gmail.com</a>
+                            <a href="https://www.facebook.com/BestBikesInArmenia/">hecaniv.tiktok   </a>
+                            <a>ՀՀ, ք. Երևան, Հ.Էմին 27տ</a>
                         </div>
                     </div>
                 </div>

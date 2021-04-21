@@ -7,7 +7,7 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;	
-    padding-top: 50px;
+    /* padding-top: 50px; */
 }
 
 
@@ -29,6 +29,14 @@
 .contact-icons{
 	display: flex;
 	padding: 10px;
+}
+.link-white{
+	color: #C4C4C4;
+
+}
+.link-white:hover{
+	color: #C4C4C4;
+
 }
 .contact-icons > i{
 	margin-left: 10px;

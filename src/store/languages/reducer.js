@@ -6,9 +6,8 @@ let initState = {
 }
 
 export default function langReducer(state = initState, action) {
-    console.log('1111  ' + JSON.stringify(action));
+    
     switch (action.type) {
-        
         case constants.CHANGE_LANG_ID: {
             return {
                 ...state,

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import ModalFooter from '../Modal/ModalCallBack'
 import ModalRules from '../Modal/ModalRules'
 import "./footer.css"
 export class Footer extends Component {
@@ -8,7 +7,7 @@ export class Footer extends Component {
             <footer className="footer" id = "footer">
                 <div className="footer-contacts">
                     <div className="call-back">
-                        <h1><ModalFooter /></h1>
+                        <a href = "/contact" className = "link-white"><h1>ՀԵՏԱԴԱՐՁ ԿԱՊ</h1></a>  
                         <h1></h1>
                         <ModalRules />
                     </div>
@@ -23,6 +22,12 @@ export class Footer extends Component {
                         <div className="contact-media">
                             <i className="fa fa-instagram"></i>
                             <i className="fa fa-facebook"></i>
+                            <i className="fa fa-envelope"></i>
+                            <i >T</i>
+                            <a href = "/contact" className="contact-media">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+
+                            </a>
                         </div>
                     </div>
                 </div>
