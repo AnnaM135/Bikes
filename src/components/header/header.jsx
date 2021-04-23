@@ -72,7 +72,10 @@ export class Header extends Component {
         <div className="header-line">
           <div className="wrapper">
             <div className="one header-card">
-              <Link className="list-item-link" to="/">LOGOBIKE</Link>
+              <Link className="list-item-link" to="/">
+              <img className = "logo" src = "/images/hecanivLogo.png" />
+
+              </Link>
             </div>
             <div className="one-menu header-card">
               <img src="../images/menu.svg" onClick={this.handelClickMenu} />

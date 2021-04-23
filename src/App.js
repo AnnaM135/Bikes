@@ -22,7 +22,7 @@ export class App extends Component {
       <Provider store={store}>
         <BrowserRouter>
           <Switch>
-            <Route path='/adminlogin'><AdminLogin /></Route>
+            <Route path='/login'><AdminLogin /></Route>
             <Route path='/admin'><AdminPanel /></Route>
 
             <Route path="/" exact component={Home} />

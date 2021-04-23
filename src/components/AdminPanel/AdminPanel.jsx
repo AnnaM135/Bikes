@@ -209,7 +209,6 @@ const AdminPanel = () => {
                                     <input value={elem.sizes}  onChange={(e)=>changeProduct(e, elem)} name='sizes' placeholder='չափերը' type="text"/>
                                     <input value={elem.height}  onChange={(e)=>changeProduct(e, elem)} name='height' placeholder='հասակ' type="text"/>
                                     <input value={elem.description} onChange={(e)=>changeProduct(e, elem)} name='description' placeholder='նկարագրություն' type="text"/>
-                                    <input value={elem.promotions}  onChange={(e)=>changeProduct(e, elem)} name='promotions' placeholder='promotions' type="text"/>
                                     <input value={elem.discounts}  onChange={(e)=>changeProduct(e, elem)} name='discounts' placeholder='discounts' type="text"/>
                                     <input value={elem.stars}  onChange={(e)=>changeProduct(e, elem)} name='stars' placeholder='stars' type="text"/>
                                     <input value={elem.month}  onChange={(e)=>changeProduct(e, elem)} name='month' placeholder='month' type="text"/>

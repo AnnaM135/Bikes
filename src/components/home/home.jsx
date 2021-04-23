@@ -129,7 +129,9 @@ export class Home extends Component {
               <div className="header-line">
                 <div className="wrapper">
                 <div className="one header-card">
-              <Link className="list-item-link" to="/">LOGOBIKE</Link>
+              <Link className="list-item-link" to="/">
+                <img className = "logo" src = "/images/hecanivLogo.png" />
+              </Link>
             </div>
             <div className="one-menu header-card" onClick = {this.showMenu.bind(this)}>
               <img src="../images/menu.svg" />
@@ -274,8 +276,7 @@ export class Home extends Component {
                               <div style = {{backgroundColor: `${product.colors}`}}></div>
                               <div style = {{backgroundColor: `${product.colors}`}}></div>
                               <div style = {{backgroundColor: `${product.colors}`}}></div>
-                              <div style = {{backgroundColor: `${product.colors}`}}></div>
-                              
+                              <div style = {{backgroundColor: `${product.colors}`}}></div>                             
                             </div>
                           <div>{product.productName}</div>
                           <div>{product.description}</div>

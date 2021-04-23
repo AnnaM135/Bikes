@@ -21,6 +21,10 @@
 	padding:30px;
 }
 
+.logo {
+    width: 110px;
+    height: 40px;
+}
 .home-body::before {
   max-width: 100%;
   background: url(./components/images/background.jpg);

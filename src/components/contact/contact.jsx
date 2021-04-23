@@ -34,10 +34,10 @@ export class Contact extends Component {
                         <div className="contact-main-info">
                             <a>ՀՀ, ք. Երևան, Հ.Էմին 27տ</a>
                             <a href="tel:+37444004405">++37444 004405</a>
-                            <a href="https://www.instagram.com/hecaniv.am/">hecaniv.am</a>
-                            <a href="https://www.facebook.com/BestBikesInArmenia/">hecaniv.am</a>
-                            <a href="https://www.facebook.com/BestBikesInArmenia/">hecaniv@gmail.com</a>
-                            <a href="https://www.facebook.com/BestBikesInArmenia/">hecaniv.tiktok   </a>
+                            <a href="https://www.instagram.com/hecanivclub.am/">hecaniv.am</a>
+                            <a href="https://www.facebook.com/BestBikesInArmenia">hecaniv.am</a>
+                            <a href="https://www.facebook.com/BestBikesInArmenia">hecaniv@gmail.com</a>
+                            <a href="https://vm.tiktok.com/ZSJBrYGuv/">hecaniv.tiktok   </a>
                         </div>
                     </div>
                 </div>
