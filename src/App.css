@@ -16,6 +16,11 @@
 .list-item-link:hover{
 	color:#FFFFFF;
 }
+
+.card-context{
+	padding:30px;
+}
+
 .home-body::before {
   max-width: 100%;
   background: url(./components/images/background.jpg);
@@ -60,13 +65,13 @@
 	display: none;
 }
 
-.header-menu-list{
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-items: center;
-	list-style-type: none;
-	padding: 30px;
+.header-menu-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    list-style-type: none;
+    padding: 15px;
 }
 
 .list-item{
@@ -88,6 +93,10 @@
 	color: #FFFFFF;
 	text-decoration: none;
 	font-weight: bold;
+	font-size: 18px;
+}
+.two a:hover{
+	color: #FFFFFF;
 }
 .phone{
 	text-decoration: none;
@@ -107,10 +116,12 @@
 .not-active{
     display: none;
 }
-.three{
-	width: 400px;
-	border-radius: 30px;
-	background-color: #C4C4C4;
+.three {
+    width: 400px;
+    border-radius: 30px;
+    background-color: #C4C4C4;
+	height:auto;
+    overflow: hidden;
 }
 .three > i{
 	color: #FFFFFF;
@@ -165,12 +176,16 @@
 }
 
 .slogan-area {
-    margin-top: 200px;
+    margin-top: 65px;
     margin-left: 200px;
     color: #FFFFFF;
     font-weight: bold;
     width: 60%;
     font-size: 27px;
+}
+.slogan-area h1{
+	font-weight: bold;
+	font-size: 57px;
 }
 .icon-down-area{
 	display: flex;
@@ -185,8 +200,8 @@
 	justify-content: center;
 	align-items: center;
 	background: #C61212;
-	width: 50px;
-	height: 50px;
+	width: 60px;
+	height: 60px;
 	border-radius: 100%;
 	color: #FFFFFF;
 }
@@ -197,6 +212,9 @@
 	text-decoration: none;
 }
 
+.icon-down a:hover{
+	color: #FFFFFF;
+}
 
 /*  best-offer */
 .best-offer{

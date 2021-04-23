@@ -5,6 +5,7 @@ import { flags } from "../languages/data";
 import AdminServices from '../../services/AdminServices';
 import { getAllFilters } from '../../services/FilterOptionUtils';
 import { lang } from "../../lang"
+import ModalDelivery from '../Modal/ModalRules';
 
 
 
@@ -78,7 +79,7 @@ export class Header extends Component {
             </div>
             <div className="two header-card">
               <i className="fa fa-phone" ></i>
-              <a className="phone" href="tel" >+374 444444</a>
+              <a className="phone" href="tel:+37444004405" >+37444 004405</a>
             </div>
             <div className="three header-card">
               <input type="text" id="header-input" data-id="search" value={this.state.search} onChange={this.changeSearch.bind(this)} placeholder="search peoples" />
@@ -100,7 +101,9 @@ export class Header extends Component {
 
             </div>
             <div className="five header-card">
-              <div className="header-bus"> {lang[this.props.langId].trac} </div>
+              <div className="header-bus"> 
+              <ModalDelivery />
+              </div>
               <img src="/images/delivery-truck.png" />
             </div>
             <div className="six header-card">
@@ -128,23 +131,23 @@ export class Header extends Component {
           <ul className="header-menu-list">
             <li className="list-item">
               <Link to={`/filter/${this.state.types[0]}`} className="list-item-link">
-                {this.state.types[0]}
+                {lang[this.props.langId].bicycle}
               </Link>
             </li>
             <li className="list-item">
               <Link to={`/filter/${this.state.types[1]}`} className="list-item-link">
-                {this.state.types[1]}
+                  {lang[this.props.langId].carriage}
               </Link>
             </li>
             <li className="list-item">
               <Link to={`/filter/${this.state.types[2]}`} className="list-item-link">
-                {this.state.types[2]}
+                  {lang[this.props.langId].tricycles}
               </Link>
             </li>
 
             <li className="list-item">
               <select className="select-more">
-                <option value="" selected disabled hidden>Ավելին</option>
+                <option value="" selected disabled hidden>{lang[this.props.langId].more}</option>
                 {
                   this.state.types.slice(3).map((elem) =>
                     <option key={elem} value={elem} >{elem}</option>

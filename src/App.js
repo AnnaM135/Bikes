@@ -11,10 +11,12 @@ import { Provider } from "react-redux";
 import configStore from "./store/config";
 import AdminLogin from './components/AdminLogin/AdminLogin.jsx';
 import AdminPanel from './components/AdminPanel/AdminPanel.jsx';
+import  Rules  from './components/Rules/Rules';
+import  About  from './components/About/About';
 let store = configStore()
 
-
 export class App extends Component {
+
   render() {
     return (
       <Provider store={store}>
@@ -32,6 +34,8 @@ export class App extends Component {
             <Route path="/filter/:type/:item" component={List} />
             <Route path="/contact" component={Contact} />
             <Route path="/basket" component={Basket} />
+            <Route path="/rules" component = {Rules} />
+            <Route path = "/about"  component = {About} />
             <Redirect to='/' />
           </Switch>
         </BrowserRouter>

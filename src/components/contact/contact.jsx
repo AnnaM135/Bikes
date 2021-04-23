@@ -16,7 +16,7 @@ export class Contact extends Component {
             <div className="contact-page">
                 <Header handelChangeLang={this.handelChangeLang} langId={this.props.langData.langId} />
                 <div className="contact-main-head">
-                    <h3 className="">Կապ հաստատեք մեզ հետ </h3>
+                    <h3>Կապ հաստատեք մեզ հետ</h3>
                 </div>
                 <div className="contact-main">
                     <div className="contatc-main-left">
@@ -24,20 +24,20 @@ export class Contact extends Component {
                     </div>
                     <div className="contact-main-right">
                         <div className="contatc-main-icons">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
                             <i className="fa fa-phone"></i>
                             <i className="fa fa-instagram"></i>
                             <i className="fa fa-facebook"></i>
-                            <i className="fa fa-envelope"></i>
-                            <i >T</i>
-                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            <i className="fa fa-google-plus-official" aria-hidden="true"></i>
+                            <img style = {{margin: "10px", width: "26px"}} src = "./images/tiktokBlack.svg"></img>
                         </div>
                         <div className="contact-main-info">
-                            <a href="tel:+374444444">+374 44 44 44</a>
+                            <a>ՀՀ, ք. Երևան, Հ.Էմին 27տ</a>
+                            <a href="tel:+37444004405">++37444 004405</a>
                             <a href="https://www.instagram.com/hecaniv.am/">hecaniv.am</a>
                             <a href="https://www.facebook.com/BestBikesInArmenia/">hecaniv.am</a>
                             <a href="https://www.facebook.com/BestBikesInArmenia/">hecaniv@gmail.com</a>
                             <a href="https://www.facebook.com/BestBikesInArmenia/">hecaniv.tiktok   </a>
-                            <a>ՀՀ, ք. Երևան, Հ.Էմին 27տ</a>
                         </div>
                     </div>
                 </div>

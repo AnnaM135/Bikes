@@ -31,19 +31,28 @@ export class ProductItem extends Component {
             )}             
            
             <div>
-                <div>
-                    <Link to = {`/filter/${this.props.elem.productType}/${this.props.elem.productName}`}>
-                    <p>Ավելին</p> </Link>
+                <div className = "card-context">
+                    {/* <Link to = {`/filter/${this.props.elem.productType}/${this.props.elem.productName}`}>
+                    <p>Ավելին</p> </Link> */}
                     <div className="color-buttons">
                         <div style = {{backgroundColor: `${this.props.elem.colors}`}}></div>
+                        <div style = {{backgroundColor: 'red'}}></div>
+                        <div style = {{backgroundColor: 'black'}}></div>
+                        <div style = {{backgroundColor: 'grey'}}></div>
+                        <div style = {{backgroundColor: 'yellow'}}></div>
                     </div>
                 </div>
+                <div className = "card-context">
+
                 <div>{this.props.elem.productType}</div>
                 <div>{this.props.elem.description}</div>
                 <div className="price-add">
                     <p>{this.props.elem.price} Դր</p>
-                    <button className="price-btn">{lang[this.props.langData.langId].buy}</button>
+                    <Link to = {`/filter/${this.props.elem.productType}/${this.props.elem.productName}`}>
+                         <button className="price-btn">{lang[this.props.langData.langId].buy}</button>
+                         </Link>
                 </div>      
+                </div>
             </div>
         </div>
         )

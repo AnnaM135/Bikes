@@ -21,26 +21,31 @@
 .call-back{
 	margin: 45px;
 }
+.call-back i{
+	font-size: 18px;
+}
 .call-back h1{
 	text-align: right;
 	font-size: 18px;
 	font-weight: normal;
+	margin-left: 20px;
+	color: #FFFFFF;
 }
 .contact-icons{
 	display: flex;
 	padding: 10px;
 }
 .link-white{
-	color: #C4C4C4;
+	color: #FFFFFF;
 
 }
 .link-white:hover{
-	color: #C4C4C4;
+	color: #FFFFFF;
 
 }
 .contact-icons > i{
-	margin-left: 10px;
-	color: #C4C4C4;
+	margin-left: -11px;
+	color: #FFFFFF;
 	font-size: 18px;
 	font-weight: normal;
 }
@@ -49,18 +54,18 @@
 	justify-content: center;
 	align-items: center;
 }
-.contact-media >i{
-	background-color: #FFFFFF;
-	width: 25px;
-	height: 25px;
-	border-radius: 100%;
-	color: #C61212;
-	margin-left: 20px;
-	font-weight: bold;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	
+.contact-media >i, .contact-media > img {
+    background-color: #FFFFFF;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    color: #C61212;
+    margin-left: 25px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
 }
 .footer-bottom{
 	width: 100%;
@@ -81,7 +86,7 @@
 }
 .hr {
     width: 90%;
-    border: 2px solid #C4C4C4;
+    border: 1px solid #C4C4C4;
     background-color: #C4C4C4;
     margin-top: 1px;
     margin-left: 5%;

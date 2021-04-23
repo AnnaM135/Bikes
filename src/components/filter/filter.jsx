@@ -188,8 +188,8 @@ export class Filter extends Component {
                 <div className="assortment-row">
                     <div className="assortment-col-one">
                         <div className="filter-head head-end">
-                            <Link to="/"><p className="fa fa-long-arrow-left"></p></Link>
-                            <p>Գլխավոր</p>
+                            <Link to="/" style = {{color: "#000000"}}><p className="fa fa-long-arrow-left"></p></Link>
+                            <Link to="/" style = {{color: "#000000"}} ><p>Գլխավոր</p></Link>
                         </div>
 
 

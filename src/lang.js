@@ -20,7 +20,30 @@ const arm = {
     big: "Մեծ տեսականի",
     fast: "Արագ առաքում",
     service: "Հարմարավետ սպասարկում",
-    all: "Բոլորը"
+    all: "Բոլորը",
+    rulesOne: "Վերադարձի պայմաններ",
+    rulesTwo: 'Գնված ապրանքի ետ վերադարձն իրականացվում է սպառողների իրավունքների պաշտպանության մասին ՀՀ օրենսդրության համաձայն: "սպառողների իրավունքների պաշտպանության մասին:"',
+    rulesThree: "Ապրանքի ընդունումը:",
+    rulesFour: "Ապրանքն ընդունելիս՝ Դուք իրավունք ունեք ստուգել դրա արտաքին տեսքը, թերությունների առկայությունը: Առաքումից հետո ապրանքի պահպանման պատասխանատվությունը փոխանցվում է գնորդին և արտաքին տեսքի մասով նկատառումներ չեն ընդունվում: Առաքման ծառայության կողմից ապրանքի ստացման պարագայում Դուք իրավունք ունեք ստուգելու ապրանքը ստացման պահին: Եթե ապրանքի արտաքին տեսքը չի համապատասխանում Ձեր կատարած պատվերին, ապա կարող եք կազմել ստուգման ակտ, որի հիման վրա կիրականացվի տվյալ ապրանքի փոխանակում կամ գումարի վերադարձ: ",
+    rulesFive: "Ապրանքի պատշաճ վիճակով վերադարձ 7 օրվա ընթացքում:",
+    rulesSix: "Դուք իրավուքն ունեք հրաժարվել ապրանքից կամ պահանջել գումարի վերադարձ ապրանքը ստանալուց հետո 7 օրվա ընթացքում: Դա հնարավոր է այն դեպքում եթե ապրանքը պատշաճ վիճակում է, չի օգտագործվել, պահպանված է նրա վաճառքի ենթակա տեսքը, պիտակը, փաթեթի վաճառքի ենթակա տեսքը, վաճառքի թղթերը և փաթեթի ամբողջական պարունակությունը: Գումարի վերադարձն իրականացվում է գնորդի կողմից գրավոր պահանջը ներկայացնելուց հետո 10 աշխատանքային օրվա ընթացքում: Եթե Դուք գտնվում եք մարզում, ապա գումարի վերադարձն իրականացվում է ապրանքի վերադարձից և զննումից հետո:",
+    rulesSeven: "Քարտերով գործարքի չեղարկման դեպքում գումարը հետ կփոխանցվի այն քարտին, որից կատարվել է փոխանցումը 5 աշխատանքային օրվա ընթացքում:",
+    delivery: "Առաքում",
+    deliveryText: "Առաքումը կատարվում է 24 ժամվա ընթացքում, Ձեր նախընտրած ժամին նշված հասցեով: Երևանում առաքումն անվճար է, իսկ մարզեր առաքման դեպքում գումարը կախված է տվյալ մարզի հեռավորությունից:Նախքան պատվերը հաստատելը ստուգեք, որ առաքման համար նշված հասցեն ճիշտ է՝ հակառակ դեպքում առաքիչը ստիպված կլինի կապնվել Ձեզ հետ հասցեն ճշտելու համար: Եթե կապը Ձեզ հետ չիրականանա ինչ-ինչ պատճառներով , ապա  առաքիչը ապրանքը կվերադարձնի սրահ։Ձեզ հետ կապ հաաստատելուց  և հասցեն ճշտելուց հետո առաքումը Երևանում կլինի անվճար, իսկ մարզեր առաքման դեպքեւմ գնորդը ստիպված կլինի երկրորդ անգամ վճարել առաքման գումարը։",
+    bicycle: "Հեծանիվներ",
+    tricycles: "Եռանիվ հեծանիվներ",
+    scooters: "Սամակատներ",
+    cars: "Մանկական մեքենաներ",
+    skate: "Սքեյթ",
+    motorcycles: "Մանկական մոտոցիկլետներ",
+    carriage: "Մանկական սայլակներ",
+    table: "Կերակրման սեղան",
+    rollers: "Ռոլիկներ",
+    hoverboard: "Հովերբորդ",
+    swimming: "Լողավազաններ",
+    christmas: "Տոնածառներ",
+    more: "Ավելին",
+    about: "Մենք արդեն 10 տարի է զբաղվում ենք հեծանիվների վաճառքով։ Մեզ մոտ կգտնեք ինչպես երեխաների, այնպես էլ մեծահասակների համար նախատեսված հեծանիվներ։ Մեր կայքից և խանութսրահից,բացի հեծանիվներից կարող եք ձեռք բերել նաև մանկասայլակներ, մանկական մեքենաներ, եռանիվ հեծանիվներ, կերակրման սեղաններ և այլ ապրանքներ։ Վճարումներն ընդունվում են և՛ կանխիկ, և՛ ապառիկ տարբերակներով։  Ինչպես նաև մեզ մոտ գործում են մեծ ակցիաներ և զեղչեր։"
 }
 const ru = {
     titleOne: "ЛУЧШИЙ ПОДАРОК",
@@ -44,7 +67,30 @@ const ru = {
     big: "Большой выбор",
     fast: "Быстрая доставка",
     service: "Удобное обслуживание",
-    all: "все"
+    all: "все",
+    rulesOne: "Условия возврата",
+    rulesTwo: "Возврат купленного товара осуществляется в соответствии с законодательством РА о защите прав потребителей. «О защите прав потребителей»",
+    rulesThree: "Приемка продукции.",
+    rulesFour: "Принимая товар, вы имеете право проверить его внешний вид, наличие дефектов.После доставки ответственность за хранение товара переходит к покупателю и соображения внешнего вида не принимаются. При получении товара службой доставки вы имеете право осмотреть товар при получении. Если внешний вид товара не соответствует вашему заказу, вы можете составить акт осмотра, на основании которого товар будет обменен или возвращен.",
+    rulesFive: "Возврат товара в хорошем состоянии в течении 7 дней",
+    rulesSix: "Вы имеете право отказаться от товара или потребовать возмещения в течение 7 дней после получения товара. Это возможно, если товар находится в хорошем состоянии, не использовался, имеет внешний вид товара, выставленного на продажу, этикетку, внешний вид продаваемой упаковки, товарные документы и полное содержимое упаковки. Возврат денежных средств осуществляется в течение 10 рабочих дней после подачи покупателем письменного запроса. Если вы находитесь регионе, возврат осуществляется после возврата и проверки товара.",
+    rulesSeven: "В случае օтмена сделки по карте (Идрам, Виза, Мастер) сумма будет переведена обратно на карту, с которой был осуществлен перевод, в течение 5 рабочих дней.",
+    delivery: "Доставка",
+    deliveryText: "Доставка осуществляется в течении 24 часов по указанному адресу в удобное для Вас время. Доставка по Еревану бесплатная, при доставке в регионы сумма зависит от удаленности региона. Перед подтверждением заказа убедитесь, что адрес, указанный для доставки, верен, в противном случае курьеру придется связаться с вами для проверки адреса. Если по какой-то причине связь с вами не будет установлена, курьер вернет товар в салон. После связи с вами и проверки адреса доставка будет бесплатной по Еревану, а в случае доставки в регионы – покупателю придется оплатить стоимость доставки во второй раз.",
+    bicycle: "Велосипеды",
+    tricycles: "Трехколесные велосипеды",
+    scooters: "самокаты",
+    cars: "Детские автомобили",
+    skate: "скейты",
+    motorcycles: "Детские мотоциклы",
+    carriage: "Коляски",
+    table: "Кормовой стол",
+    rollers: "Ролики",
+    hoverboard: "Ховерборд",
+    swimming: "Бассейны",
+    christmas: "Новогодние елки",
+    more: "ЕЩЕ",
+    about: "Мы уже 10 лет занимаемся продажей велосипедов. Вы найдете велосипеды как для детей, так и для взрослых. На нашем сайте и в магазине, помимо велосипедов, вы можете купить коляски, детские автомобили, трехколесные велосипеды, столы для кормления и другие товары. Платежи принимаются в «наличном» и «кредитном» вариантах.Еще у нас большие акции и скидки."
 }
 
 const eng = {
@@ -69,7 +115,30 @@ const eng = {
     big: "Big choice",
     fast: "Convenient service",
     service: "Fast delivery",
-    all: "All"
+    all: "All",
+    rulesOne: "Return conditions:",
+    rulesTwo: 'The return of the purchased product is carried out in accordance with the RA legislation on consumer protection. "On Consumer Protection"',
+    rulesThree: "Acceptance of products",
+    rulesFour: "Upon receipt of the goods, you have the right to check its appearance, the presence of defects. After delivery, the responsibility for the storage of the goods passes to the buyer and considerations of appearance are not accepted. Upon receipt of the goods by the delivery service, you are entitled to inspect the goods upon receipt. If the appearance of the goods does not correspond to your order, you can draw up an inspection report, on the basis of which the goods will be exchanged or returned. ",
+    rulesFive: "Return of goods in good condition within 7 days",
+    rulesSix: "You have the right to refuse the product or demand a refund within 7 days after receiving the product. This is possible if the product is in good condition, has not been used, has the appearance of the product for sale, the label, the appearance of the packaging sold, the sales documents and the complete contents of the packaging. In return, today's funds will be valid for 10 working days after the purchase of a written request. If you enter the region, the return is valid after the return and the checks are loaded.",
+    rulesSeven: "In case of օ canceling the transaction on the card (Idram, Visa, Master), the amount will be transferred back to the card from which the transfer was made within 5 working days.",
+    delivery: "Delivery",
+    deliveryText: "Delivery is carried out within 24 hours at the specified address at a convenient time for you. Delivery in Yerevan is free, for delivery to the regions the amount depends on the distance of the region.Please make sure the shipping address is correct before confirming your order, otherwise the courier will have to contact you to verify the address. If, for some reason, communication with you is not established, the courier will return the goods to the salon. After contacting you and checking the address, delivery will be free in Yerevan, and in case of delivery to the regions, the buyer will have to pay the cost of delivery a second time.",
+    bicycle: "Bicycles",
+    tricycles: "Tricycles",
+    scooters: "Scooters",
+    cars: "Children's cars",
+    skate: "Skateboards",
+    motorcycles: "Children's motorcycles",
+    carriage: "Baby carriage",
+    table: "Feeding table",
+    rollers: "Rollers",
+    hoverboard: "Hoverboard",
+    swimming: "Swimming pools",
+    christmas: "Christmas trees",
+    more: "More",
+    about: "We have been selling bicycles for 10 years. You will find bicycles for both children and adults. On our website and in the store, in addition to bicycles, you can buy strollers, baby cars, tricycles, feeding tables and other goods.Payments are accepted in 'cash' and 'credit' options. We also have great promotions and discounts."
 }
 
 
@@ -82,3 +151,8 @@ export const lang = {
 
 
 // - - 
+
+
+
+
+

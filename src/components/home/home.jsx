@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Route, Link } from 'react-router-dom';
 import "../../App.css"
 import "../filter/filter.css"
-import Filter from "../filter/filter"
 import Footer from "../footer/Footer"
 import Contact from '../contact/contact';
 import Basket from '../basket/basket';
@@ -12,7 +11,7 @@ import {lang} from "../../lang"
 import AdminServices from '../../services/AdminServices';
 import {connect} from "react-redux"
 import {changeData} from "../../store/languages/action"
-
+import ModalDelivery from "../Modal/ModalRules"
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -137,7 +136,7 @@ export class Home extends Component {
             </div>
                   <div className="two header-card">
                     <i className="fa fa-phone"></i>
-                    <a className="phone" href="tel:+374444444">+374 444444</a>
+                    <a className="phone" href="tel:+37444004405">+37444 004405</a>
                   </div>
                   <div className="three header-card">
                     <input type="text" id="header-input" data-id="search" value={this.state.search} onChange={this.changeSearch.bind(this)} placeholder="Search" />
@@ -158,7 +157,9 @@ export class Home extends Component {
                     <Link to = "/basket"><i className="fa fa-shopping-cart" aria-hidden="true"></i></Link>
                   </div>
                   <div className="five header-card">
-                    <div className="header-bus"> {lang[this.props.langData.langId].trac} </div>
+                    <div className="header-bus"> 
+                        <ModalDelivery />
+                     </div>
                     {/* {lang[this.props.langData.langId].} */}
                     <img src="./images/delivery-truck.png"/>
                   </div>
@@ -190,23 +191,23 @@ export class Home extends Component {
                     <ul className="header-menu-list dropdown">
                     <li className="list-item">
                             <Link to = {`/filter/${this.state.types[0]}`} className="list-item-link">
-                                {this.state.types[0]}
+                              {lang[this.props.langData.langId].bicycle}
                             </Link>
                             </li>
                             <li  className="list-item">
                             <Link to = {`/filter/${this.state.types[1]}`} className="list-item-link">
-                                {this.state.types[1]}
+                                {lang[this.props.langData.langId].carriage}
                             </Link>
                             </li>
                             <li className="list-item">
                             <Link to = {`/filter/${this.state.types[2]}`} className="list-item-link">
-                                {this.state.types[2]}
+                                {lang[this.props.langData.langId].tricycles}
                             </Link>
                             </li>
                       
                       <li className="list-item">
                         <select className = "select-more" onClick = {this.more.bind(this, this.state.types)}>
-                            <option value="elem" selected disabled hidden>Ավելին</option>
+                            <option value="elem" selected disabled hidden>{lang[this.props.langData.langId].more}</option>
                           {
                             this.state.types.slice(3).map((elem) => 
                                 <option key = {elem}  defaultValue={elem} >
@@ -267,18 +268,21 @@ export class Home extends Component {
                         <img src="./images/bicycle.svg" className="bicycle-img" />
                       </div>
                         {this.state.bestProductsSwiperActiveIdx === idx && <div>
-                          <div>
-                            <p>{product.discounts}</p>
+                          <div className = "card-context">
                             <p>{lang[this.props.langData.langId].color}</p>
                             <div className="color-buttons">
                               <div style = {{backgroundColor: `${product.colors}`}}></div>
+                              <div style = {{backgroundColor: `${product.colors}`}}></div>
+                              <div style = {{backgroundColor: `${product.colors}`}}></div>
+                              <div style = {{backgroundColor: `${product.colors}`}}></div>
+                              
                             </div>
-                          </div>
                           <div>{product.productName}</div>
                           <div>{product.description}</div>
                           <div className="price-add">
                             <p>{product.price} Դր</p>
                             <button className="price-btn">{lang[this.props.langData.langId].buy}</button>
+                          </div>
                           </div>
                         </div>}
                       </div>
@@ -315,23 +319,29 @@ export class Home extends Component {
                     <img src="./images/bicycle.svg" className="bicycle-img" />
                   </div>
                     <div>
-                      <div>
+                      <div className = "card-context">
                       <p>{elem.discounts}</p>
                         <p>{lang[this.props.langData.langId].color}</p>
                         <div className="color-buttons">
                           <div style = {{backgroundColor: `${elem.colors}`}}></div>
+                          <div style = {{backgroundColor: "red"}}></div>
+                          <div style = {{backgroundColor: "grey"}}></div>
+                          <div style = {{backgroundColor: "black"}}></div>
                           
                         </div>
                       </div>
+                      <div className = "card-context">
+
                     <div>{elem.productName}</div>
                     <div>{elem.description}</div>
                     <div className="price-add">
                       <p>{elem.price} Դր</p>
-                      <button className="price-btn">{lang[this.props.langData.langId].buy}</button>
+                      <button href = "/basket" className="price-btn">{lang[this.props.langData.langId].buy}</button>
                     </div>
                         
                     </div>
                   </div>
+                      </div>
 
                   ))
                 }
@@ -344,6 +354,7 @@ export class Home extends Component {
             {/* <Route path = "/filter" exact component = {Filter} /> */}
             <Route path = "/contact" component = {Contact} />
             <Route path = "/basket" component = {Basket} /> 
+            
           </div>   
                
         )
