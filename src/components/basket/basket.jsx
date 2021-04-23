@@ -115,6 +115,13 @@ export class Basket extends Component {
                         <img src="images/visa.svg" />
                         <img src="images/idram.svg" />
                     </div>
+                <div className = "payment-methods">
+                    <hr />
+                    <h1>{lang[this.props.langData.langId].paymentHead}</h1>
+                    <p>
+                    {lang[this.props.langData.langId].paymentPar}
+                    </p>
+                </div>
                 </div>
             </div>
             <Footer />

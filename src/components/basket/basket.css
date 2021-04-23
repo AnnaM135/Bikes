@@ -116,8 +116,17 @@
 .basket-pay-versions img{
 	width: 70px;
 	height: 41px;
+	padding: 20px;
 }
-
+.payment-methods{
+	margin-top: 40px;
+}
+.payment-methods h1{
+	font-size: 16px;
+}
+.payment-methods p{
+	font-size: 13px;
+}
 @media screen and (max-width: 800px){
 	.basket-page-center{
 		display: flex;

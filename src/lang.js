@@ -43,7 +43,9 @@ const arm = {
     swimming: "Լողավազաններ",
     christmas: "Տոնածառներ",
     more: "Ավելին",
-    about: "Մենք արդեն 10 տարի է զբաղվում ենք հեծանիվների վաճառքով։ Մեզ մոտ կգտնեք ինչպես երեխաների, այնպես էլ մեծահասակների համար նախատեսված հեծանիվներ։ Մեր կայքից և խանութսրահից,բացի հեծանիվներից կարող եք ձեռք բերել նաև մանկասայլակներ, մանկական մեքենաներ, եռանիվ հեծանիվներ, կերակրման սեղաններ և այլ ապրանքներ։ Վճարումներն ընդունվում են և՛ կանխիկ, և՛ ապառիկ տարբերակներով։  Ինչպես նաև մեզ մոտ գործում են մեծ ակցիաներ և զեղչեր։"
+    about: "Մենք արդեն 10 տարի է զբաղվում ենք հեծանիվների վաճառքով։ Մեզ մոտ կգտնեք ինչպես երեխաների, այնպես էլ մեծահասակների համար նախատեսված հեծանիվներ։ Մեր կայքից և խանութսրահից,բացի հեծանիվներից կարող եք ձեռք բերել նաև մանկասայլակներ, մանկական մեքենաներ, եռանիվ հեծանիվներ, կերակրման սեղաններ և այլ ապրանքներ։ Վճարումներն ընդունվում են և՛ կանխիկ, և՛ ապառիկ տարբերակներով։  Ինչպես նաև մեզ մոտ գործում են մեծ ակցիաներ և զեղչեր։",
+    paymentHead: "Վճարման եղանակը",
+    paymentPar: "Վճարումը կատարվում է հետեւյալ եղանակներով 1.	Կանխիկ վճարում; 2.	Առցանց վճարում՝ MASTER/VISA կամ Idram քարտերով;3.	Ապառիկ Եթե վճարումը կատարվելու է VISA /MASTER  կամ Idram քարտերով,ապա սեղմելով VISA/MASTER կամ Idaram-ի լոգոի վրա դուք ավտոմատ կերպով կհայտնվեք համապատասխան վճարման համակարգի էջում, որտեղ պետք է ճշգրիտ և նույնությամբ լրացնել Ձեր VISA/MASTER/Idram/ քարտերի տվյալները: Վճարումները ընդունում ենք նաև ապրանքը պատվիրատուին փոխանցելու  ժամանակ՝ կանխիկ:",
 }
 const ru = {
     titleOne: "ЛУЧШИЙ ПОДАРОК",
@@ -90,7 +92,9 @@ const ru = {
     swimming: "Бассейны",
     christmas: "Новогодние елки",
     more: "ЕЩЕ",
-    about: "Мы уже 10 лет занимаемся продажей велосипедов. Вы найдете велосипеды как для детей, так и для взрослых. На нашем сайте и в магазине, помимо велосипедов, вы можете купить коляски, детские автомобили, трехколесные велосипеды, столы для кормления и другие товары. Платежи принимаются в «наличном» и «кредитном» вариантах.Еще у нас большие акции и скидки."
+    about: "Мы уже 10 лет занимаемся продажей велосипедов. Вы найдете велосипеды как для детей, так и для взрослых. На нашем сайте и в магазине, помимо велосипедов, вы можете купить коляски, детские автомобили, трехколесные велосипеды, столы для кормления и другие товары. Платежи принимаются в «наличном» и «кредитном» вариантах.Еще у нас большие акции и скидки.",
+    paymentHead: "Способ оплаты",
+    paymentPar: "Оплата производится следующими способами: 1. Оплата наличными; 2. Онлайн-оплата картами MASTER / VISA или Idram;  3. Кредит  Если оплата будет производиться картами VISA / MASTER или Idram, нажатие на логотип VISA / MASTER или Idaram автоматически приведет вас на страницу соответствующей платежной системы, где вы должны точно указать данные своей карты VISA / MASTER / Idram. Принимаем оплату при передаче товара покупателю наличными.",
 }
 
 const eng = {
@@ -138,7 +142,9 @@ const eng = {
     swimming: "Swimming pools",
     christmas: "Christmas trees",
     more: "More",
-    about: "We have been selling bicycles for 10 years. You will find bicycles for both children and adults. On our website and in the store, in addition to bicycles, you can buy strollers, baby cars, tricycles, feeding tables and other goods.Payments are accepted in 'cash' and 'credit' options. We also have great promotions and discounts."
+    about: "We have been selling bicycles for 10 years. You will find bicycles for both children and adults. On our website and in the store, in addition to bicycles, you can buy strollers, baby cars, tricycles, feeding tables and other goods.Payments are accepted in 'cash' and 'credit' options. We also have great promotions and discounts.",
+    paymentHead: "Payment method",
+    paymentPar: "Payment is made in the following ways: 1. Payment in cash; 2. Online payment by MASTER / VISA or Idram cards; 3. Credit  If the payment will be made with VISA / MASTER or Idram cards, clicking on the VISA / MASTER or Idaram logo will automatically take you to the corresponding payment system page, where you must fill in your VISA / MASTER / Idram card details exactly. We accept payments when transferring the goods to the customer in cash.",
 }
 
 

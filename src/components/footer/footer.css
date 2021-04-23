@@ -49,10 +49,12 @@
 	font-size: 18px;
 	font-weight: normal;
 }
-.contact-media{
-	display: flex;
-	justify-content: center;
-	align-items: center;
+.contact-media {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    margin-top: -22px;
 }
 .contact-media >i, .contact-media > img {
     background-color: #FFFFFF;
