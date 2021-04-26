@@ -30,12 +30,13 @@ export class Home extends Component {
       data: {},
       types: [],
       showList: false,
+      showMore: false,
       promo: [],
       sale: [],
       bestProducts: [], 
       search: "",
       searchProducts: [],
-      showMenu: true,
+      showMenu: false,
       showStore: false,
       bestProductsSwiperActiveIdx:1,
     }
@@ -66,11 +67,16 @@ export class Home extends Component {
           showList: !prevState.showList,
       }))
   }
-  // handelClickMenu = (event) => {
-  //   this.setState((prevState) => ({
-  //     showMenu: !prevState.showMenu,
-  //   }))
-  // }
+  handelClickMenu = (event) => {
+    this.setState((prevState) => ({
+      showMenu: !prevState.showMenu,
+    }))
+  }
+   handelClickMore = (event) => {
+    this.setState((prevState) => ({
+      showMore: !prevState.showMore,
+    }))
+  }
   handelChangeLang = (id) =>{
     this.props.changeData(id)
     this.componentDidMount()
@@ -117,8 +123,9 @@ export class Home extends Component {
 }
 
     render() {
-      const cnMenu = classnames({ "nav-bar": true, "not-active": !this.state.showMenu,})
+      const cnMenu = classnames({ "flag-list": true, "not-active": !this.state.showMenu,})
       const cnUl = classnames({ "flag-list": true, "not-active": !this.state.showList,})
+      const cnMore = classnames({ "flag-list": true, "not-active": !this.state.showMore,})
       const currentFlag = flags.find((flag) => flag.id === this.props.langData.langId)
       if (!currentFlag) {
           return null
@@ -133,27 +140,29 @@ export class Home extends Component {
                 <img className = "logo" src = "/images/hecanivLogo.png" />
               </Link>
             </div>
-            <div className="one-menu header-card" onClick = {this.showMenu.bind(this)}>
-              <img src="../images/menu.svg" />
-            </div>
+            {/* <div className="one-menu header-card">
+             
+            </div> */}
                   <div className="two header-card">
                     <i className="fa fa-phone"></i>
                     <a className="phone" href="tel:+37444004405">+37444 004405</a>
                   </div>
                   <div className="three header-card">
-                    <input type="text" id="header-input" data-id="search" value={this.state.search} onChange={this.changeSearch.bind(this)} placeholder="Search" />
+                    <input type="text" id="header-input" data-id="search" value={this.state.search} onChange={this.changeSearch.bind(this)} placeholder={lang[this.props.langData.langId].search} />
                     <i className="fa fa-search"></i>
-                    {
-                      this.state.searchProducts.map((a) => (
-                        <div key = {a.id}>
-                          <p>
-                            <Link to = {`/filter/${a.productType}/${a.productName}`}>
-                              {a.productName}
-                            </Link>
-                          </p>
+                    <div className = "search-context">
+                        {
+                            this.state.searchProducts.map((a) => (
+                              <div key={a.id} >
+                                <p>
+                                  <Link style = {{color:"#FFFFFF"}} to={`/filter/${a.productType}/${a.productName}`}>
+                                    {a.productName}
+                                  </Link>
+                                </p>
+                              </div>
+                            ))
+                          }
                         </div>
-                      ))
-                    }
                   </div>
                   <div className="four header-card">
                     <Link to = "/basket"><i className="fa fa-shopping-cart" aria-hidden="true"></i></Link>
@@ -169,6 +178,8 @@ export class Home extends Component {
                     <button onClick={this.handelClick}>
                       <p className="label">{currentFlag.name}<i className="fa fa-chevron-down"></i></p>
                     </button>
+                    <div className = "six-content">
+
                     <ul className = {cnUl} onClick={this.handelClickFlag}>
                       {
                         flags.map((flag) => {
@@ -184,52 +195,63 @@ export class Home extends Component {
                           )})
                       }
                     </ul>
+                    </div>
                   </div>				
                 </div>
               </div>
-              {
-                this.state.showMenu ?
-                    <nav  style={{display:  this.state.showStore === true ? 'none' : 'flex' }} className="nav-bar">
-                    <ul className="header-menu-list dropdown">
-                    <li className="list-item">
-                            <Link to = {`/filter/${this.state.types[0]}`} className="list-item-link">
-                              {lang[this.props.langData.langId].bicycle}
-                            </Link>
-                            </li>
-                            <li  className="list-item">
-                            <Link to = {`/filter/${this.state.types[1]}`} className="list-item-link">
-                                {lang[this.props.langData.langId].carriage}
-                            </Link>
-                            </li>
-                            <li className="list-item">
-                            <Link to = {`/filter/${this.state.types[2]}`} className="list-item-link">
-                                {lang[this.props.langData.langId].tricycles}
-                            </Link>
-                            </li>
-                      
-                      <li className="list-item">
-                        <select className = "select-more" onClick = {this.more.bind(this, this.state.types)}>
-                            <option value="elem" selected disabled hidden>{lang[this.props.langData.langId].more}</option>
-                          {
-                            this.state.types.slice(3).map((elem) => 
-                                <option key = {elem}  defaultValue={elem} >
-                                 {elem}
-                                </option>
-
-                            )
-                          }                          
-                        </select>
-                      </li>
-                     
-                     
-                      <li className="list-item">
-                        <Link to = "/contact" className="list-item-link">{lang[this.props.langData.langId].contact}</Link>
-                      </li>
-                    </ul>
-                  </nav>
-                :null
-              }
              
+                      <div className = "nav">
+                          <label className = "label-menu" htmlFor = "toggle">
+                            <img src="../images/menu.svg" />
+                          </label>
+                          <input type = "checkbox" id = "toggle"/>
+                         
+                         <nav className = "new-menu">
+          <ul className="header-menu-list">
+            <li className="list-item">
+              <Link to={`/filter/${this.state.types[0]}`} className="list-item-link">
+                {lang[this.props.langData.langId].bicycle}
+              </Link>
+            </li>
+            <li className="list-item">
+              <Link to={`/filter/${this.state.types[1]}`} className="list-item-link">
+                  {lang[this.props.langData.langId].carriage}
+              </Link>
+            </li>
+            <li className="list-item">
+              <Link to={`/filter/${this.state.types[2]}`} className="list-item-link">
+                  {lang[this.props.langData.langId].tricycles}
+              </Link>
+            </li>
+
+            <li className="list-item">
+             <div className = "six"> 
+                      
+                        <button onClick={this.handelClickMore}>
+                          <p className="list-item-link">{lang[this.props.langData.langId].more}<i className="fa fa-chevron-down"></i></p>
+                        </button>
+                        <div className = "six-content menu-types">
+                            <ul className = {cnMore}>
+                              {
+                                this.state.types.slice(3).map((elem) => 
+                                    <li key = {elem}  defaultValue={elem} >
+                                      <a className = "list-item-link-black" href = "/basket"> {elem} </a>
+                                    </li>
+
+                                )
+                              } 
+                            </ul>
+                        </div>
+                      </div>
+            </li>
+
+            <li className="list-item">
+              <Link to="/contact" className="list-item-link">{lang[this.props.langData.langId].contact}</Link>
+            </li>
+          </ul>
+        </nav>
+        </div>
+                 
             </header>
             <div className="slogan-area">
               <h1 className="one-line">{lang[this.props.langData.langId].titleOne}</h1>
@@ -271,18 +293,17 @@ export class Home extends Component {
                       </div>
                         {this.state.bestProductsSwiperActiveIdx === idx && <div>
                           <div className = "card-context">
-                            <p>{lang[this.props.langData.langId].color}</p>
                             <div className="color-buttons">
                               <div style = {{backgroundColor: `${product.colors}`}}></div>
-                              <div style = {{backgroundColor: `${product.colors}`}}></div>
-                              <div style = {{backgroundColor: `${product.colors}`}}></div>
-                              <div style = {{backgroundColor: `${product.colors}`}}></div>                             
+                              <div style = {{backgroundColor: "red"}}></div>
+                              <div style = {{backgroundColor: "yellow"}}></div>
+                              <div style = {{backgroundColor: "grey"}}></div>                             
                             </div>
                           <div>{product.productName}</div>
                           <div>{product.description}</div>
                           <div className="price-add">
                             <p>{product.price} Դր</p>
-                            <button className="price-btn">{lang[this.props.langData.langId].buy}</button>
+                            <button className="price-btn" ><a className = "buy-btn" href = "/basket">{lang[this.props.langData.langId].buy}</a></button>
                           </div>
                           </div>
                         </div>}
@@ -321,8 +342,8 @@ export class Home extends Component {
                   </div>
                     <div>
                       <div className = "card-context">
-                      <p>{elem.discounts}</p>
-                        <p>{lang[this.props.langData.langId].color}</p>
+                      {/* <p>{elem.discounts}</p>
+                        <p>{lang[this.props.langData.langId].color}</p> */}
                         <div className="color-buttons">
                           <div style = {{backgroundColor: `${elem.colors}`}}></div>
                           <div style = {{backgroundColor: "red"}}></div>
@@ -337,7 +358,7 @@ export class Home extends Component {
                     <div>{elem.description}</div>
                     <div className="price-add">
                       <p>{elem.price} Դր</p>
-                      <button href = "/basket" className="price-btn">{lang[this.props.langData.langId].buy}</button>
+                      <button className="price-btn" ><a className = "buy-btn" href = "/basket">{lang[this.props.langData.langId].buy}</a></button>
                     </div>
                         
                     </div>

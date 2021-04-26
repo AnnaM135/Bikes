@@ -180,6 +180,11 @@ export class Filter extends Component {
       
     }
 
+    updatePage(){
+        this.componentDidMount()
+        this.setState({})
+    }
+
     render() {
         const cnUl = classnames({ "flag-list": true, "not-active": !this.state.showList, })
         return (
@@ -188,8 +193,8 @@ export class Filter extends Component {
                 <div className="assortment-row">
                     <div className="assortment-col-one">
                         <div className="filter-head head-end">
-                            <Link to="/" style = {{color: "#000000"}}><p className="fa fa-long-arrow-left"></p></Link>
-                            <Link to="/" style = {{color: "#000000"}} ><p>Գլխավոր</p></Link>
+                            <Link to="/" style = {{color: "#000000"}} className = "filter-head-icon"><p className="fa fa-long-arrow-left"></p></Link>
+                            <Link to="/" className = "filter-head-par" ><p>Գլխավոր</p></Link>
                         </div>
 
 
@@ -197,7 +202,7 @@ export class Filter extends Component {
                             <div>
                                 <div className="filter-title">Ֆիլտր </div>
                                 <div className="select">
-                                    <div className="select-center">
+                                    {/* <div className="select-center">
                                         <button onClick={this.handelClick}>
                                             <p className="label">Տեսակ<i className="fa fa-chevron-down"></i></p>
                                         </button>
@@ -216,15 +221,13 @@ export class Filter extends Component {
                                             }
                                         </ul>
 
-                                        {/* <i className="fa fa-chevron-down" aria-hidden="true"></i> */}
 
-                                    </div>
+                                    </div> */}
                                 </div>
                                 <hr />
                                 <div className="select-price">
                                     <div className="price">
                                         <p>{lang[this.props.langData.langId].price}</p>
-                                        <p className="fa fa-chevron-down" aria-hidden="true"></p>
                                     </div>
                                     <div className="type-price">
                                         <p>{lang[this.props.langData.langId].from}</p>
@@ -249,7 +252,6 @@ export class Filter extends Component {
                                 <div className="select-color">
                                     <div className="price">
                                         <p>{lang[this.props.langData.langId].color}</p>
-                                        <p className="fa fa-chevron-down" aria-hidden="true"></p>
                                     </div>
                                     <div className="color-buttons">
                                         {
@@ -261,11 +263,9 @@ export class Filter extends Component {
                                         }
                                     </div>
                                 </div>
-                                <hr />
                                 <div className="select-sale">
                                     <div className="price">
                                         <p>{lang[this.props.langData.langId].discount}</p>
-                                        <p className="fa fa-chevron-down" aria-hidden="true"></p>
                                     </div>
                                     <div className="sale-buttons">
                                         {
@@ -286,11 +286,9 @@ export class Filter extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                <hr />
                                 <div className="select-sale">
                                     <div className="price">
                                         <p>{lang[this.props.langData.langId].height}</p>
-                                        <p className="fa fa-chevron-down" aria-hidden="true"></p>
                                     </div>
                                     <div className="sale-buttons">
 
@@ -310,11 +308,9 @@ export class Filter extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                <hr />
                                 <div className="select-sale">
                                     <div className="price">
                                         <p>{lang[this.props.langData.langId].size}</p>
-                                        <p className="fa fa-chevron-down" aria-hidden="true"></p>
                                     </div>
 
                                     <div className="sale-buttons">
@@ -340,19 +336,27 @@ export class Filter extends Component {
                                         <button onClick={this.filter.bind(this)}>{lang[this.props.langData.langId].apply}</button>
                                     </div>
                                 </div>
-                                {/* <div className="select-update">
-                                    <a href="">Թարմացնել</a>
-                                </div> */}
+                                <div className="select-update">
+                                    <a onClick = {this.updatePage.bind(this)} href = "">Թարմացնել</a>
+                                </div>
                             </div>
 
                         </div>
                         <div className="assortment-col-three">
                             <div className="our-pluses">
-                                <img src="/images/filter-bike.svg" />
-                                <p>{lang[this.props.langData.langId].low}</p>
-                                <p>{lang[this.props.langData.langId].big}</p>
-                                <p>{lang[this.props.langData.langId].fast}</p>
-                                <p>{lang[this.props.langData.langId].service}</p>
+                                <img src="/images/bike-pluses.svg" />
+                                <p>{lang[this.props.langData.langId].low}
+                                    <i className="fa fa-chevron-down" aria-hidden="true"></i>
+                                </p>
+                                <p>{lang[this.props.langData.langId].big}
+                                    <i className="fa fa-chevron-down" aria-hidden="true"></i>
+                                </p>
+                                <p>{lang[this.props.langData.langId].fast}
+                                    <i className="fa fa-chevron-down" aria-hidden="true"></i>
+                                </p>
+                                <p>{lang[this.props.langData.langId].service}
+                                    <i className="fa fa-chevron-down" aria-hidden="true"></i>
+                                    </p>
                             </div>
                             {/* <div className="our-pluses-icon">
                                 <i className="fa fa-chevron-down" aria-hidden="true"></i>
@@ -365,8 +369,8 @@ export class Filter extends Component {
                     </div>
                     <div className="assortment-col-two">
                         <div className="filter-head">
-                            <p className="fa fa-bicycle filter-icon-bike" aria-hidden="true"></p>
-                            <p className="filter-head-bike">{this.props.match.params.type}</p>
+                            <img src = "/images/bike-filter.svg" className = "filter-icon-bike"/> 
+                            <p className="filter-head-bike" style = {{fontSize: "28px"}}>{this.props.match.params.type}</p>
                         </div>
                         <div className="assortment-area-cards">
                             {
@@ -381,6 +385,7 @@ export class Filter extends Component {
                         </div>
                         <div className="pagination">
                             <i class="fa fa-chevron-left" aria-hidden="true" onClick={this.prev.bind(this)}></i>
+
                             <ul>
                                 {
                                     this.state.pages.map((pageItem, index) => {
@@ -392,6 +397,7 @@ export class Filter extends Component {
                                     })
                                 }
                             </ul>
+
                             <i class="fa fa-chevron-right" aria-hidden="true" onClick={this.next.bind(this)}></i>
                         </div>
                     </div>

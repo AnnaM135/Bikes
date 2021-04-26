@@ -120,6 +120,103 @@
 
 /* END MODAL */
 
+/* PAYMENT */
+.payment-register{
+	border-radius: 30px;
+}
+.select-payment-form{
+	width: 400px;
+    border-radius: 30px;
+    background-color: #E5E5E5;
+	height:auto;
+    overflow: hidden;
+	padding: 7px;
+    border: 1px solid;
+}
+.select-payment-form img{
+	width: 56px;
+    margin-left: 15px;
+}
+.payment-form {
+    width: 400px;
+    border-radius: 30px;
+    background-color: #C4C4C4;
+	height:auto;
+    overflow: hidden;
+	padding: 7px;
+	opacity: 0.3;
+    border: 1px solid;
+}
+.payment-select {
+    width: 215px;
+    border-radius: 30px;
+    background-color: #C4C4C4;
+    height: 50px;
+    overflow: hidden;
+    padding: 15px;
+    opacity: 0.3;
+    border: 1px solid;
+}
+.address{
+	margin-top: 15px;
+}
+.select-payment-form  span{
+	margin-left: 15px;
+}
+.payment-label > i {
+	margin: 10px;
+}
+.payment-label{
+	margin-top: 20px;
+
+}
+.payment-input{
+	outline: none;
+	border: none;
+	background-color: #C4C4C4;
+	padding: 5px;
+	width: 80%;
+	border-radius: 30px;
+	margin-left: 10px;
+	opacity: 0.9;
+}
+
+input[type=radio]{
+	margin: 10px;
+}
+.select-payment-form  img{
+	width: 30px;
+}
+.hours-delivery{
+	margin-top: 25px;
+	display: flex;
+}
+
+.save{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.save-btn{
+	width: 200px;
+	padding: 10px;
+	border-radius: 30px;
+	background: #1D1D1D;
+	display: flex;
+	justify-content: center;
+	align-items: center;	
+	margin-top: 30px;
+}
+.save-btn button{
+	border: none;
+	outline: none;
+	background-color: transparent;
+	width: 170px;
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 18px;	
+}
+/* PAYMENT */
 @media screen and (max-width: 768px){
 	.contact-main-head h3{
 		font-size: 20px;

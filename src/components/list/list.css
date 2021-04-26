@@ -124,6 +124,29 @@ input[name='r']{
 	align-items: center;
 	margin: 10px;
 }
+.list-price{
+	display: flex;
+	justify-content: space-between;
+	padding-left: 40px;
+	margin: 10px;
+}
+
+.icon-down a{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.icon-down a:hover{
+	color: #FFFFFF;
+}
+
+.select-color, .select-sale{
+	border-bottom: 2px solid #C4C4C4;
+}
+
+.product-code p {
+	color: #C4C4C4;
+}
 
 .product-star i{
 	color: #C61212;
@@ -137,7 +160,7 @@ input[name='r']{
 
 .product-price-now{
 	color: #C61212;
-	font-size: 20px;
+	font-size: 25px;
 	letter-spacing: 3px;
 	font-weight: bold;
 }
@@ -148,6 +171,7 @@ input[name='r']{
 
 .product-discount p{
 	color: green;
+	margin-top: 7px;
 }
 
 .product-buttons > button{
@@ -181,7 +205,6 @@ input[name='r']{
 /* same-product */
 
 .same-product{
-	padding: 20px;
 	max-width: 100%;
 }
 

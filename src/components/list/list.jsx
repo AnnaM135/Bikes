@@ -145,7 +145,7 @@ export class List extends Component {
                             <p>12.000 դր / 24 ամիս</p>
                         </div>
                         <div className="select-color">
-                            <div className="price">
+                            <div className="list-price">
                                 <p>{lang[this.props.langData.langId].color}</p>
                             </div>
                             <div className="color-buttons">
@@ -153,18 +153,16 @@ export class List extends Component {
                                 <div style={{ backgroundColor: `${this.state.data.colors}` }}></div>
                             </div>
                         </div>
-                        <hr />
                         <div className="select-sale">
-                            <div className="price">
+                            <div className="list-price">
                                 <p>{lang[this.props.langData.langId].size}</p>
                                 <p>15"</p>
                                 <p className="fa fa-chevron-down" aria-hidden="true"></p>
                             </div>
 
                         </div>
-                        <hr />
                         <div className="select-sale">
-                            <div className="price">
+                            <div className="list-price">
                                 <p>{lang[this.props.langData.langId].height}</p>
                                 <p className="fa fa-chevron-down" aria-hidden="true"></p>
                             </div>
@@ -204,16 +202,19 @@ export class List extends Component {
                                     )}
                                     <div>
                                         <div>
-                                            <p>{lang[this.props.langData.langId].color}</p>
                                             <div className="color-buttons">
                                                 <div style={{ backgroundColor: `${elem.colors}` }}></div>
+                                                <div style={{ backgroundColor: "red" }}></div>
+                                                <div style={{ backgroundColor: "black" }}></div>
+                                                <div style={{ backgroundColor: "grey" }}></div>
+                                                <div style={{ backgroundColor: "yellow" }}></div>
                                             </div>
                                         </div>
-                                        <div>{elem.productName}</div>
-                                        <div>{elem.description}</div>
+                                        <div style = {{marginLeft: "10px"}}>{elem.productName}</div>
+                                        <div style = {{marginLeft: "10px"}}>{elem.description}</div>
                                         <div className="price-add">
                                             <p>{elem.price} Դր</p>
-                                            <button className="price-btn">{lang[this.props.langData.langId].buy}</button>
+                                            <button className="price-btn"><a href = "/basket" className = "buy-btn">{lang[this.props.langData.langId].buy}</a></button>
                                         </div>
 
                                     </div>

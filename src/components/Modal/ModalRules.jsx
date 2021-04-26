@@ -7,7 +7,7 @@ import Header from "../header/header"
 import "../contact/contact.css"
 
 class ModalDelivery extends Component {
-     handelChangeLang = (id) => {
+    handelChangeLang = (id) => {
         this.props.changeData(id)
 
     }

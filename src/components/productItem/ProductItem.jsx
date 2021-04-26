@@ -50,7 +50,7 @@ export class ProductItem extends Component {
                     <p>{this.props.elem.price} Դր</p>
                     <Link to = {`/filter/${this.props.elem.productType}/${this.props.elem.productName}`}>
                          <button className="price-btn">{lang[this.props.langData.langId].buy}</button>
-                         </Link>
+                    </Link>
                 </div>      
                 </div>
             </div>

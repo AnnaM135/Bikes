@@ -61,9 +61,15 @@ export class Header extends Component {
       console.log(this.props.langId, id)
     }
   }
+    handelClickMore = (event) => {
+    this.setState((prevState) => ({
+      showMore: !prevState.showMore,
+    }))
+  }
   render() {
-    const cnUl = classnames({ "activePage": true, "not-active": !this.state.showList, })
+    const cnUl = classnames({ "flag-list": true, "not-active": !this.state.showList, })
     const currentFlag = flags.find((flag) => flag.id === this.props.langId)
+    const cnMore = classnames({ "flag-list": true, "not-active": !this.state.showMore,})
     if (!currentFlag) {
       return null
     }
@@ -73,31 +79,32 @@ export class Header extends Component {
           <div className="wrapper">
             <div className="one header-card">
               <Link className="list-item-link" to="/">
-              <img className = "logo" src = "/images/hecanivLogo.png" />
-
+                <img className = "logo" src = "/images/hecanivLogo.png" />
               </Link>
             </div>
             <div className="one-menu header-card">
-              <img src="../images/menu.svg" onClick={this.handelClickMenu} />
+          
             </div>
             <div className="two header-card">
               <i className="fa fa-phone" ></i>
               <a className="phone" href="tel:+37444004405" >+37444 004405</a>
             </div>
-            <div className="three header-card">
-              <input type="text" id="header-input" data-id="search" value={this.state.search} onChange={this.changeSearch.bind(this)} placeholder="search peoples" />
+           <div className="three header-card">
+              <input type="text" id="header-input" data-id="search" value={this.state.search} onChange={this.changeSearch.bind(this)} placeholder={lang[this.props.langId].search} />
               <i className="fa fa-search"></i>
-              {
+             <div className = "search-context" data-simplebar >
+             {
                 this.state.searchProducts.map((a) => (
-                  <div key={a.id}>
+                  <div key={a.id} >
                     <p>
-                      <Link to={`/filter/${a.productType}/${a.productName}`}>
+                      <Link style = {{color:"#FFFFFF"}} to={`/filter/${a.productType}/${a.productName}`}>
                         {a.productName}
                       </Link>
                     </p>
                   </div>
                 ))
               }
+             </div>
             </div>
             <div className="four header-card">
               <Link to="/basket" data={this.props.data}><i className="fa fa-shopping-cart" aria-hidden="true"></i></Link>
@@ -110,27 +117,38 @@ export class Header extends Component {
               <img src="/images/delivery-truck.png" />
             </div>
             <div className="six header-card">
-              <button onClick={this.handelClick}>
-                <p className="label">{currentFlag.name}<i className="fa fa-chevron-down"></i></p>
-              </button>
-              <ul className={cnUl} onClick={this.handelClickFlag}>
-                {
-                  flags.map((flag) => {
-                    return (
-                      <li key={flag.id}>
-                        <button data-id={flag.id} type="button">
-                          <p data-id={flag.id}>{flag.name}</p>
-                        </button>
-                      </li>
-                    )
-                  })
-                }
-              </ul>
-            </div>
+                    <button onClick={this.handelClick}>
+                      <p className="label">{currentFlag.name}<i className="fa fa-chevron-down"></i></p>
+                    </button>
+                    <div className = "six-content">
+
+                    <ul className = {cnUl} onClick={this.handelClickFlag}>
+                      {
+                        flags.map((flag) => {
+                          if(flag.id === this.props.langId){
+                                return null
+                            }
+                          return (
+                            <li key = {flag.id}>
+                              <button data-id={flag.id} type="button">
+                                <p data-id={flag.id}>{flag.name}</p>
+                              </button>
+                            </li>
+                          )})
+                      }
+                    </ul>
+                    </div>
+                  </div>	
 
           </div>
         </div>
-        <nav style={{ display: 'flex' }} className="nav-bar">
+        <div className = "nav">
+                          <label className = "label-menu" htmlFor = "toggle">
+                            <img src="/images/menu.svg" />
+                          </label>
+                          <input type = "checkbox" id = "toggle"/>
+                         
+                         <nav className = "new-menu">
           <ul className="header-menu-list">
             <li className="list-item">
               <Link to={`/filter/${this.state.types[0]}`} className="list-item-link">
@@ -149,15 +167,24 @@ export class Header extends Component {
             </li>
 
             <li className="list-item">
-              <select className="select-more">
-                <option value="" selected disabled hidden>{lang[this.props.langId].more}</option>
-                {
-                  this.state.types.slice(3).map((elem) =>
-                    <option key={elem} value={elem} >{elem}</option>
+             <div className = "six"> 
+                      
+                        <button onClick={this.handelClickMore}>
+                          <p className="list-item-link">{lang[this.props.langId].more}<i className="fa fa-chevron-down"></i></p>
+                        </button>
+                        <div className = "six-content menu-types">
+                            <ul className = {cnMore}>
+                              {
+                                this.state.types.slice(3).map((elem) => 
+                                    <li key = {elem}  defaultValue={elem} >
+                                      <a className = "list-item-link-black" href = "/basket"> {elem} </a>
+                                    </li>
 
-                  )
-                }
-              </select>
+                                )
+                              } 
+                            </ul>
+                        </div>
+                      </div>
             </li>
 
             <li className="list-item">
@@ -165,6 +192,7 @@ export class Header extends Component {
             </li>
           </ul>
         </nav>
+        </div>
       </header>
     )
   }

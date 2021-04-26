@@ -24,17 +24,25 @@
 .filter-head{
 	display: flex;
 	color: #1D1D1D;
+	height: 50px;
+}
+.filter-head-par p{
+	font-size: 16px;
+	color: #000000;
+	margin-top: 10px;
+}
+.filter-head-icon{
+	font-size: 16px;
+	color: #000000;
+	margin-top: 14px;
 }
 .head-end{
 	display: flex;
 	justify-content: flex-end;
 }
 
+
 .filter-head p{
-	font-size: 20px;
-}
-.filter-head p{
-	font-size: 20px;
 	letter-spacing: 4px;
 	margin-left: 20px;
 }
@@ -104,6 +112,7 @@
 	display: flex;
 	justify-content: space-between;
 	margin: 20px;
+	padding-left: 40px;
 }
 .our-pluses-icon {
     text-align: left;
@@ -112,9 +121,17 @@
     align-items: center;
     justify-content: center;
     margin-top: 307px;
-    margin-left: 20px;
     padding: 5px;
-    color: green;
+}
+.our-pluses p {
+	font-size: 15px;
+}
+.our-pluses > p> i{
+    color: #FFFFFF;
+    margin-left: 20px;
+	padding: 5px;
+	border-radius: 100%;
+	background-color: green;
 }
 .type-price{
 	display: flex;
@@ -155,8 +172,8 @@
 	border: none;
 	outline: none;
 	background: #C61212;
-	width: 120px;
-	height: 50px;
+	width: 145px;
+    height: 40px;
 	color: #FFFFFF;
 	text-align: center;
 	font-size: 18px;	
@@ -231,7 +248,13 @@ input[type='checkbox']{
 }
 
 .type-button button:active:focus{
-	border: 1px solid;
+	outline: 2px solid grey;
+	outline-offset: 5px;
+}
+
+.filter-head-img{
+	width: 50px;
+	height: 100px;
 }
 
 /**/
@@ -250,8 +273,8 @@ hr{
 	margin: 5px;
 	
 }
-.color-buttons >  div:active{
-	border: 5px solid;
+.color-buttons >  div :hover{
+	border-bottom: 5px solid;
 }
 .sale-buttons > div{
 	display: flex;
@@ -259,6 +282,7 @@ hr{
 	align-items: center;
 	flex-wrap: wrap;
 	margin-left: 20px;
+	padding-left: 20px;
 }
 .sale-buttons >div >  .col{
 	padding: 10px;
@@ -274,7 +298,7 @@ hr{
 }
 .our-pluses img{
 	text-align: right;
-	width: 200px;
+	height: 450px;
 
 }
 .assortment-col-three{
@@ -336,14 +360,20 @@ hr{
 }
 .pagination > ul{
 	display: flex;
+	justify-content: center;
+	align-items: center;
 	list-style-type: none;
+	margin-top: 10px;
+	margin-left: -30px;
 }
 .pagination > ul >li{
 	margin: 10px;
+	font-weight: bold;
 }
 .pagination > ul >li:hover{
 	color: red;
 	margin: 10px;
+	cursor: pointer
 }
 
 

@@ -6,6 +6,7 @@ import Header from '../header/header'
 import {connect} from "react-redux"
 import {changeData} from "../../store/languages/action"
 import {lang} from "../../lang"
+import Payment from '../Modal/Payment'
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
 export class Basket extends Component {
     constructor(props) {
@@ -107,13 +108,15 @@ export class Basket extends Component {
                     </div>
                     <hr className="basket-hr" />
                     <div className="basket-price-btn">
-                        <button>Գնել</button>
+                        <button>
+                            <Payment />
+                        </button>
                     </div>
                     <div className="basket-pay-versions">
-                        <img src="images/ameria.svg"/>
-                        <img src="images/master-card.svg" />
-                        <img src="images/visa.svg" />
-                        <img src="images/idram.svg" />
+                        <img src="./images/ameria.svg"/>
+                        <img src="/images/master-card.svg" />
+                        <img src="/images/visa.svg" />
+                        <img src="/images/idram.svg" />
                     </div>
                 <div className = "payment-methods">
                     <hr />
