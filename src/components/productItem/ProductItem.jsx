@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { lang } from "../../lang"
 import { connect } from "react-redux"
 import { changeData } from "../../store/languages/action"
+import "../../App.css"
 
 
 
@@ -20,9 +21,10 @@ export class ProductItem extends Component {
 
     render() {
         return (
-            <div  className="discount-cards-one">    
+            <div className = "discount-cards">
+            <div  className="discount-home-cards-one">    
             {JSON.parse(this.props.elem.imagePath).map((elem,i) => 
-                <div key = {elem} className="discount-img">
+                <div key = {elem} className="discount-home-img">
                     <img src="/images/card-background.svg" />
                     {/* <Link to = "/basket"><i className="fa fa-shopping-cart" aria-hidden="true"></i></Link> */}
                     <img src="/images/bicycle.svg" className="bicycle-img" />
@@ -55,6 +57,8 @@ export class ProductItem extends Component {
                 </div>
             </div>
         </div>
+        </div>
+ 
         )
     }
 }

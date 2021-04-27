@@ -136,8 +136,8 @@ export class Home extends Component {
               <div className="header-line">
                 <div className="wrapper">
                 <div className="one header-card">
-              <Link className="list-item-link" to="/">
-                <img className = "logo" src = "/images/hecanivLogo.png" />
+                <Link className="list-item-link" to="/">
+                  <img className = "logo" src = "/images/hecanivLogo.png" />
               </Link>
             </div>
             {/* <div className="one-menu header-card">
@@ -288,8 +288,8 @@ export class Home extends Component {
                           )`,
                       }}>
                         <img src="./images/card-background.svg" />
-                        {/* <i className="fa fa-shopping-cart"></i> */}
                         <img src="./images/bicycle.svg" className="bicycle-img" />
+                        <Link to = "/basket"><i className="fa fa-shopping-cart" aria-hidden="true"></i></Link>
                       </div>
                         {this.state.bestProductsSwiperActiveIdx === idx && <div>
                           <div className = "card-context">
@@ -337,8 +337,8 @@ export class Home extends Component {
                   <div className="discount-home-cards-one">
                   <div className="discount-home-img">
                     <img src="./images/card-background.svg" />
-                    {/* <i className="fa fa-shopping-cart"></i> */}
                     <img src="./images/bicycle.svg" className="bicycle-img" />
+                    <Link to = "/basket"><i className="fa fa-shopping-cart" aria-hidden="true"></i></Link>
                   </div>
                     <div>
                       <div className = "card-context">
@@ -349,7 +349,6 @@ export class Home extends Component {
                           <div style = {{backgroundColor: "red"}}></div>
                           <div style = {{backgroundColor: "grey"}}></div>
                           <div style = {{backgroundColor: "black"}}></div>
-                          
                         </div>
                       </div>
                       <div className = "card-context">

@@ -77,9 +77,9 @@ export class Header extends Component {
       <header className="header header-black">
         <div className="header-line">
           <div className="wrapper">
-            <div className="one header-card">
-              <Link className="list-item-link" to="/">
-                <img className = "logo" src = "/images/hecanivLogo.png" />
+          <div className="one header-card">
+                <Link className="list-item-link" to="/">
+                  <img className = "logo" src = "/images/hecanivLogo.png" />
               </Link>
             </div>
             <div className="one-menu header-card">
