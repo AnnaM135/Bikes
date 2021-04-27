@@ -25,7 +25,8 @@ const AdminPanel = () => {
         priceOfMonth: "",
         oldPrice:'oldPrice',
         codeOfProduct:'codeOfProduct',
-        theBestProduct:''
+        theBestProduct:false,
+        hashteg: ""
     });
     const language = useSelector((state) => state.Reducer1.language);
     const [image, setimage] = useState([]);
@@ -118,7 +119,7 @@ const AdminPanel = () => {
     const Deleteproducts = async (e) => {
         setload(true)
         // @ts-ignore
-        const data = await axios.post('/product/delete', {product:e})
+        const data = await axios.post('/trash/addToTrash', {product:e})
         setload(false)
     }
     const changeLanguage = async (e) => {
@@ -127,9 +128,8 @@ const AdminPanel = () => {
 
     const search = async (e) => {
         const { value } = e.target
-        const res = await axios.get(`/product/products${language}`)
-        const data = res.data.filter((elem)=> !elem.productName.search(value))
-        setproducts(data)
+        const {data} = await axios.get(`/product/tools/search${value}`)
+        console.log(data)
     }
    
     return (
@@ -164,12 +164,13 @@ const AdminPanel = () => {
                         <div className = "add-form-group">
                             <input  placeholder='ապրանքի անունը' name='productName' onChange={changeValue} type="text"/>
                             <input  placeholder='ապրանքի տիպը' name='productType' onChange={changeValue} type="text"/>
-                            <input  placeholder='գին' name='price' onChange={changeValue} type="text"/>
+                            <input  placeholder='գին' name='price' onChange={changeValue} type="number"/>
                             <input  placeholder='գույն' name='colors' onChange={changeValue} type="text"/>
                             <input  placeholder='չափեր' name='sizes' onChange={changeValue} type="text"/>
                             <input  placeholder='հասակ' name='height' onChange={changeValue} type="text"/>
                             <input  placeholder='stars' name='stars' onChange={changeValue} type="text"/>
                             <input  placeholder='month' name='month' onChange={changeValue} type="text"/>
+                            <input  placeholder='hashteg' name='hashteg' onChange={changeValue} type="text"/>
                             <input  placeholder='priceOfMonth' name='priceOfMonth' onChange={changeValue} type="text"/>
                             <input  placeholder='նկարագություն' name='description' onChange={changeValue} type='text'/>
                             <input  placeholder='ակցիա' name='promotions' onChange={changeValue} type='text'/>
@@ -210,10 +211,12 @@ const AdminPanel = () => {
                                     <input value={elem.height}  onChange={(e)=>changeProduct(e, elem)} name='height' placeholder='հասակ' type="text"/>
                                     <input value={elem.description} onChange={(e)=>changeProduct(e, elem)} name='description' placeholder='նկարագրություն' type="text"/>
                                     <input value={elem.discounts}  onChange={(e)=>changeProduct(e, elem)} name='discounts' placeholder='discounts' type="text"/>
+                                    <input value={elem.promotions}  onChange={(e)=>changeProduct(e, elem)} name='promotions' placeholder='promotions' type="text"/>
                                     <input value={elem.stars}  onChange={(e)=>changeProduct(e, elem)} name='stars' placeholder='stars' type="text"/>
                                     <input value={elem.month}  onChange={(e)=>changeProduct(e, elem)} name='month' placeholder='month' type="text"/>
                                     <input value={elem.priceOfMonth}  onChange={(e)=>changeProduct(e, elem)} name='priceOfMonth' placeholder='priceOfMonth' type="text"/>
                                     <input value={elem.oldPrice}  onChange={(e)=>changeProduct(e, elem)} name='oldPrice' placeholder='oldPrice' type="text"/>
+                                    <input value={elem.hashteg}  onChange={(e)=>changeProduct(e, elem)} name='hashteg' placeholder='hashteg' type="text"/>
                                     <input value={elem.codeOfProduct}  onChange={(e)=>changeProduct(e, elem)} name='codeOfProduct' placeholder='codeOfProduct' type="text"/>
                                     theBestProduct<input value={elem.theBestProduct}  onChange={(e)=>changeProduct(e, elem)} name='theBestProduct' defaultChecked={!!elem.theBestProduct} type="checkbox"/>
                                     <input multiple onChange={(e)=>changeProduct(e,elem,true)} name='image' type='file'/>

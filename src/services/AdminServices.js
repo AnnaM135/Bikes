@@ -23,10 +23,3 @@ class AdminService {
     getProductType(language, attributes){
         return this.api.post(`/product/tools/filter`, {language,   attributes})
     }
-    // search(language){
-    //     return this.api.get(`/product/products${language}`)
-    // }
-}
-
-export default new AdminService()
-
