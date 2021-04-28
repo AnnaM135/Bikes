@@ -5,6 +5,7 @@ import { lang } from "../../lang"
 import { connect } from "react-redux"
 import { changeData } from "../../store/languages/action"
 import "../../App.css"
+import "../filter/filter.css"
 
 
 
@@ -21,8 +22,7 @@ export class ProductItem extends Component {
 
     render() {
         return (
-            <div className = "discount-cards">
-            <div  className="discount-home-cards-one">    
+            <div  className="discount-cards-one">    
             {JSON.parse(this.props.elem.imagePath).map((elem,i) => 
                 <div key = {elem} className="discount-home-img">
                     <img src="/images/card-background.svg" />
@@ -56,7 +56,6 @@ export class ProductItem extends Component {
                 </div>      
                 </div>
             </div>
-        </div>
         </div>
  
         )

@@ -17,8 +17,10 @@
 	color:#FFFFFF;
 }
 
-.card-context > div{
-	margin-left: 10px;
+.card-context > div {
+    margin-left: 25px;
+    letter-spacing: 3px;
+    font-weight: bold;
 }
 .logo {
     width: 110px;
@@ -61,11 +63,12 @@
 	margin: 5px;
 }
 
-.menu-types{
-	background-color: #FFFFFF;
-	width: 115px;
-	height: auto;
-	z-index: 1;
+.menu-types {
+    background-color: #FFFFFF;
+    text-align: center;
+    height: auto;
+    width: 260px;
+    z-index: 1;
 }
 
 .one-menu{
@@ -133,7 +136,12 @@
 	color: #000000;
 	text-decoration: none;
 	font-weight: bold;
-	font-size: 18px;
+	font-size: 16px;
+}
+.list-item-link-black:hover{
+	border-bottom: 3px solid #C61212;
+	color: #000000;
+	text-decoration: none;
 }
 .two a:hover{
 	color: #FFFFFF;
@@ -152,7 +160,16 @@
 .flag-list > li{
     text-decoration: none;
 }
+.flag-list-more{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
 
+.flag-list-more > li{
+    text-decoration: none;
+	margin: 20px;
+}
 .not-active{
     display: none;
 }
@@ -469,11 +486,24 @@
 .discount-home-cards-one{
   position: relative;
   display: block;
- 	max-width: 80%;
-margin: 15px;
+  max-width: 80%;
+  margin: 15px;
   border: 1px solid #C4C4C4;
   border-radius: 26px;
 
+}
+.sale-background-img {
+    width: 164px;
+    height: 44px;
+    margin-top: 30px;
+    position: absolute;
+}
+.sale-img-text {
+    position: absolute;
+    margin-top: 30px;
+    margin-left: 64px;
+    font-size: 27px;
+    color: #FFFFFF;
 }
 
 .discount-home-img{
@@ -491,13 +521,13 @@ margin: 15px;
     position: absolute;
     margin-left: -50px;
     margin-top: 20px;
-    font-size: 18px;
-    color: #C61212;
+    font-size: 31px;
+    color: #DD1010;
 }
 .bicycle-img {
     position: absolute;
     margin-left: -100%;
-    margin-top: 20px;
+    margin-top: 50px;
 }
 
 .bicycle-img:hover{
@@ -527,7 +557,7 @@ margin: 15px;
 
 @media screen and (max-width: 768px){
 	
-	.one,.two, .five, .nav-bar{
+	.two, .five, .nav-bar{
 		display: none;
 	}
 	.one-menu{
@@ -545,6 +575,11 @@ margin: 15px;
 		text-align: center;
 		width: 100%;
 		display: none;
+	}
+	.nav{
+		display: flex;
+		justify-content: space-between;
+		margin-left: 20px;
 	}
 
 	  .menu-types{

@@ -69,7 +69,7 @@ export class Header extends Component {
   render() {
     const cnUl = classnames({ "flag-list": true, "not-active": !this.state.showList, })
     const currentFlag = flags.find((flag) => flag.id === this.props.langId)
-    const cnMore = classnames({ "flag-list": true, "not-active": !this.state.showMore,})
+    const cnMore = classnames({ "flag-list-more": true, "not-active": !this.state.showMore,})
     if (!currentFlag) {
       return null
     }
@@ -148,21 +148,21 @@ export class Header extends Component {
                           </label>
                           <input type = "checkbox" id = "toggle"/>
                          
-                         <nav className = "new-menu">
+                          <nav className = "new-menu">
           <ul className="header-menu-list">
             <li className="list-item">
               <Link to={`/filter/${this.state.types[0]}`} className="list-item-link">
-                {lang[this.props.langId].bicycle}
+                {lang[this.props.langId].types[0]}
               </Link>
             </li>
             <li className="list-item">
               <Link to={`/filter/${this.state.types[1]}`} className="list-item-link">
-                  {lang[this.props.langId].carriage}
+                  {lang[this.props.langId].types[1]}
               </Link>
             </li>
             <li className="list-item">
               <Link to={`/filter/${this.state.types[2]}`} className="list-item-link">
-                  {lang[this.props.langId].tricycles}
+                  {lang[this.props.langId].types[2]}
               </Link>
             </li>
 
@@ -171,13 +171,16 @@ export class Header extends Component {
                       
                         <button onClick={this.handelClickMore}>
                           <p className="list-item-link">{lang[this.props.langId].more}<i className="fa fa-chevron-down"></i></p>
+                          {console.log(lang[this.props.langId].pordz)}
+                          
                         </button>
                         <div className = "six-content menu-types">
                             <ul className = {cnMore}>
                               {
-                                this.state.types.slice(3).map((elem) => 
+                                lang[this.props.langId].types.slice(3).map((elem) => 
                                     <li key = {elem}  defaultValue={elem} >
                                       <a className = "list-item-link-black" href = "/basket"> {elem} </a>
+                                      
                                     </li>
 
                                 )

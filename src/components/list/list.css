@@ -158,9 +158,10 @@ input[name='r']{
 	justify-content: space-between;
 }
 
+
 .product-price-now{
 	color: #C61212;
-	font-size: 25px;
+	font-size: 35px;
 	letter-spacing: 3px;
 	font-weight: bold;
 }
@@ -206,6 +207,7 @@ input[name='r']{
 
 .same-product{
 	max-width: 100%;
+	background-color: #F3F3F3;
 }
 
 .same-product-cards{
@@ -214,17 +216,15 @@ input[name='r']{
 	align-items: center;
 	flex-wrap: wrap;
   	padding: 0 10px;
-  	background: rgba(196, 196, 196, 0.2);
 }
 .same-product-cards-one{
   position: relative;
   display: block;
-  flex: 22%;
-  max-width: 22%;
-  margin: 31px;
+  max-width: 80%;
+  margin: 15px;
   border: 1px solid #C4C4C4;
+  border-radius: 26px;
   border-radius: 26px 26px 0 0;
-  background: #FFFFFF;
 }
 .same-product-title{
 	margin-left: 150px;
@@ -247,7 +247,7 @@ input[name='r']{
     position: absolute;
     margin-left: -50px;
     margin-top: 20px;
-    font-size: 18px;
+    font-size: 31px;
     color: #C61212;
 }
 .bicycle-img {
@@ -261,7 +261,11 @@ input[name='r']{
 	margin-left: -110%;
 	cursor: pointer;
 }
-
+.card-context > div {
+    margin-left: 25px;
+    letter-spacing: 3px;
+    font-weight: bold;
+}
 
 @media only screen and (max-width: 1200px){
     .slides{

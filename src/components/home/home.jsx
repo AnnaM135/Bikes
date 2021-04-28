@@ -47,10 +47,12 @@ export class Home extends Component {
         this.state.data = r.data
         this.state.data.forEach(elem => {
           this.state.types.push(elem.productType)
-          if(elem.promotions !== "") this.state.promo.push(elem.promotions)
+          let img = JSON.parse(elem.imagePath)
+          if(elem.promotions !== "") this.state.promo.push(elem.promotions, img)
           if(elem.discounts !== "") this.state.sale.push(elem)
           if(elem.theBestProduct) this.state.bestProducts.push(elem)
         })
+        console.log(this.state.promo)
         this.state.types = this.state.types.filter((c, index) => {
           return this.state.types.indexOf(c) === index;
       });
@@ -125,7 +127,7 @@ export class Home extends Component {
     render() {
       const cnMenu = classnames({ "flag-list": true, "not-active": !this.state.showMenu,})
       const cnUl = classnames({ "flag-list": true, "not-active": !this.state.showList,})
-      const cnMore = classnames({ "flag-list": true, "not-active": !this.state.showMore,})
+      const cnMore = classnames({ "flag-list-more": true, "not-active": !this.state.showMore,})
       const currentFlag = flags.find((flag) => flag.id === this.props.langData.langId)
       if (!currentFlag) {
           return null
@@ -201,26 +203,29 @@ export class Home extends Component {
               </div>
              
                       <div className = "nav">
-                          <label className = "label-menu" htmlFor = "toggle">
-                            <img src="../images/menu.svg" />
-                          </label>
+                          <label className = "label-menu" htmlFor = "toggle"> 
+                              
+                            <img   src="../images/menu.svg" />
+                         </label>
                           <input type = "checkbox" id = "toggle"/>
+                         <div className = "menu-center">
+
                          
                          <nav className = "new-menu">
           <ul className="header-menu-list">
             <li className="list-item">
               <Link to={`/filter/${this.state.types[0]}`} className="list-item-link">
-                {lang[this.props.langData.langId].bicycle}
+                {lang[this.props.langData.langId].types[0]}
               </Link>
             </li>
             <li className="list-item">
               <Link to={`/filter/${this.state.types[1]}`} className="list-item-link">
-                  {lang[this.props.langData.langId].carriage}
+                  {lang[this.props.langData.langId].types[1]}
               </Link>
             </li>
             <li className="list-item">
               <Link to={`/filter/${this.state.types[2]}`} className="list-item-link">
-                  {lang[this.props.langData.langId].tricycles}
+                  {lang[this.props.langData.langId].types[2]}
               </Link>
             </li>
 
@@ -229,13 +234,16 @@ export class Home extends Component {
                       
                         <button onClick={this.handelClickMore}>
                           <p className="list-item-link">{lang[this.props.langData.langId].more}<i className="fa fa-chevron-down"></i></p>
+                          {console.log(lang[this.props.langData.langId].pordz)}
+                          
                         </button>
                         <div className = "six-content menu-types">
                             <ul className = {cnMore}>
                               {
-                                this.state.types.slice(3).map((elem) => 
+                                lang[this.props.langData.langId].types.slice(3).map((elem) => 
                                     <li key = {elem}  defaultValue={elem} >
                                       <a className = "list-item-link-black" href = "/basket"> {elem} </a>
+                                      
                                     </li>
 
                                 )
@@ -250,6 +258,7 @@ export class Home extends Component {
             </li>
           </ul>
         </nav>
+        </div>
         </div>
                  
             </header>
@@ -282,15 +291,20 @@ export class Home extends Component {
                   >
                     {this.state.bestProducts.map((product,idx) => <SwiperSlide>
                       <div className="discount-home-cards-one" style={{maxWidth:'initial',margin:0,border:"none"}}>
-                      <div className="discount-home-img" style={{
+                      {JSON.parse(product.imagePath).map((elem, i) => 
+                     
+                       <div className="discount-home-img" style={{
                         transform: `scale(
                           ${this.state.bestProductsSwiperActiveIdx == idx ? 1 : 0.7}
                           )`,
                       }}>
                         <img src="./images/card-background.svg" />
-                        <img src="./images/bicycle.svg" className="bicycle-img" />
+                        <img src={elem} className="bicycle-img" />
                         <Link to = "/basket"><i className="fa fa-shopping-cart" aria-hidden="true"></i></Link>
                       </div>
+                       
+                       )}
+                      
                         {this.state.bestProductsSwiperActiveIdx === idx && <div>
                           <div className = "card-context">
                             <div className="color-buttons">
@@ -317,16 +331,28 @@ export class Home extends Component {
             <div className="promotions">
               <h1 className="best-title">{lang[this.props.langData.langId].promotion}</h1>
               <div className="promotion-cards">
-                {
+                {/* {
                   this.state.promo.map(elem => (
                     <div className="promotions-card-one">
-                      <img src="./images/img1.svg" />
+                      <img src={elem} />
+                      {console.log(elem)}
                       <h1>{elem}</h1>
                     </div>    
                   ))
-                }
-                
-                
+                } */}
+                <div className="promotions-card-one">
+                <img src = {this.state.promo[1]} />
+                      <h1>{this.state.promo[0]}</h1>
+                    </div>  
+
+                            
+                    <div className="promotions-card-one">
+                      {console.log(this.state.promo[1])}
+                      {console.log(this.state.promo[3])}
+
+                      <img src = {this.state.promo[3]} />
+                      <h1>{this.state.promo[2]}</h1>
+                    </div> 
               </div>
             </div>
             <div className="discount">
@@ -334,16 +360,24 @@ export class Home extends Component {
               <div className="discount-cards">
                 {
                   this.state.sale.map(elem => (
+                    
                   <div className="discount-home-cards-one">
+                     {JSON.parse(elem.imagePath).map((elem, i) => 
                   <div className="discount-home-img">
+                    <div>
+                      <img src="./images/sale.png" className = "sale-background-img" />
+                      <div className = "sale-img-text">{elem.discounts}</div>
+                    </div>
                     <img src="./images/card-background.svg" />
-                    <img src="./images/bicycle.svg" className="bicycle-img" />
+                    <img src={elem} className="bicycle-img" />
+                    {console.log(elem)}
+                    
                     <Link to = "/basket"><i className="fa fa-shopping-cart" aria-hidden="true"></i></Link>
                   </div>
+                    )}
                     <div>
                       <div className = "card-context">
-                      {/* <p>{elem.discounts}</p>
-                        <p>{lang[this.props.langData.langId].color}</p> */}
+                    
                         <div className="color-buttons">
                           <div style = {{backgroundColor: `${elem.colors}`}}></div>
                           <div style = {{backgroundColor: "red"}}></div>
@@ -366,6 +400,7 @@ export class Home extends Component {
 
                   ))
                 }
+                
               			
               </div> 
             </div> 

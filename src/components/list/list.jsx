@@ -146,7 +146,7 @@ export class List extends Component {
                         </div>
                         <div className="select-color">
                             <div className="list-price">
-                                <p>{lang[this.props.langData.langId].color}</p>
+                                <p style = {{position: "absolute"}}>{lang[this.props.langData.langId].color}</p>
                             </div>
                             <div className="color-buttons">
                                 <div style={{ backgroundColor: "red" }}></div>
@@ -200,8 +200,7 @@ export class List extends Component {
                                             <img src="/images/bicycle.svg" className="bicycle-img" />
                                         </div>
                                     )}
-                                    <div>
-                                        <div>
+                                    <div className = "card-context">
                                             <div className="color-buttons">
                                                 <div style={{ backgroundColor: `${elem.colors}` }}></div>
                                                 <div style={{ backgroundColor: "red" }}></div>
@@ -209,13 +208,16 @@ export class List extends Component {
                                                 <div style={{ backgroundColor: "grey" }}></div>
                                                 <div style={{ backgroundColor: "yellow" }}></div>
                                             </div>
-                                        </div>
-                                        <div style = {{marginLeft: "10px"}}>{elem.productName}</div>
-                                        <div style = {{marginLeft: "10px"}}>{elem.description}</div>
-                                        <div className="price-add">
+                                            <div className = "card-context">
+
+                                            <div>{elem.productName}</div>
+                                            <div>{elem.description}</div>
+                                            <div className="price-add">
                                             <p>{elem.price} Դր</p>
-                                            <button className="price-btn"><a href = "/basket" className = "buy-btn">{lang[this.props.langData.langId].buy}</a></button>
-                                        </div>
+                                            <button className="price-btn" ><a className = "buy-btn" href = "/basket">{lang[this.props.langData.langId].buy}</a></button>
+                                            </div>
+                                                
+                                            </div>
 
                                     </div>
                                 </div>
@@ -229,47 +231,10 @@ export class List extends Component {
                 
                 <Footer />
             </div>
-   //     <div className="discount-cards">
-    //     {
-    //       this.state.sale.map(elem => (
-    //       <div className="discount-home-cards-one">
-    //       <div className="discount-home-img">
-    //         <img src="./images/card-background.svg" />
-    //         <img src="./images/bicycle.svg" className="bicycle-img" />
-    //         <Link to = "/basket"><i className="fa fa-shopping-cart" aria-hidden="true"></i></Link>
-    //       </div>
-    //         <div>
-    //           <div className = "card-context">
-    //           {/* <p>{elem.discounts}</p>
-    //             <p>{lang[this.props.langData.langId].color}</p> */}
-    //             <div className="color-buttons">
-    //               <div style = {{backgroundColor: `${elem.colors}`}}></div>
-    //               <div style = {{backgroundColor: "red"}}></div>
-    //               <div style = {{backgroundColor: "grey"}}></div>
-    //               <div style = {{backgroundColor: "black"}}></div>
-    //             </div>
-    //           </div>
-    //           <div className = "card-context">
-
-    //         <div>{elem.productName}</div>
-    //         <div>{elem.description}</div>
-    //         <div className="price-add">
-    //           <p>{elem.price} Դր</p>
-    //           <button className="price-btn" ><a className = "buy-btn" href = "/basket">{lang[this.props.langData.langId].buy}</a></button>
-    //         </div>
-                
-    //         </div>
-    //       </div>
-    //           </div>
-
-    //       ))
-    //     }
-                  
-    //   </div> 
+   
         )
     }
 }
-
 
 function mapstatetoprops(state) {
     return {

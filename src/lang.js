@@ -22,6 +22,9 @@ const arm = {
     fast: "Արագ առաքում",
     service: "Հարմարավետ սպասարկում",
     all: "Բոլորը",
+    types: [
+        "Հեծանիվներ", "Մանկական սայլակներ", "Եռանիվ հեծանիվներ", "Սամակատներ", "Մանկական մեքենաներ", "Սքեյթ","Մանկական մոտոցիկլետներ","Ռոլիկներ", "Հովերբորդ","Լողավազաններ","Տոնածառներ",
+    ],
     rulesOne: "Վերադարձի պայմաններ",
     rulesTwo: 'Գնված ապրանքի ետ վերադարձն իրականացվում է սպառողների իրավունքների պաշտպանության մասին ՀՀ օրենսդրության համաձայն: "սպառողների իրավունքների պաշտպանության մասին:"',
     rulesThree: "Ապրանքի ընդունումը:",
@@ -81,6 +84,9 @@ const ru = {
     rulesSeven: "В случае օтмена сделки по карте (Идрам, Виза, Мастер) сумма будет переведена обратно на карту, с которой был осуществлен перевод, в течение 5 рабочих дней.",
     delivery: "Доставка",
     deliveryText: "Доставка осуществляется в течении 24 часов по указанному адресу в удобное для Вас время. Доставка по Еревану бесплатная, при доставке в регионы сумма зависит от удаленности региона. Перед подтверждением заказа убедитесь, что адрес, указанный для доставки, верен, в противном случае курьеру придется связаться с вами для проверки адреса. Если по какой-то причине связь с вами не будет установлена, курьер вернет товар в салон. После связи с вами и проверки адреса доставка будет бесплатной по Еревану, а в случае доставки в регионы – покупателю придется оплатить стоимость доставки во второй раз.",
+    types: [
+        "Велосипеды", "Коляски", "Трехколесные велосипеды", "самокаты", "Детские автомобили", "скейты", "Детские мотоциклы","Ролики", "Ховерборд","Бассейны","Новогодние елки",
+    ],
     bicycle: "Велосипеды",
     tricycles: "Трехколесные велосипеды",
     scooters: "самокаты",
@@ -132,6 +138,9 @@ const eng = {
     rulesSeven: "In case of օ canceling the transaction on the card (Idram, Visa, Master), the amount will be transferred back to the card from which the transfer was made within 5 working days.",
     delivery: "Delivery",
     deliveryText: "Delivery is carried out within 24 hours at the specified address at a convenient time for you. Delivery in Yerevan is free, for delivery to the regions the amount depends on the distance of the region.Please make sure the shipping address is correct before confirming your order, otherwise the courier will have to contact you to verify the address. If, for some reason, communication with you is not established, the courier will return the goods to the salon. After contacting you and checking the address, delivery will be free in Yerevan, and in case of delivery to the regions, the buyer will have to pay the cost of delivery a second time.",
+    types: [
+        "Bicycles", "Baby carriage", "Tricycles", "Scooters", "Children's cars", "Skateboards", "Children's motorcycles", "Feeding table","Rollers", "Hoverboard","Swimming pools","Christmas trees",
+    ],
     bicycle: "Bicycles",
     tricycles: "Tricycles",
     scooters: "Scooters",

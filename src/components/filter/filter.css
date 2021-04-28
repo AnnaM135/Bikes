@@ -32,9 +32,9 @@
 	margin-top: 10px;
 }
 .filter-head-icon{
-	font-size: 16px;
-	color: #000000;
-	margin-top: 14px;
+	font-size: 15px;
+	color: #1D1D1D;
+	margin-top: 11px;
 }
 .head-end{
 	display: flex;
@@ -309,12 +309,13 @@ hr{
 	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
-	background: rgba(196, 196, 196, 0.29);
+	padding: 0 10px;
 }
 
 .discount-cards-one {
     position: relative;
-    max-width: 30%;
+    max-width: 80%;
+	display: block;
     margin: 15px;
     border: 1px solid #C4C4C4;
     border-radius: 26px;
@@ -386,8 +387,8 @@ input[name='color']{
   @media screen and (max-width: 1200px){
 	.discount-cards-one {
 		position: relative;
-		max-width: 40%;
-		margin: 15px;
+		max-width: 45%;
+		margin: 5px;
 		border: 1px solid #C4C4C4;
 		border-radius: 26px;
 	}
@@ -424,11 +425,8 @@ input[name='color']{
 
   @media screen and (max-width: 768px){
 	.discount-cards-one {
-		position: relative;
 		max-width: 60%;
 		margin: 15px;
-		border: 1px solid #C4C4C4;
-		border-radius: 26px;
 	}
 	.our-pluses img{
 		text-align: right;
@@ -439,6 +437,18 @@ input[name='color']{
 	}
 	.select-center{
 		width: 140px;
+	}
+	.assortment-area-cards{
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: center;
+	}
+	.assortment-area-cards > div{
+		margin: 15px;
+		border-radius: 6px;
+		max-width: 60%;
 	}
 	.select-btn{
 		width: 110px;
@@ -481,8 +491,25 @@ input[name='color']{
 		margin-top: 116px;
 		margin-left: 5px;
 	}
+	.discount-cards-one{
+		max-width: 65%;
+		margin: 15px;
+	  }
+	  .assortment-area-cards > div{
+		max-width: 65%;
+		margin: 15px;
+	}
   }
-
+@media screen and(max-width: 480px){
+	.discount-cards-one{
+		max-width: 80%;
+		margin: 10px;
+	  }
+	  .assortment-area-cards > div{
+		max-width: 80%;
+		margin: 10px;
+	}
+}
   @media screen and (max-width: 425px){
 	.discount-cards-one {
 		position: relative;
@@ -490,6 +517,10 @@ input[name='color']{
 		margin: 10px;
 		border: 1px solid #C4C4C4;
 		border-radius: 26px;
+	}
+	.assortment-area-cards > div{
+		max-width: 80%;
+		margin: 10px;
 	}
 	.select-center{
 		width: 70px;

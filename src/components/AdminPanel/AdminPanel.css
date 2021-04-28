@@ -133,3 +133,49 @@
     background-color: yellowgreen;
     padding: 20px;
 }
+@media screen and (max-width: 1200px){
+	.discount-cards-one {
+		position: relative;
+		max-width: 45%;
+		margin: 5px;
+		border: 1px solid #C4C4C4;
+		border-radius: 26px;
+	}
+    
+}
+
+@media screen and (max-width: 768px) {
+    .assortment-area-cards{
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: center;
+	}
+    
+}
+@media screen and(max-width: 480px){
+	.discount-cards-one{
+		max-width: 80%;
+		margin: 10px;
+	  }
+	  .assortment-area-cards > div{
+		max-width: 80%;
+		margin: 10px;
+	}
+}
+  @media screen and (max-width: 425px){
+	.discount-cards-one {
+		position: relative;
+		max-width: 80%;
+		margin: 10px;
+		border: 1px solid #C4C4C4;
+		border-radius: 26px;
+	}
+	.assortment-area-cards > div{
+		max-width: 80%;
+		margin: 10px;
+	}
+	
+  }
+
