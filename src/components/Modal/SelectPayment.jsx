@@ -3,9 +3,7 @@ import {Button, Modal} from "react-bootstrap"
 import { connect } from "react-redux"
 import { changeData } from "../../store/languages/action"
 import { lang } from "../../lang"
-import Header from "../header/header"
 import "../contact/contact.css"
-import SelectCardPayment from './SelectCardPayment'
 
 
 class SelectPayment extends Component {
@@ -18,7 +16,8 @@ class SelectPayment extends Component {
                  card: false,
                  pay: false,
                  credit: false
-             }
+             },
+             error: "",
         }
     }
     change = (e) =>  {  
@@ -40,17 +39,31 @@ class SelectPayment extends Component {
  
     save = () => {
         console.log("ok ")
-        if(this.state.payment.pay == true){
-            console.log("tox gna shnorhakalutyan ej")
+        for(let i in this.state.payment){
+            if(this.state.payment[i] == true){
+                if(this.state.payment.card == true){
+                    this.props.setState({
+                        currentModal:3,
+                        firstStep: this.state.payment
+                    })
+                }
+                else if(this.state.payment.pay == true){
+                    this.props.setState({
+                        currentModal:4,
+                        firstStep: this.state.payment
+                    })
+                }
+                
+            }
+            else{
+                console.log("false")
+            }
         }
-        else if(this.state.payment.card == true){
-            console.log("tox gna cardi @ntrutyan ej")
-        }
+       
         console.log(this.state.payment)
-        return null
     }
     render() {
-        console.log(this.props)
+        // alert(JSON.stringify(this.props.state.firstStep))
         return (
            
             <div className = "payment-register" >
@@ -65,6 +78,7 @@ class SelectPayment extends Component {
               </Modal.Footer>
               <Modal.Body style = {{margin: "7%"}}>
                   <h1>Ընտրեք վճարման  տարբերակը</h1>
+                  <h1 className = "alert-dark">{this.state.error}</h1>
                   <div className = "select-payment-form  address">
                       <input id = "cards" value = "card" checked = {this.state.payment.card} onChange = {this.change} type = "radio"  />
                       <img src = "/images/pay-card.svg" />
@@ -83,8 +97,8 @@ class SelectPayment extends Component {
 
                 <div className = "save">
                   <div className = "save-btn">
-                      <button onClick = {this.save}>
-                          {/* <SelectCardPayment  {...this.props} data = {this.state.payment}/> */}
+                      <button onClick = {() => this.save()} >
+                            Հաջորդը
                       </button>
 
                   </div>

@@ -26,9 +26,7 @@ class Payment extends Component {
            },
            show: false,
            page: false,
-           error: "",
-           counter: 1
-
+           error: ""
         }
     }
     handelChangeLang = (id) => {
@@ -62,13 +60,17 @@ class Payment extends Component {
         }
         this.setState({})
         if(this.state.error  == ""){
-            //this.props.history.replace("/about", "error")
-            this.state.counter++
-            console.log("ok test")
+            this.props.setState({
+                currentModal:2,
+                firstModal: this.state.orderInput
+            })
+            this.props.setState({})
+
         }
     }
     render() {
-        console.log(this.state.counter)
+        console.log(this.props)
+        // alert(JSON.stringify(this.props.state))
         return (
             <div className = "payment-register" >
                   <a className = "link-white"><div handelChangeLang={this.handelChangeLang} langId={this.props.langData.langId}  onClick = {() => {this.handleModal()}}>{lang[this.props.langData.langId].buy} </div></a>
@@ -128,12 +130,8 @@ class Payment extends Component {
                        </div>
                       <div className = "save">
                         <div className = "save-btn">
-                            <button onClick = {this.save} >
-                            PaymentModal
-                            {this.state.counter == 2 && <SelectPayment onClick = {() => {this.handleModal()}}  show = {this.state.show}  state = {this.state} data = {this.state.data}/>}
-                            {this.state.counter == 3 && <SelectCardPayment data = {this.state.data}  show = {this.state.show}  state = {this.state} data = {this.state.data} />}
-                                {/* <SelectPayment  {...this.props.data} user = {this.state.orderInput}/> */}
-                               
+                            <button onClick = {() => this.save()} >                          
+                                Հաստատել                               
                             </button>
                         </div>
                       </div>

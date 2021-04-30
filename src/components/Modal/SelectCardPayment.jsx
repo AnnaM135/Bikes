@@ -6,6 +6,7 @@ import { lang } from "../../lang"
 import Header from "../header/header"
 import "../contact/contact.css"
 import UserModal from './UserModal'
+import AdminServices from '../../services/AdminServices'
 
 
 class SelectCardPayment extends Component {
@@ -13,7 +14,7 @@ class SelectCardPayment extends Component {
         super(props)
     
         this.state = {
-             show: false,
+             show: true,
              selectBank:{
                  ameria: false,
                  idram: false,
@@ -37,22 +38,35 @@ class SelectCardPayment extends Component {
        this.setState({})
     }
     save = () => {
-        console.log("card ")
         console.log(this.state.selectBank)
-        if(this.state.selectBank.ameria == true){
-            console.log("tox gna harcman ej")
+        for(let i in this.state.selectBank){
+            if(this.state.selectBank[i] == true){
+                if(this.state.selectBank.ameria == true){
+                    this.props.setState({
+                        currentModal:3,
+                        firstStep: this.state.selectBank
+                    })
+                   AdminServices.payment({user: this.props.setState.firstStep}, this.props.data)
+                   .then(r => {
+                       console.log(r)
+                   })
+                }
+                else if(this.state.selectBank.idram == true){
+                    console.log("tox gna idrami harcman ej")
+                }
+                
+            }
+            else{
+                console.log("false")
+            }
         }
-        else if(this.state.selectBank.idram == true){
-            console.log("tox gna idrami harcman ej")
-        }
-        // console.log(this.state.payment)
-        return null
+        this.setState({})
     }
     render() {
-        console.log(this.props)
+        console.log(this.props.setState.firstStep)
         return (
              <div className = "payment-register" >
-            <a className = "link-white"><div handelChangeLang={this.handelChangeLang} langId={this.props.langData.langId}  onClick = {() => {this.handleModal()}}>Հաջորդը </div></a>
+            {/* <a className = "link-white"><div handelChangeLang={this.handelChangeLang} langId={this.props.langData.langId}  onClick = {() => {this.handleModal()}}>Հաջորդը </div></a> */}
           <Modal show = {this.state.show} >
               <Modal.Footer>
                   <p className = "modal-close-btn"  onClick = {() => {this.handleModal()}}>
@@ -75,6 +89,7 @@ class SelectCardPayment extends Component {
                 <div className = "save">
                   <div className = "save-btn" >
                       <button onClick = {this.save}>
+                          Հաջորդը
                           {/* <UserModal /> */}
                       </button>
                   </div>

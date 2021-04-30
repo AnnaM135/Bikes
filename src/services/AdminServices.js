@@ -26,9 +26,9 @@ class AdminService {
     search(data){
         return this.api.get(`/product/tools/search${data}`)
     }
-    // payment(data){
-    //     return this.api.post(`/Ameriabank`, {data})
-    // }
+    payment(user, data){
+        return this.api.post(`/payment/Ameriabank`, {user, data})
+    }
 }
 
 export default new AdminService()  // sa jnjvel er qceluc

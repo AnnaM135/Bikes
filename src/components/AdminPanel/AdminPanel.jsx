@@ -151,6 +151,36 @@ const AdminPanel = () => {
                         <i className = "fa fa-search"></i>
                     </div>
             </div>
+            <div className = "type-area">
+               <div className = "type-area-head">
+                    <img src = "/images/adminTypes.svg" />
+                    <h1>Բաժիններ</h1>
+               </div>
+               <nav className = "nav-bar-admin">
+                   <ul className = "ul-list">
+                       <li className = "list-item">
+                           <a className = "list-item-link-admin">Հեծանիվ</a>
+                       </li>
+                       <li className = "list-item">
+                           <a className = "list-item-link-admin">Հեծանիվ</a>
+                       </li>
+                       <li className = "list-item">
+                           <a className = "list-item-link-admin">Հեծանիվ</a>
+                       </li>
+                       <li className = "list-item">
+                           <a className = "list-item-link-admin">Հեծանիվ</a>
+                       </li>
+                   </ul>
+                   <div className = "add-icons">
+                        <i className = "fa fa-plus"></i>
+                        <i className = "fa fa-plus"></i>
+                        <i className = "fa fa-plus"></i>
+                        <i className = "fa fa-plus"></i>
+
+                   </div>
+               </nav>
+
+            </div>
             {/* <header className="admin-header">
                 <i className="fa fa-pencil-square-o" aria-hidden="true" onClick={()=> setForm(prev=>!prev)}></i>
                 <button name='hy' onClick={changeLanguage}>հայերեն</button>

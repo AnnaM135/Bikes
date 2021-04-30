@@ -36,21 +36,13 @@ class UserModal extends Component {
                   </p>
               </Modal.Footer>
               <Modal.Body style = {{margin: "7%"}}>
-                  <h3 >Մուտքագրեք</h3>
-                  <h3 >Անուն Ազգանուն</h3>
-                        <div className = "payment-form address" style = {{marginTop: "100px"}}>
-                            <input className = "payment-input" type = "email" placeholder = "Անուն"/>
+              <div className = "delivery-modal-img">
+                            <img src = "./images/delivery.svg" width = "200px" />
                         </div>
-                        <div className = "payment-form address" >
-                            <input className = "payment-input" type = "email" placeholder = "Ազգանուն"/>
+                        <div className = "delivery-text-area">
+                            <h1>ՇՆՈՐՀԱԿԱԼՈՒԹՅՈՒՆ</h1>
+                            <h1>ՁԵՐ ԳՆՈՒՄԸ ԿԱՏԱՐՎԱԾ Է</h1>
                         </div>
-                
-                <div className = "save">
-                  <div className = "save-btn">
-                      <button>Հաջորդը
-                      </button>
-                  </div>
-                </div>
               </Modal.Body>
           </Modal>
       </div>

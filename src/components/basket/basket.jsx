@@ -7,7 +7,10 @@ import {connect} from "react-redux"
 import {changeData} from "../../store/languages/action"
 import {lang} from "../../lang"
 import Payment from '../Modal/Payment'
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+import SelectPayment from '../Modal/SelectPayment'
+import SelectCardPayment from '../Modal/SelectCardPayment'
+import CallBack from '../Modal/CallBack'
+                                                                                                                                                                                                                                                                                                                                                                                                                       
 class Basket extends Component {
     constructor(props) {
         super(props)
@@ -16,7 +19,11 @@ class Basket extends Component {
             data: [],
             card: [],
             sum: 0,
-            counter: 1
+            counter: 1,
+            currentModal:1,
+            firstStep:{
+               
+            }
         }
     }
     componentDidMount() {
@@ -111,7 +118,10 @@ class Basket extends Component {
                     <hr className="basket-hr" />
                     <div className="basket-price-btn">
                         <button>
-                            <Payment data = {this.state.data} />
+                            {this.state.currentModal == 1 && <Payment data = {this.state.data}  setState={this.setState.bind(this)} />}
+                            {this.state.currentModal == 2 && <SelectPayment data = {this.state.data} setState={this.setState.bind(this)} />}
+                            {this.state.currentModal == 3 && <SelectCardPayment data = {this.state.data} setState={this.setState.bind(this)} />}
+                            {this.state.currentModal == 4 && <CallBack data = {this.state.data} setState={this.setState.bind(this)} />}
                         </button>
                     </div>
                     <div className="basket-pay-versions">
