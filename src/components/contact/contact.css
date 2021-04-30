@@ -160,7 +160,7 @@
 .address{
 	margin-top: 15px;
 }
-.select-payment-form  span{
+.select-payment-form  label{
 	margin-left: 15px;
 }
 .payment-label > i {
@@ -215,6 +215,17 @@ input[type=radio]{
 	color: #FFFFFF;
 	text-align: center;
 	font-size: 18px;	
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
 /* PAYMENT */
 @media screen and (max-width: 768px){

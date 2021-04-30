@@ -6,25 +6,69 @@ import { lang } from "../../lang"
 import Header from "../header/header"
 import "../contact/contact.css"
 import SelectPayment from './SelectPayment'
+import AdminServices from '../../services/AdminServices'
+import {Redirect, Link} from "react-router-dom"
+import SelectCardPayment from './SelectCardPayment'
+
 
 class Payment extends Component {
-    handelChangeLang = (id) => {
-        this.props.changeData(id)
-
-    }
     constructor(props) {
         super(props)
     
         this.state = {
-             show: false
+           orderInput: {
+                name: "sdg",
+                surname: "sdvg",
+                email: "sdg",
+                phone: "4351234567891", 
+                address: "adf",
+                homeAddress: "asf"
+           },
+           show: false,
+           page: false,
+           error: "",
+           counter: 1
+
         }
+    }
+    handelChangeLang = (id) => {
+        this.props.changeData(id)
+
+    }
+    nextModal(){
+        this.setState(prevState =>({
+            currentModal: prevState.currentModal + 1
+        }))
     }
     handleModal(){
         this.setState({
             show: !this.state.show
         })
     }
+    change(e){
+        let k = e.target.getAttribute("data-id")
+        this.state.orderInput[k] = e.target.value
+        this.setState({})
+    }
+    save = () =>{
+        this.state.error = ""
+        for(let i in this.state.orderInput){
+            if(this.state.orderInput[i] == ""){
+                this.state.error = "Լրացրեք բոլոր դաշտերը"
+            }
+            else if(this.state.orderInput.phone.length < 12){
+                this.state.error = "Հեռախոսահամարն ամբողջական չէ"
+            }
+        }
+        this.setState({})
+        if(this.state.error  == ""){
+            //this.props.history.replace("/about", "error")
+            this.state.counter++
+            console.log("ok test")
+        }
+    }
     render() {
+        console.log(this.state.counter)
         return (
             <div className = "payment-register" >
                   <a className = "link-white"><div handelChangeLang={this.handelChangeLang} langId={this.props.langData.langId}  onClick = {() => {this.handleModal()}}>{lang[this.props.langData.langId].buy} </div></a>
@@ -36,29 +80,42 @@ class Payment extends Component {
                     </Modal.Footer>
                     <Modal.Body style = {{margin: "7%"}}>
                         <h1>Լրացրեք դաշտերը</h1>
-                        <div className = "payment-label">
-                            <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                            <label>Մուտքագրեք Ձեր էլ. փոստի հասցեն:</label>
+                        <h1 className = "alert-dark">{this.state.error}</h1>
+                        <div className = "payment-label" style = {{marginTop: "100px"}}>
+                            <label htmlFor = "name">Մուտքագրեք Անուն</label>
                         </div>
                         <div className = "payment-form">
-                            <input className = "payment-input" type = "email"/>
+                            <input data-id = "name" value = {this.state.orderInput.name} onChange = {this.change.bind(this)} className = "payment-input" type = "text" placeholder = "Անուն"/>
+                        </div>
+                        <div className = "payment-label">
+                            <label htmlFor = "surname">Մուտքագրեք Ազգանուն:</label>
+                        </div>
+                        <div className = "payment-form">
+                            <input data-id = "surname" value = {this.state.orderInput.surname} onChange = {this.change.bind(this)} className = "payment-input" type = "text" placeholder = "Ազգանուն"/>
+                        </div>
+                        <div className = "payment-label">
+                            <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                            <label htmlFor = "email">Մուտքագրեք Ձեր էլ. փոստի հասցեն:</label>
+                        </div>
+                        <div className = "payment-form">
+                            <input data-id = "email" value = {this.state.orderInput.email} onChange = {this.change.bind(this)} className = "payment-input" type = "email"/>
                         </div>
                         <div className = "payment-label">
                             <i class="fa fa-phone" aria-hidden="true"></i>
-                            <label>Հեռախոսահամար</label>
+                            <label htmlFor = "phone">Հեռախոսահամար</label>
                         </div>
                         <div className = "payment-form">
-                            <input className = "payment-input" type = "email"/>
+                            <input data-id = "phone" value = {this.state.orderInput.phone} onChange = {this.change.bind(this)} className = "payment-input" type = "number"/>
                         </div>
                         <div className = "payment-label">
                             <i class="fa fa-home" aria-hidden="true"></i>
-                            <label>Հասցե</label>
+                            <label htmlFor = "address">Հասցե</label>
                         </div>
                         <div className = "payment-form address">
-                            <input className = "payment-input" type = "email" placeholder = "Քաղաք/գյուղ"/>
+                            <input data-id = "address" value = {this.state.orderInput.address} onChange = {this.change.bind(this)} className = "payment-input" type = "email" placeholder = "Քաղաք/գյուղ"/>
                         </div>
                         <div className = "payment-form address" >
-                            <input className = "payment-input" type = "email" placeholder = "Տան հասցե"/>
+                            <input data-id = "homeAddress" value = {this.state.orderInput.homeAddress} onChange = {this.change.bind(this)} className = "payment-input" type = "email" placeholder = "Տան հասցե"/>
                         </div>
                        <div className = "hours-delivery">
                             <img src = "/images/vjarum.svg" />
@@ -71,8 +128,12 @@ class Payment extends Component {
                        </div>
                       <div className = "save">
                         <div className = "save-btn">
-                            <button>
-                                <SelectPayment />
+                            <button onClick = {this.save} >
+                            PaymentModal
+                            {this.state.counter == 2 && <SelectPayment onClick = {() => {this.handleModal()}}  show = {this.state.show}  state = {this.state} data = {this.state.data}/>}
+                            {this.state.counter == 3 && <SelectCardPayment data = {this.state.data}  show = {this.state.show}  state = {this.state} data = {this.state.data} />}
+                                {/* <SelectPayment  {...this.props.data} user = {this.state.orderInput}/> */}
+                               
                             </button>
                         </div>
                       </div>

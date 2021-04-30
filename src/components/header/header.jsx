@@ -42,13 +42,23 @@ export class Header extends Component {
     this.state.searchProducts = [];
     this.state[e.target.getAttribute("data-id")] = e.target.value;
     this.setState({})
-    AdminServices.getProducts(this.props.langId).then((r) => {
-      const data = r.data.filter((elem) => !elem.productName.search(this.state.search))
+    console.log(this.state.search)
+    AdminServices.search(this.state.search).then((r) => {
+        // const data = r.data.data.filter((elem) => !elem.productName.search(this.state.search))
+        
       if (this.state.search != "") {
-        this.state.searchProducts = data
+        this.state.searchProducts = r.data.data
+        console.log(this.state.searchProducts)
         this.setState({})
       }
     })
+    // AdminServices.getProducts(this.props.langId).then((r) => {
+    //   const data = r.data.filter((elem) => !elem.productName.search(this.state.search))
+    //   if (this.state.search != "") {
+    //     this.state.searchProducts = data
+    //     this.setState({})
+    //   }
+    // })
   }
 
   handelClickFlag = (event) => {
@@ -92,7 +102,7 @@ export class Header extends Component {
            <div className="three header-card">
               <input type="text" id="header-input" data-id="search" value={this.state.search} onChange={this.changeSearch.bind(this)} placeholder={lang[this.props.langId].search} />
               <i className="fa fa-search"></i>
-             <div className = "search-context" data-simplebar >
+             <div className = "large-2" data-simplebar >
              {
                 this.state.searchProducts.map((a) => (
                   <div key={a.id} >
@@ -170,18 +180,18 @@ export class Header extends Component {
              <div className = "six"> 
                       
                         <button onClick={this.handelClickMore}>
-                          <p className="list-item-link">{lang[this.props.langId].more}<i className="fa fa-chevron-down"></i></p>
-                          {console.log(lang[this.props.langId].pordz)}
-                          
+                          <p className="list-item-link">{lang[this.props.langId].more}<i className="fa fa-chevron-down"></i></p>                          
                         </button>
                         <div className = "six-content menu-types">
                             <ul className = {cnMore}>
                               {
                                 lang[this.props.langId].types.slice(3).map((elem) => 
-                                    <li key = {elem}  defaultValue={elem} >
-                                      <a className = "list-item-link-black" href = "/basket"> {elem} </a>
-                                      
-                                    </li>
+                                <li key = {elem}  defaultValue={elem} >
+                                <Link to={`/filter/${elem}`} className = "list-item-link-black">
+                                {elem}
+                                </Link>
+                              </li>
+
 
                                 )
                               } 

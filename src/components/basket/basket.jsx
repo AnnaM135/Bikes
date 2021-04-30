@@ -8,7 +8,7 @@ import {changeData} from "../../store/languages/action"
 import {lang} from "../../lang"
 import Payment from '../Modal/Payment'
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
-export class Basket extends Component {
+class Basket extends Component {
     constructor(props) {
         super(props)
     
@@ -16,10 +16,12 @@ export class Basket extends Component {
             data: [],
             card: [],
             sum: 0,
+            counter: 1
         }
     }
     componentDidMount() {
-       let item = JSON.parse(localStorage.getItem("item"))
+        let item = JSON.parse(localStorage.getItem("item"))
+        console.log(item)
        this.state.data = item || []
        this.sum()
        this.setState({})
@@ -109,7 +111,7 @@ export class Basket extends Component {
                     <hr className="basket-hr" />
                     <div className="basket-price-btn">
                         <button>
-                            <Payment />
+                            <Payment data = {this.state.data} />
                         </button>
                     </div>
                     <div className="basket-pay-versions">

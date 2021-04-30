@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 import "./list.css"
 import "../filter/filter.css"
 import Header from "../header/header"
@@ -8,6 +9,7 @@ import { changeData } from "../../store/languages/action"
 // import {changeCard} from "../../store/languages/action"
 import { lang } from "../../lang"
 import AdminServices from '../../services/AdminServices';
+import classnames from "classnames";
 
 
 // Import Swiper React components
@@ -31,7 +33,8 @@ export class List extends Component {
             card: [],
             product: [],
             slideImg: [],
-
+            showSize: false,
+            showHeight: false,
         }
     }
 
@@ -60,6 +63,42 @@ export class List extends Component {
         this.props.changeData(id)
 
     }
+    handelClickSize = (event) => {
+        console.log(this.state.showSize)
+        this.setState((prevState) => ({
+            showSize: !prevState.showSize,
+        }))
+    }
+    handelClickHeight = (event) => {
+        console.log(this.state.showHeight)
+        this.setState((prevState) => ({
+            showHeight: !prevState.showHeight,
+        }))
+    }
+    handelClickFlag = (event) => {
+        const { id } = event.target.dataset;
+        console.log(id)
+        if (this.state.data.sizes !== id) {
+            this.state.data.sizes = id
+          //this.props.handelChangeLang(id)
+          this.setState({
+            showList: false,
+          })
+          console.log(this.state.data.sizes, id)
+        }
+      }
+      handelClickActiveHeight = (event) => {
+        const { id } = event.target.dataset;
+        console.log(id)
+        if (this.state.data.sizes !== id) {
+            this.state.data.sizes = id
+          //this.props.handelChangeLang(id)
+          this.setState({
+            showList: false,
+          })
+          console.log(this.state.data.sizes, id)
+        }
+      }
 
     addCard(item) {
         item.count = 1
@@ -83,6 +122,8 @@ export class List extends Component {
 
 
     render() {
+        const cnUl = classnames({ "size-list": true, "not-active": !this.state.showSize, })
+        const cnHeight = classnames({ "size-list": true, "not-active": !this.state.showHeight, })
         return (
             <div className="product-page">
                 <Header data={this.state.card} handelChangeLang={this.handelChangeLang} langId={this.props.langData.langId} />
@@ -122,13 +163,13 @@ export class List extends Component {
                     </div>
                     <div className="product-description-area">
                         <br /> <br />
-                        {/* <div className="product-star">
-             <i className="fa fa-star-o" aria-hidden="true"></i>
-             <i className="fa fa-star-o" aria-hidden="true"></i>
-             <i className="fa fa-star-o" aria-hidden="true"></i>
-             <i className="fa fa-star-o" aria-hidden="true"></i>
-             <i className="fa fa-star-o" aria-hidden="true"></i>
-         </div> */}
+                        <div className="product-star">
+                            <i className="fa fa-star-o" aria-hidden="true"></i>
+                            <i className="fa fa-star-o" aria-hidden="true"></i>
+                            <i className="fa fa-star-o" aria-hidden="true"></i>
+                            <i className="fa fa-star-o" aria-hidden="true"></i>
+                            <i className="fa fa-star-o" aria-hidden="true"></i>
+                        </div>
                         <div className="product-code">
                             <p>Code 654236853</p>
                             <h5>{this.state.data.productName}</h5>
@@ -136,7 +177,7 @@ export class List extends Component {
                         <div className="product-price">
                             <div className="product-price-now">
                                 {this.state.data.price} Դր
-             </div>
+                            </div>
                             <div className="product-price-after">
                                 <del>{this.state.data.oldPrice} Դր</del>
                             </div>
@@ -153,37 +194,52 @@ export class List extends Component {
                                 <div style={{ backgroundColor: `${this.state.data.colors}` }}></div>
                             </div>
                         </div>
-                        <div className="select-sale">
-                            <div className="list-price">
+                        <div onClick={this.handelClickSize} className="select-sale">
+                            <div  className="list-price" >
                                 <p>{lang[this.props.langData.langId].size}</p>
-                                <p>15"</p>
-                                <p className="fa fa-chevron-down" aria-hidden="true"></p>
+                                <ul className = {cnUl} onClick={this.handelClickFlag}>
+                                    
+                                            <li >
+                                            <button  type="button" className = "active-btn">
+                                            Ընտրել  չափսը
+                                                <p selected value = "Ընտրել հասակը և չափսը"></p>
+                                                <p data-id={this.state.data.sizes}>{this.state.data.sizes}</p>
+                                            </button>
+                                            </li>
+                                            
+                                       
+                                </ul>
+                                <p style = {{cursor: "pointer"}}  className="fa fa-chevron-down" aria-hidden="true"></p>
                             </div>
-
                         </div>
-                        <div className="select-sale">
+                        <div onClick={this.handelClickHeight} className="select-sale">
                             <div className="list-price">
                                 <p>{lang[this.props.langData.langId].height}</p>
-                                <p className="fa fa-chevron-down" aria-hidden="true"></p>
+                                <p style = {{cursor: "pointer"}}  className="fa fa-chevron-down" aria-hidden="true"></p>
                             </div>
                             <div className="sale-buttons">
+
                                 <div>
-                                    <input type="checkbox" name="" />
-                                    <p>98-110</p>
+                                    <ul className = {cnHeight} onClick={this.handelClickActiveHeight}>
+                                    <li>
+                                            <button  type="button" className = "active-btn">
+                                            Ընտրել հասակը
+                                                <input type="checkbox" name="" />
+                                                <p  data-id={this.state.data.sizes} className = "size-par">{this.state.data.height}</p>
+                                            </button>
+                                            </li>
+                                    </ul>
+                                   
                                 </div>
-                                <div>
-                                    <input type="checkbox" name="" />
-                                    <p>110-135</p>
-                                </div>
-                                <div>
-                                    <input type="checkbox" name="" />
-                                    <p>135-150</p>
-                                </div>
+                               
                             </div>
                         </div>
                         <div className="product-buttons">
                             <button className="product-add-btn" onClick={this.addCard.bind(this, this.state.data)}>{lang[this.props.langData.langId].add}</button>
-                            <button className="product-buy-btn">{lang[this.props.langData.langId].buy}</button>
+                            <button className="product-buy-btn" onClick={this.addCard.bind(this, this.state.data)}>
+                                <Link className = "buy-btn" to = "/basket">{lang[this.props.langData.langId].buy}</Link>
+                                {/* {lang[this.props.langData.langId].buy} */}
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -214,7 +270,9 @@ export class List extends Component {
                                             <div>{elem.description}</div>
                                             <div className="price-add">
                                             <p>{elem.price} Դր</p>
-                                            <button className="price-btn" ><a className = "buy-btn" href = "/basket">{lang[this.props.langData.langId].buy}</a></button>
+                                            <Link to = {`/filter/${elem.productType}/${elem.productName}`}>
+                                                    <button className="price-btn">{lang[this.props.langData.langId].buy}</button>
+                                            </Link>
                                             </div>
                                                 
                                             </div>

@@ -81,16 +81,12 @@ export class Filter extends Component {
         if ((e.target.name === 'minPrice' || e.target.name === 'maxPrice') && isNaN(+e.target.value)) {
             return
         }
-
         let key = e.target.name;
-        
         this.setState({
             filterInp : {
                 key : e.target.value
             }
-        });
-        //this.state.filterInp[e.target.name] = e.target.value
-        
+        });        
     }
 
 

@@ -8,16 +8,16 @@ import "../contact/contact.css"
 
 
 class UserModal extends Component {
-    handelChangeLang = (id) => {
-        this.props.changeData(id)
-
-    }
     constructor(props) {
         super(props)
     
         this.state = {
              show: false
         }
+    }
+    handelChangeLang = (id) => {
+        this.props.changeData(id)
+
     }
     handleModal(){
         this.setState({

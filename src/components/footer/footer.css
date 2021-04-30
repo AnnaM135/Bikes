@@ -55,12 +55,16 @@
     align-items: center;
     margin-left: 10px;
     margin-top: -22px;
+	text-decoration: none;
 }
-.contact-media >i, .contact-media > img {
+
+.contact-media > a >i, .contact-media >a>  img {
     background-color: #FFFFFF;
     width: 30px;
     height: 30px;
     border-radius: 100%;
+	text-decoration: none;
+
     color: #C61212;
     margin-left: 25px;
     font-weight: bold;

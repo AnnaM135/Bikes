@@ -96,17 +96,27 @@ export class Home extends Component {
     }
   }
   
-  changeSearch(e){
+  changeSearch(e) {
     this.state.searchProducts = [];
     this.state[e.target.getAttribute("data-id")] = e.target.value;
     this.setState({})
-    AdminServices.getProducts(this.props.langData.langId).then((r) => {
-      const data = r.data.filter((elem)=> !elem.productName.search(this.state.search))
-      if(this.state.search != ""){
-        this.state.searchProducts = data
+    console.log(this.state.search)
+    AdminServices.search(this.state.search).then((r) => {
+        // const data = r.data.data.filter((elem) => !elem.productName.search(this.state.search))
+        
+      if (this.state.search != "") {
+        this.state.searchProducts = r.data.data
+        console.log(this.state.searchProducts)
         this.setState({})
       }
     })
+    // AdminServices.getProducts(this.props.langId).then((r) => {
+    //   const data = r.data.filter((elem) => !elem.productName.search(this.state.search))
+    //   if (this.state.search != "") {
+    //     this.state.searchProducts = data
+    //     this.setState({})
+    //   }
+    // })
   }
   more(elem){
     let d  = elem.find(item => item == elem)
@@ -122,6 +132,25 @@ export class Home extends Component {
         this.state.showStore = false;
     }
     this.setState({})
+}
+addCard(item) {
+  item.count = 1
+  let local = localStorage.getItem("item")
+  let names;
+  if (local === null) {
+      names = []
+  } else {
+      names = JSON.parse(local)
+      let d = names.find(elem => elem.id == item.id)
+      if (d) {
+          item.count = 2
+          names = names.filter(elem => elem !== item)
+          return
+      }
+  }
+  names.push(item)
+  localStorage.setItem("item", JSON.stringify(names))
+  this.setState({})
 }
 
     render() {
@@ -152,7 +181,14 @@ export class Home extends Component {
                   <div className="three header-card">
                     <input type="text" id="header-input" data-id="search" value={this.state.search} onChange={this.changeSearch.bind(this)} placeholder={lang[this.props.langData.langId].search} />
                     <i className="fa fa-search"></i>
-                    <div className = "search-context">
+                    <div class="custom">
+                    {/* <div id="front_videos">
+                      <div class="large-2">
+                        <div class="force-overflow"></div>
+                      </div>
+                    </div> */}
+                  </div>
+                    <div className = "large-2">
                         {
                             this.state.searchProducts.map((a) => (
                               <div key={a.id} >
@@ -173,8 +209,11 @@ export class Home extends Component {
                     <div className="header-bus"> 
                         <ModalDelivery />
                      </div>
+                    <img src="./images/delivery-truck.png" />
                     {/* {lang[this.props.langData.langId].} */}
-                    <img src="./images/delivery-truck.png"/>
+                    
+                
+                    
                   </div>
                   <div className="six header-card">
                     <button onClick={this.handelClick}>
@@ -202,16 +241,13 @@ export class Home extends Component {
                 </div>
               </div>
              
-                      <div className = "nav">
-                          <label className = "label-menu" htmlFor = "toggle"> 
-                              
-                            <img   src="../images/menu.svg" />
-                         </label>
+              <div className = "nav">
+                          <label className = "label-menu" htmlFor = "toggle">
+                            <img src="/images/menu.svg" />
+                          </label>
                           <input type = "checkbox" id = "toggle"/>
-                         <div className = "menu-center">
-
                          
-                         <nav className = "new-menu">
+                          <nav className = "new-menu">
           <ul className="header-menu-list">
             <li className="list-item">
               <Link to={`/filter/${this.state.types[0]}`} className="list-item-link">
@@ -233,18 +269,18 @@ export class Home extends Component {
              <div className = "six"> 
                       
                         <button onClick={this.handelClickMore}>
-                          <p className="list-item-link">{lang[this.props.langData.langId].more}<i className="fa fa-chevron-down"></i></p>
-                          {console.log(lang[this.props.langData.langId].pordz)}
-                          
+                          <p className="list-item-link">{lang[this.props.langData.langId].more}<i className="fa fa-chevron-down"></i></p>                          
                         </button>
                         <div className = "six-content menu-types">
                             <ul className = {cnMore}>
                               {
                                 lang[this.props.langData.langId].types.slice(3).map((elem) => 
-                                    <li key = {elem}  defaultValue={elem} >
-                                      <a className = "list-item-link-black" href = "/basket"> {elem} </a>
-                                      
-                                    </li>
+                                <li key = {elem}  defaultValue={elem} >
+                                <Link to={`/filter/${elem}`} className = "list-item-link-black">
+                                {elem}
+                                </Link>
+                              </li>
+
 
                                 )
                               } 
@@ -258,7 +294,6 @@ export class Home extends Component {
             </li>
           </ul>
         </nav>
-        </div>
         </div>
                  
             </header>
@@ -317,7 +352,9 @@ export class Home extends Component {
                           <div>{product.description}</div>
                           <div className="price-add">
                             <p>{product.price} Դր</p>
-                            <button className="price-btn" ><a className = "buy-btn" href = "/basket">{lang[this.props.langData.langId].buy}</a></button>
+                            <Link to = {`/filter/${product.productType}/${product.productName}`}>
+                              <button className="price-btn">{lang[this.props.langData.langId].buy}</button>
+                          </Link>
                           </div>
                           </div>
                         </div>}
@@ -372,7 +409,7 @@ export class Home extends Component {
                     <img src={elem} className="bicycle-img" />
                     {console.log(elem)}
                     
-                    <Link to = "/basket"><i className="fa fa-shopping-cart" aria-hidden="true"></i></Link>
+                    <Link to = "/basket"><i className="fa fa-shopping-cart" aria-hidden="true" ></i></Link>
                   </div>
                     )}
                     <div>
@@ -391,7 +428,9 @@ export class Home extends Component {
                     <div>{elem.description}</div>
                     <div className="price-add">
                       <p>{elem.price} Դր</p>
-                      <button className="price-btn" ><a className = "buy-btn" href = "/basket">{lang[this.props.langData.langId].buy}</a></button>
+                      <Link to = {`/filter/${elem.productType}/${elem.productName}`}>
+                              <button className="price-btn">{lang[this.props.langData.langId].buy}</button>
+                      </Link>
                     </div>
                         
                     </div>

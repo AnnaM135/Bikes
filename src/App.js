@@ -13,9 +13,11 @@ import AdminLogin from './components/AdminLogin/AdminLogin.jsx';
 import AdminPanel from './components/AdminPanel/AdminPanel.jsx';
 import  Rules  from './components/Rules/Rules';
 import  About  from './components/About/About';
+import SelectPayment from './components/Modal/SelectPayment';
+
 let store = configStore()
 
-export class App extends Component {
+class App extends Component {
 
   render() {
     return (
@@ -33,13 +35,21 @@ export class App extends Component {
 
             <Route path="/filter/:type/:item" component={List} />
             <Route path="/contact" component={Contact} />
-            <Route path="/basket" component={Basket} />
+            <Route path="/basket" exact component={Basket} />
             <Route path="/rules" component = {Rules} />
             <Route path = "/about"  component = {About} />
+            <Route path = "/order" component = {SelectPayment}/>
             <Redirect to='/' />
           </Switch>
         </BrowserRouter>
       </Provider>
+          // <div>
+          //     {this.state.count === 1 ? 1:
+          //       this.state.count === 2 ? 2:
+          //       this.state.count === 3 ? 3:
+          //       null
+          //     }
+          // </div>
     )
   }
 }

@@ -134,9 +134,25 @@ const AdminPanel = () => {
    
     return (
         <>
-            <header className="admin-header">
+            <div className = "admin-header-black"></div>
+            <div className = "archive-trash">
+                <div className = "archive-elements">
+                    <h4>PRODUCT TYPE</h4>
+                    <div className = "archive-icon">
+                        <h4>Արխիվ</h4>
+                        <i class="fa fa-archive" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+            <div className = "admin-header-search">
+                <button className = "change-btn">Հաստատել փոփոխությունները</button>
+                    <div className = "admin-search-area">
+                        <input type = "text" placeholder = "Փնտրել"/>
+                        <i className = "fa fa-search"></i>
+                    </div>
+            </div>
+            {/* <header className="admin-header">
                 <i className="fa fa-pencil-square-o" aria-hidden="true" onClick={()=> setForm(prev=>!prev)}></i>
-                {/* <i className="fa fa-trash-o" aria-hidden="true"></i> */}
                 <button name='hy' onClick={changeLanguage}>հայերեն</button>
                 <button name='en' onClick={changeLanguage}>english</button>
                 <button name='ru' onClick={changeLanguage}>русский</button>
@@ -191,7 +207,6 @@ const AdminPanel = () => {
                     {products.map((elem,i)=> {
                         return (
                             <div key={i} className = "discount-cards-one">
-                                {/* @ts-ignore */}
                             
                                 {JSON.parse(elem.imagePath).map((elem, i)=>
                                 
@@ -231,7 +246,7 @@ const AdminPanel = () => {
                         )
                     })}
                 </div>
-            </section>
+            </section> */}
         </>
     )
 }

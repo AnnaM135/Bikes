@@ -276,7 +276,7 @@ hr{
 .color-buttons >  div :hover{
 	border-bottom: 5px solid;
 }
-.sale-buttons > div{
+.sale-buttons > div, .sale-buttons > div>ul>li>button {
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
