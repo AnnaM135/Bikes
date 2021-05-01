@@ -31,7 +31,7 @@ class AdminService {
         return this.api.post(`/payment/Ameriabank`, {"user" : user, "products": data})
     }
     status(data){
-        return this.api.get(`/payment/Ameriabank/getStatus?paymentID=`, {data})
+        return this.api.get(`/payment/Ameriabank/getStatus?paymentID=${data}`, )
     }
 }
 

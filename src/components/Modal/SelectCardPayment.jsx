@@ -53,9 +53,9 @@ class SelectCardPayment extends Component {
                        console.log(JSON.stringify(r.data.PaymentID))
                       let payId = r.data.PaymentID;
                     window.location =  `https://services.ameriabank.am/VPOS/Payments/Pay?id=${payId}&lang=en`
-                    //   AdminServices.status(payId).then(r => {
-                    //       console.log(r.data)
-                    //   })
+                      AdminServices.status(payId).then(r => {
+                          console.log(r.data)
+                      })
                    })
                    
 

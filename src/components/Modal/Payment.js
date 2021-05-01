@@ -22,7 +22,7 @@ class Payment extends Component {
                 email: "",
                 phone: "", 
                 address: "",
-                homeAddress: ""
+                homeAddress: "l"
            },
            show: false,
            page: false,
