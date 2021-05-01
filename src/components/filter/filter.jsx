@@ -53,7 +53,7 @@ export class Filter extends Component {
 
     componentDidMount() {
 
-        AdminServices.getProducts(this.props.langData.langId).then((r) => {
+        AdminServices.getProducts().then((r) => {
 
             this.setState({
                 filterValues: getAllFilters(r.data),

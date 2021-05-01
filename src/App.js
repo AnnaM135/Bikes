@@ -33,7 +33,7 @@ class App extends Component {
               <Filter key={props.match.params.type} {...props} />)
             } />
 
-            <Route path="/filter/:type/:item" component={List} />
+            <Route path="/details/:type/:codeOfProduct" component={List} />
             <Route path="/contact" component={Contact} />
             <Route path="/basket" exact component={Basket} />
             <Route path="/rules" component = {Rules} />

@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import {Button, Modal} from "react-bootstrap"
 import "../contact/contact.css"
+import {connect} from "react-redux"
+import {changeData} from "../../store/languages/action"
+import {lang} from "../../lang"
 
 
 class CallBack extends Component {
@@ -17,11 +20,16 @@ class CallBack extends Component {
             show: !this.state.show
         })
     }
+    handelChangeLang = (id) => {
+        this.props.changeData(id)
 
+    }
    
     render() {
+        console.log(this.props.langData.langId)
         return (
             <div className = "payment-register" >
+                <a className = "link-white"><div handelChangeLang={this.handelChangeLang} langId={this.props.langData.langId}>{lang[this.props.langData.langId].buy} </div></a>
           <Modal show = {this.state.show} >
               <Modal.Footer>
                   <p className = "modal-close-btn"  onClick = {() => {this.handleModal()}}>
@@ -43,4 +51,14 @@ class CallBack extends Component {
     }
 }
 
-export default CallBack
+function mapstatetoprops(state) {
+    return {
+        langData: state.langReducer
+    }
+}
+const mapDispatchToProps = {
+    changeData
+}
+
+
+export default  connect(mapstatetoprops, mapDispatchToProps)(CallBack)

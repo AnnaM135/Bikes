@@ -44,13 +44,13 @@ class SelectPayment extends Component {
                 if(this.state.payment.card == true){
                     this.props.setState({
                         currentModal:3,
-                        firstStep: this.state.payment
+                        // firstStep: this.state.payment
                     })
                 }
                 else if(this.state.payment.pay == true){
                     this.props.setState({
                         currentModal:4,
-                        firstStep: this.state.payment
+                        // firstStep: this.state.payment
                     })
                 }
                 
@@ -63,6 +63,8 @@ class SelectPayment extends Component {
         console.log(this.state.payment)
     }
     render() {
+        console.log(this.props.first)
+
         // alert(JSON.stringify(this.props.state.firstStep))
         return (
            

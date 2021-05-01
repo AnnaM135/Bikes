@@ -39,25 +39,24 @@ export class List extends Component {
     }
 
     componentDidMount() {
+        console.log("TESTTT ")
+        console.log("itemmmmmmmm  " + this.props.match.params.type);
         AdminServices.getProductType(this.props.langData.langId, { productType: this.props.match.params.type })
-            .then(r => {
-                //  this.state.product = r.data.data
-                //this.setState({})
-                this.setState({
-                    product: r.data.data
-                });
-            })
-        AdminServices.getProductsItem(this.props.match.params.item).then((r) => {
-
-
+        .then(r => {
+            this.setState({
+                product: r.data.data
+            });
+        })
+        const code = this.props.match.params.codeOfProduct;
+        AdminServices.getProductsItem(code).then((r) => {
             this.setState({
                 data: r.data.data,
                 slideImg: r.data.data.imagePath
 
             });
-
-
         })
+       
+ 
     }
     handelChangeLang = (id) => {
         this.props.changeData(id)
@@ -156,8 +155,8 @@ export class List extends Component {
                                 <div className="swiper-pagination"></div>
                             </Swiper>
                             <div className="about-product">
-                                <h3>{this.state.data.productName}</h3>
-                                <p>{this.state.data.description}</p>
+                                <h3>{this.state.data['productName' + this.props.langData.langId]}</h3>
+                                <p>{this.state.data['description' + this.props.langData.langId]}</p>
                             </div>
                         </div>
                     </div>
@@ -172,7 +171,7 @@ export class List extends Component {
                         </div>
                         <div className="product-code">
                             <p>Code 654236853</p>
-                            <h5>{this.state.data.productName}</h5>
+                            <h5>{this.state.data['productName' + this.props.langData.langId]}</h5>
                         </div>
                         <div className="product-price">
                             <div className="product-price-now">
@@ -252,7 +251,7 @@ export class List extends Component {
                                     {JSON.parse(elem.imagePath).map((elem, i) =>
                                         <div className="same-product-img">
                                             <img src="/images/card-background.svg" />
-                                            {/* <i className="fa fa-shopping-cart" aria-hidden="true"></i> */}
+                                            <i className="fa fa-shopping-cart" aria-hidden="true"></i>
                                             <img src="/images/bicycle.svg" className="bicycle-img" />
                                         </div>
                                     )}
@@ -266,8 +265,8 @@ export class List extends Component {
                                             </div>
                                             <div className = "card-context">
 
-                                            <div>{elem.productName}</div>
-                                            <div>{elem.description}</div>
+                                            <div>{elem['productName' + this.props.langData.langId]}</div>
+                                            <div>{elem['description' + this.props.langData.langId]}</div>
                                             <div className="price-add">
                                             <p>{elem.price} Դր</p>
                                             <Link to = {`/filter/${elem.productType}/${elem.productName}`}>

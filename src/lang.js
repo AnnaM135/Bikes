@@ -162,9 +162,9 @@ const eng = {
 
 
 export const lang = {
-    "hy": arm, 
-    "en": eng,
-    "ru": ru,
+    "HY": arm, 
+    "EN": eng,
+    "RU": ru,
 }
 
 

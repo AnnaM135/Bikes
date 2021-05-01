@@ -68,6 +68,8 @@ class Basket extends Component {
         this.setState({})
     }
     render() {
+        console.log("user data",this.state.firstStep)
+        console.log("product data", this.state.data)
         return (
             <div className="basket-page">
                 <Header  handelChangeLang = {this.handelChangeLang} langId = {this.props.langData.langId}/>
@@ -87,8 +89,8 @@ class Basket extends Component {
                             )}  
                              <div className="basket-card-description">
                         <div>
-                            <p>{elem.productName}</p>
-                            <p>{elem.description}</p>
+                            <p>{elem['productName' + this.props.langData.langId]}</p>
+                            <p>{elem['description' + this.props.langData.langId]}</p>
                             <p>{elem.code}</p>
                         </div>
                         <div className="basket-card-count">
@@ -118,10 +120,13 @@ class Basket extends Component {
                     <hr className="basket-hr" />
                     <div className="basket-price-btn">
                         <button>
-                            {this.state.currentModal == 1 && <Payment data = {this.state.data}  setState={this.setState.bind(this)} />}
-                            {this.state.currentModal == 2 && <SelectPayment data = {this.state.data} setState={this.setState.bind(this)} />}
-                            {this.state.currentModal == 3 && <SelectCardPayment data = {this.state.data} setState={this.setState.bind(this)} />}
+                  {/* <a className = "link-white"><div handelChangeLang={this.handelChangeLang} langId={this.props.langData.langId}  onClick = {() => {this.handleModal()}}>{lang[this.props.langData.langId].buy} </div></a> */}
+
+                            {this.state.currentModal == 1 && <Payment first = {this.state.firstStep} data = {this.state.data}  setState={this.setState.bind(this)} />}
+                            {this.state.currentModal == 2 && <SelectPayment first = {this.state.firstStep} data = {this.state.data} setState={this.setState.bind(this)} />}
+                            {this.state.currentModal == 3 && <SelectCardPayment first = {this.state.firstStep} data = {this.state.data} setState={this.setState.bind(this)} />}
                             {this.state.currentModal == 4 && <CallBack data = {this.state.data} setState={this.setState.bind(this)} />}
+
                         </button>
                     </div>
                     <div className="basket-pay-versions">

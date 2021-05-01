@@ -43,8 +43,13 @@ export class Home extends Component {
 }
     componentDidMount() {
       console.log('componentDidMount homeeeee  ' + this.props.langData.langId);
-      AdminServices.getProducts(this.props.langData.langId).then((r) => {
+      AdminServices.getProducts().then((r) => {
         this.state.data = r.data
+          this.setState({
+            promo: [],
+            sale :[],
+            bestProducts: []
+          });
         this.state.data.forEach(elem => {
           this.state.types.push(elem.productType)
           let img = JSON.parse(elem.imagePath)
@@ -193,8 +198,8 @@ addCard(item) {
                             this.state.searchProducts.map((a) => (
                               <div key={a.id} >
                                 <p>
-                                  <Link style = {{color:"#FFFFFF"}} to={`/filter/${a.productType}/${a.productName}`}>
-                                    {a.productName}
+                                  <Link style = {{color:"#FFFFFF"}} to={`/dispatch/${a.codeOfProduct}`}>
+                                    {a['productName' + this.props.langData.langId]}
                                   </Link>
                                 </p>
                               </div>
@@ -250,17 +255,17 @@ addCard(item) {
                           <nav className = "new-menu">
           <ul className="header-menu-list">
             <li className="list-item">
-              <Link to={`/filter/${this.state.types[0]}`} className="list-item-link">
+              <Link to={`/filter/${lang[this.props.langData.langId].types[0]}`} className="list-item-link">
                 {lang[this.props.langData.langId].types[0]}
               </Link>
             </li>
             <li className="list-item">
-              <Link to={`/filter/${this.state.types[1]}`} className="list-item-link">
+              <Link to={`/filter/${lang[this.props.langData.langId].types[1]}`} className="list-item-link">
                   {lang[this.props.langData.langId].types[1]}
               </Link>
             </li>
             <li className="list-item">
-              <Link to={`/filter/${this.state.types[2]}`} className="list-item-link">
+              <Link to={`/filter/${lang[this.props.langData.langId].types[2]}`} className="list-item-link">
                   {lang[this.props.langData.langId].types[2]}
               </Link>
             </li>
@@ -335,7 +340,7 @@ addCard(item) {
                       }}>
                         <img src="./images/card-background.svg" />
                         <img src={elem} className="bicycle-img" />
-                        <Link to = "/basket"><i className="fa fa-shopping-cart" aria-hidden="true"></i></Link>
+                        <Link to = {`/details/${elem.productType}/${elem.codeOfProduct}`}><i className="fa fa-shopping-cart" aria-hidden="true"></i></Link>
                       </div>
                        
                        )}
@@ -348,11 +353,11 @@ addCard(item) {
                               <div style = {{backgroundColor: "yellow"}}></div>
                               <div style = {{backgroundColor: "grey"}}></div>                             
                             </div>
-                          <div>{product.productName}</div>
-                          <div>{product.description}</div>
+                          <div>{product['productName' + this.props.langData.langId]}</div>
+                          <div>{product['description' + this.props.langData.langId]}</div>
                           <div className="price-add">
                             <p>{product.price} Դր</p>
-                            <Link to = {`/filter/${product.productType}/${product.productName}`}>
+                            <Link to = {`/details/${product.productType}/${product.codeOfProduct}`}>
                               <button className="price-btn">{lang[this.props.langData.langId].buy}</button>
                           </Link>
                           </div>
@@ -424,11 +429,11 @@ addCard(item) {
                       </div>
                       <div className = "card-context">
 
-                    <div>{elem.productName}</div>
-                    <div>{elem.description}</div>
+                    <div>{elem['productName' + this.props.langData.langId]}</div>
+                    <div>{elem['description' + this.props.langData.langId]}</div>
                     <div className="price-add">
                       <p>{elem.price} Դր</p>
-                      <Link to = {`/filter/${elem.productType}/${elem.productName}`}>
+                      <Link to = {`/details/${elem.productType}/${elem.codeOfProduct}`}>
                               <button className="price-btn">{lang[this.props.langData.langId].buy}</button>
                       </Link>
                     </div>

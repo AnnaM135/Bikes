@@ -1,7 +1,7 @@
 import constants from "./const"
 
 let initState = {
-    langId: "hy",
+    langId: "HY",
     card: []
 }
 

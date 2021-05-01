@@ -5,7 +5,7 @@ const InitialState = {
     products: [],
     load:true,
     AdminEmail:'',
-    language:'hy'
+    language:'HY'
 };
 
 function reduxstate(state = InitialState, action) {

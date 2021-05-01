@@ -14,9 +14,7 @@ export class ProductItem extends Component {
     constructor(props) {
         super(props)
     
-        // this.state = {
-             
-        // }
+       
     }
     
 
@@ -46,11 +44,11 @@ export class ProductItem extends Component {
                 </div>
                 <div className = "card-context">
 
-                <div>{this.props.elem.productType}</div>
-                <div>{this.props.elem.description}</div>
+                <div>{this.props.elem['productName' + this.props.langData.langId]}</div>
+                <div>{this.props.elem['description' + this.props.langData.langId]}</div>
                 <div className="price-add">
                     <p>{this.props.elem.price} Դր</p>
-                    <Link to = {`/filter/${this.props.elem.productType}/${this.props.elem.productName}`}>
+                    <Link to = {`/details/${this.props.elem.productType}/${this.props.elem.codeOfProduct}`}>
                          <button className="price-btn">{lang[this.props.langData.langId].buy}</button>
                     </Link>
                 </div>      

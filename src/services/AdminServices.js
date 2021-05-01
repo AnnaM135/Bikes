@@ -12,24 +12,28 @@ class AdminService {
         })
 
     }
-    getProducts(language){
-        return this.api.get(`/product/products${language}`)
+    getProducts(){
+        return this.api.get(`/product/products`)
     }
 
-    getProductsItem(productName){
-        return this.api.post(`/product/find`, { productName })
+    getProductsItem(codeOfProduct){
+        return this.api.get(`/product/tools/find?codeOfProduct=${codeOfProduct}`)
     }
     
     getProductType(language, attributes){
         return this.api.post(`/product/tools/filter`, {language,   attributes})
     }
     search(data){
-        return this.api.get(`/product/tools/search${data}`)
+        return this.api.get(`/product/tools/search?info=${data}`)
+       
     }
     payment(user, data){
-        return this.api.post(`/payment/Ameriabank`, {user, data})
+        return this.api.post(`/payment/Ameriabank`, {"user" : user, "products": data})
+    }
+    status(data){
+        return this.api.get(`/payment/Ameriabank/getStatus?paymentID=`, {data})
     }
 }
 
-export default new AdminService()  // sa jnjvel er qceluc
+export default new AdminService()  
 

@@ -18,7 +18,8 @@ class SelectCardPayment extends Component {
              selectBank:{
                  ameria: false,
                  idram: false,
-             }
+             },
+             paymentId: "",
         }
     }
     handelChangeLang = (id) => {
@@ -33,7 +34,6 @@ class SelectCardPayment extends Component {
     change = (e) =>  {  
         let object = {};
         object[e.target.value] = e.target.checked
-       console.log(object) 
        this.state.selectBank = object 
        this.setState({})
     }
@@ -44,12 +44,21 @@ class SelectCardPayment extends Component {
                 if(this.state.selectBank.ameria == true){
                     this.props.setState({
                         currentModal:3,
-                        firstStep: this.state.selectBank
+                      
                     })
-                   AdminServices.payment({user: this.props.setState.firstStep}, this.props.data)
+                   
+          
+                   AdminServices.payment(this.props.first, this.props.data)
                    .then(r => {
-                       console.log(r)
+                       console.log(JSON.stringify(r.data.PaymentID))
+                      let payId = r.data.PaymentID;
+                    window.location =  `https://services.ameriabank.am/VPOS/Payments/Pay?id=${payId}&lang=en`
+                    //   AdminServices.status(payId).then(r => {
+                    //       console.log(r.data)
+                    //   })
                    })
+                   
+
                 }
                 else if(this.state.selectBank.idram == true){
                     console.log("tox gna idrami harcman ej")
@@ -63,7 +72,7 @@ class SelectCardPayment extends Component {
         this.setState({})
     }
     render() {
-        console.log(this.props.setState.firstStep)
+       //console.log(JSON.stringify(this.props.first))
         return (
              <div className = "payment-register" >
             {/* <a className = "link-white"><div handelChangeLang={this.handelChangeLang} langId={this.props.langData.langId}  onClick = {() => {this.handleModal()}}>Հաջորդը </div></a> */}

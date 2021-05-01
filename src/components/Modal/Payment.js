@@ -17,12 +17,12 @@ class Payment extends Component {
     
         this.state = {
            orderInput: {
-                name: "sdg",
-                surname: "sdvg",
-                email: "sdg",
-                phone: "4351234567891", 
-                address: "adf",
-                homeAddress: "asf"
+                name: "",
+                surname: "",
+                email: "",
+                phone: "", 
+                address: "",
+                homeAddress: ""
            },
            show: false,
            page: false,
@@ -62,15 +62,15 @@ class Payment extends Component {
         if(this.state.error  == ""){
             this.props.setState({
                 currentModal:2,
-                firstModal: this.state.orderInput
+                firstStep: this.state.orderInput
             })
             this.props.setState({})
 
         }
     }
     render() {
-        console.log(this.props)
-        // alert(JSON.stringify(this.props.state))
+        console.log(this.props.first)
+                // alert(JSON.stringify(this.props.state))
         return (
             <div className = "payment-register" >
                   <a className = "link-white"><div handelChangeLang={this.handelChangeLang} langId={this.props.langData.langId}  onClick = {() => {this.handleModal()}}>{lang[this.props.langData.langId].buy} </div></a>

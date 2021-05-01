@@ -1,4 +1,4 @@
-/* .admin-header{
+.admin-header{
 	max-width: 100%;
 	background-color: #000000;
 	padding: 20px;
@@ -177,13 +177,13 @@
 		margin: 10px;
 	}
 	
-  } */
+  }
 
 
 
   /* HEADER START  */
 
-  .admin-header-black{
+  /* .admin-header-black{
 	  padding: 20px;
 	  background-color: #000000;
   }
@@ -275,7 +275,7 @@
 	letter-spacing: 3px;
 	color: #49494D;
 }
-/* .nav-bar-admin{
+.nav-bar-admin{
 	display: flex;
 	justify-content: space-between;
 }

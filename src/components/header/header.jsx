@@ -22,7 +22,7 @@ export class Header extends Component {
     }
   }
   componentDidMount() {
-    AdminServices.getProducts(this.props.langId).then(r => {
+    AdminServices.getProducts().then(r => {
       //console.log(this.props.langId)
       let filtObj = getAllFilters(r.data);
 
@@ -161,17 +161,17 @@ export class Header extends Component {
                           <nav className = "new-menu">
           <ul className="header-menu-list">
             <li className="list-item">
-              <Link to={`/filter/${this.state.types[0]}`} className="list-item-link">
+              <Link to={`/filter/${lang[this.props.langId].types[0]}`} className="list-item-link">
                 {lang[this.props.langId].types[0]}
               </Link>
             </li>
             <li className="list-item">
-              <Link to={`/filter/${this.state.types[1]}`} className="list-item-link">
+              <Link to={`/filter/${lang[this.props.langId].types[1]}`} className="list-item-link">
                   {lang[this.props.langId].types[1]}
               </Link>
             </li>
             <li className="list-item">
-              <Link to={`/filter/${this.state.types[2]}`} className="list-item-link">
+              <Link to={`/filter/${lang[this.props.langId].types[2]}`} className="list-item-link">
                   {lang[this.props.langId].types[2]}
               </Link>
             </li>

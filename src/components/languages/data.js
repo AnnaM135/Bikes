@@ -1,15 +1,15 @@
 export const flags = [
     {
         name: "Հայերեն",
-        id: "hy",
+        id: "HY",
     },
     {
         name: "English",
-        id: "en",
+        id: "EN",
     },
     {
         name: "Руский",
-        id: "ru",
+        id: "RU",
     },
 
 ];
