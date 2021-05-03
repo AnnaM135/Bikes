@@ -16,7 +16,25 @@ export class ProductItem extends Component {
     
        
     }
-    
+    addCard(item) {
+        item.count = 1
+        let local = localStorage.getItem("item")
+        let names;
+        if (local === null) {
+            names = []
+        } else {
+            names = JSON.parse(local)
+            let d = names.find(elem => elem.id == item.id)
+            if (d) {
+                item.count = 2
+                names = names.filter(elem => elem !== item)
+                return
+            }
+        }
+        names.push(item)
+        localStorage.setItem("item", JSON.stringify(names))
+        this.setState({})
+    }
 
     render() {
         return (
@@ -24,9 +42,8 @@ export class ProductItem extends Component {
             {JSON.parse(this.props.elem.imagePath).map((elem,i) => 
                 <div key = {elem} className="discount-home-img">
                     <img src="/images/card-background.svg" />
-                    {/* <Link to = "/basket"><i className="fa fa-shopping-cart" aria-hidden="true"></i></Link> */}
-                    <img src="/images/bicycle.svg" className="bicycle-img" />
-                    {/* <img src={elem} className="bicycle-img" /> */}
+                    <Link to = "/basket"><i onClick={this.addCard.bind(this, this.props.elem)} className="fa fa-shopping-cart" aria-hidden="true"></i></Link>
+                    <img src={elem} className="bicycle-img" />
                 </div>
             )}             
            

@@ -366,7 +366,7 @@ export class Filter extends Component {
                     <div className="assortment-col-two">
                         <div className="filter-head">
                             <img src = "/images/bike-filter.svg" className = "filter-icon-bike"/> 
-                            <p className="filter-head-bike" style = {{fontSize: "28px"}}>{this.props.match.params.type}</p>
+                            <p className="filter-head-bike" style = {{fontSize: "28px"}}>{lang[this.props.langData.langId].types[0]}</p>
                         </div>
                         <div className="assortment-area-cards">
                             {

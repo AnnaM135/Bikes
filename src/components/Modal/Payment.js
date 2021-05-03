@@ -22,7 +22,7 @@ class Payment extends Component {
                 email: "",
                 phone: "", 
                 address: "",
-                homeAddress: "l"
+                homeAddress: ""
            },
            show: false,
            page: false,
@@ -54,7 +54,7 @@ class Payment extends Component {
             if(this.state.orderInput[i] == ""){
                 this.state.error = "Լրացրեք բոլոր դաշտերը"
             }
-            else if(this.state.orderInput.phone.length < 12){
+            else if(this.state.orderInput.phone.length < 11){
                 this.state.error = "Հեռախոսահամարն ամբողջական չէ"
             }
         }
@@ -69,21 +69,20 @@ class Payment extends Component {
         }
     }
     render() {
-        console.log(this.props.first)
                 // alert(JSON.stringify(this.props.state))
         return (
             <div className = "payment-register" >
                   <a className = "link-white"><div handelChangeLang={this.handelChangeLang} langId={this.props.langData.langId}  onClick = {() => {this.handleModal()}}>{lang[this.props.langData.langId].buy} </div></a>
-                <Modal show = {this.state.show} >
+                <Modal id = "error" show = {this.state.show} >
                     <Modal.Footer>
                         <p className = "modal-close-btn"  onClick = {() => {this.handleModal()}}>
                             <i class="fa fa-times" aria-hidden="true"></i>
                         </p>
                     </Modal.Footer>
                     <Modal.Body style = {{margin: "7%"}}>
-                        <h1>Լրացրեք դաշտերը</h1>
-                        <h1 className = "alert-dark">{this.state.error}</h1>
-                        <div className = "payment-label" style = {{marginTop: "100px"}}>
+                        <h1 >Լրացրեք դաշտերը</h1>
+                        <h1 style = {{fontSize: "18px"}} className = "text-danger">{this.state.error}</h1>
+                        <div className = "payment-label" style = {{marginTop: "55px"}}>
                             <label htmlFor = "name">Մուտքագրեք Անուն</label>
                         </div>
                         <div className = "payment-form">
@@ -107,7 +106,7 @@ class Payment extends Component {
                             <label htmlFor = "phone">Հեռախոսահամար</label>
                         </div>
                         <div className = "payment-form">
-                            <input data-id = "phone" value = {this.state.orderInput.phone} onChange = {this.change.bind(this)} className = "payment-input" type = "number"/>
+                            <input data-id = "phone" value = {this.state.orderInput.phone} onChange = {this.change.bind(this)} placeholder = "+374XXXXXXXX" className = "payment-input" type = "number"/>
                         </div>
                         <div className = "payment-label">
                             <i class="fa fa-home" aria-hidden="true"></i>
@@ -130,8 +129,8 @@ class Payment extends Component {
                        </div>
                       <div className = "save">
                         <div className = "save-btn">
-                            <button onClick = {() => this.save()} >                          
-                                Հաստատել                               
+                            <button  onClick = {() => this.save()} >                          
+                                <a href = "#error" style = {{textDecoration: "none", color: "white"}}>Հաստատել </a>                             
                             </button>
                         </div>
                       </div>

@@ -18,12 +18,19 @@ export class Header extends Component {
       types: [],
       showList: false,
       search: "",
-      searchProducts: []
+      searchProducts: [],
+      basketCount: 0
+
     }
   }
   componentDidMount() {
+    let item = JSON.parse(localStorage.getItem("item"))
+    this.setState({
+      basketCount: item.length
+    })
+    console.log("poxvum e" + item.length)
+    console.log("poxvum e" + this.state.basketCount)
     AdminServices.getProducts().then(r => {
-      //console.log(this.props.langId)
       let filtObj = getAllFilters(r.data);
 
       this.setState({ types: filtObj.types })
@@ -33,6 +40,7 @@ export class Header extends Component {
       active: flags[0].id,
     })
   }
+
   handelClick = (event) => {
     this.setState((prevState) => ({
       showList: !prevState.showList,
@@ -107,9 +115,9 @@ export class Header extends Component {
                 this.state.searchProducts.map((a) => (
                   <div key={a.id} >
                     <p>
-                      <Link style = {{color:"#FFFFFF"}} to={`/filter/${a.productType}/${a.productName}`}>
-                        {a.productName}
-                      </Link>
+                    <Link style = {{color:"#FFFFFF"}} to={`/details/${a.productType}/${a.codeOfProduct}`}>
+                      <p>{a.productType} ` {a['productName' + this.props.langId]}</p> 
+                    </Link>
                     </p>
                   </div>
                 ))
@@ -117,6 +125,7 @@ export class Header extends Component {
              </div>
             </div>
             <div className="four header-card">
+            <div className = "notifications">{this.state.basketCount}</div>
               <Link to="/basket" data={this.props.data}><i className="fa fa-shopping-cart" aria-hidden="true"></i></Link>
 
             </div>

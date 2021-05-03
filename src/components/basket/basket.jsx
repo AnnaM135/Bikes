@@ -27,22 +27,24 @@ class Basket extends Component {
         }
     }
     componentDidMount() {
-        let item = JSON.parse(localStorage.getItem("item"))
-        console.log(item)
+       let item = JSON.parse(localStorage.getItem("item"))
        this.state.data = item || []
        this.sum()
        this.setState({})
     }
     minusProd(elem){
         elem.count--
-        if(elem.count === 0){
-            let existingEntries = JSON.parse(localStorage.getItem("item"));
-            existingEntries  = existingEntries.filter(e => e.id != elem.id); 
-           localStorage.setItem("item",JSON.stringify(existingEntries) )
-           this.setState({})
+        if(elem.count < 1){
+            elem.count = 1
         }
-        this.sum()
-        this.componentDidMount()
+        // if(elem.count === 0){
+        //     let existingEntries = JSON.parse(localStorage.getItem("item"));
+        //     existingEntries  = existingEntries.filter(e => e.id != elem.id); 
+        //    localStorage.setItem("item",JSON.stringify(existingEntries) )
+        //    this.setState({})
+        // }
+        // this.sum()
+        // this.componentDidMount()
         this.setState({})
     }
     plusProd(elem){
@@ -68,8 +70,8 @@ class Basket extends Component {
         this.setState({})
     }
     render() {
-        console.log("user data",this.state.firstStep)
-        console.log("product data", this.state.data)
+        // console.log("user data",this.state.firstStep)
+        // console.log("product data", this.state.data)
         return (
             <div className="basket-page">
                 <Header  handelChangeLang = {this.handelChangeLang} langId = {this.props.langData.langId}/>

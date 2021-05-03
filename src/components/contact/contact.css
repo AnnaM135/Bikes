@@ -140,17 +140,16 @@
 .payment-form {
     width: 400px;
     border-radius: 30px;
-    background-color: #C4C4C4;
+    background-color: #EDEDED;
 	height:auto;
     overflow: hidden;
 	padding: 7px;
-	opacity: 0.3;
     border: 1px solid;
 }
 .payment-select {
     width: 215px;
     border-radius: 30px;
-    background-color: #C4C4C4;
+    background-color: #EDEDED;
     height: 50px;
     overflow: hidden;
     padding: 15px;
@@ -158,7 +157,7 @@
     border: 1px solid;
 }
 .address{
-	margin-top: 15px;
+	margin-bottom: 15px;
 }
 .select-payment-form  label{
 	margin-left: 15px;
@@ -167,18 +166,17 @@
 	margin: 10px;
 }
 .payment-label{
-	margin-top: 20px;
+	margin-top: 10px;
 
 }
 .payment-input{
 	outline: none;
 	border: none;
-	background-color: #C4C4C4;
+	background-color: #EDEDED;
 	padding: 5px;
 	width: 80%;
 	border-radius: 30px;
 	margin-left: 10px;
-	opacity: 0.9;
 }
 
 input[type=radio]{

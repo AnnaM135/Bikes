@@ -143,7 +143,7 @@ const AdminPanel = () => {
    
     return (
         <>
-            {/* <div className = "admin-header-black"></div>
+            <div className = "admin-header-black"></div>
             <div className = "archive-trash">
                 <div className = "archive-elements">
                     <h4>PRODUCT TYPE</h4>
@@ -179,18 +179,37 @@ const AdminPanel = () => {
                        <li className = "list-item">
                            <a className = "list-item-link-admin">Հեծանիվ</a>
                        </li>
+                       <li className = "list-item">
+                           <a className = "list-item-link-admin">Հեծանիվ</a>
+                       </li>
+                       <li className = "list-item">
+                           <a className = "list-item-link-admin">Հեծանիվ</a>
+                       </li>
+                       <li className = "list-item">
+                           <a className = "list-item-link-admin">Հեծանիվ</a>
+                       </li>
+                       <li className = "list-item">
+                           <a className = "list-item-link-admin">Հեծանիվ</a>
+                       </li>
+                       <li className = "list-item">
+                           <a className = "list-item-link-admin">Հեծանիվ</a>
+                       </li>
                    </ul>
                    <div className = "add-icons">
                         <i className = "fa fa-plus"></i>
                         <i className = "fa fa-plus"></i>
                         <i className = "fa fa-plus"></i>
                         <i className = "fa fa-plus"></i>
-
+                        <i className = "fa fa-plus"></i>
+                        <i className = "fa fa-plus"></i>
+                        <i className = "fa fa-plus"></i>
+                        <i className = "fa fa-plus"></i>
+                        <i className = "fa fa-plus"></i>
                    </div>
                </nav>
 
-            </div> */}
-            <header className="admin-header">
+            </div>
+            {/* <header className="admin-header">
                 <i className="fa fa-pencil-square-o" aria-hidden="true" onClick={()=> setForm(prev=>!prev)}></i>
                 <button name='hy' onClick={changeLanguage}>հայերեն</button>
                 <button name='en' onClick={changeLanguage}>english</button>
@@ -291,7 +310,7 @@ const AdminPanel = () => {
                         )
                     })}
                 </div>
-            </section>
+            </section> */}
         </>
     )
 }

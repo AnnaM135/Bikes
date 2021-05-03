@@ -124,7 +124,7 @@ export class List extends Component {
         const cnUl = classnames({ "size-list": true, "not-active": !this.state.showSize, })
         const cnHeight = classnames({ "size-list": true, "not-active": !this.state.showHeight, })
         return (
-            <div className="product-page">
+            <div id = "details" className="product-page">
                 <Header data={this.state.card} handelChangeLang={this.handelChangeLang} langId={this.props.langData.langId} />
                 <div className="product-page-area">
                     <div className="product-img-area">
@@ -248,11 +248,12 @@ export class List extends Component {
                         {
                             this.state.product.map((elem, i) => (
                                 <div key={i} className="same-product-cards-one">
-                                    {JSON.parse(elem.imagePath).map((elem, i) =>
+                                    {JSON.parse(elem.imagePath).map((e, i) =>
                                         <div className="same-product-img">
                                             <img src="/images/card-background.svg" />
                                             <i className="fa fa-shopping-cart" aria-hidden="true"></i>
-                                            <img src="/images/bicycle.svg" className="bicycle-img" />
+                                            <img src={e} className="bicycle-img" />
+                                            <Link to = "/basket"><i onClick={this.addCard.bind(this, elem)} className="fa fa-shopping-cart" aria-hidden="true"></i></Link>
                                         </div>
                                     )}
                                     <div className = "card-context">

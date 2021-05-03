@@ -39,17 +39,24 @@ export class Home extends Component {
       showMenu: false,
       showStore: false,
       bestProductsSwiperActiveIdx:1,
+      basketCount: 0
     }
 }
     componentDidMount() {
-      console.log('componentDidMount homeeeee  ' + this.props.langData.langId);
+      let item = JSON.parse(localStorage.getItem("item"))
+      let basketArr = []
+      basketArr.push(item)
+      basketArr.forEach(item => {
+        console.log(item.length)
+        this.state.basketCount = item.length
+      })
       AdminServices.getProducts().then((r) => {
         this.state.data = r.data
-          this.setState({
-            promo: [],
-            sale :[],
-            bestProducts: []
-          });
+        this.setState({
+          promo: [],
+          sale :[],
+          bestProducts: []
+        });
         this.state.data.forEach(elem => {
           this.state.types.push(elem.productType)
           let img = JSON.parse(elem.imagePath)
@@ -97,10 +104,30 @@ export class Home extends Component {
         showList: false,
       })
       console.log(this.props.langData.langId);
-      
     }
   }
   
+addCard(item) {
+    item.count = 1
+    let local = localStorage.getItem("item")
+    let names;
+    if (local === null) {
+        names = []
+    } else {
+        names = JSON.parse(local)
+        let d = names.find(elem => elem.id == item.id)
+        if (d) {
+            item.count = 2
+            names = names.filter(elem => elem !== item)
+            return
+        }
+    }
+    names.push(item)
+    localStorage.setItem("item", JSON.stringify(names))
+    this.setState({})
+}
+
+
   changeSearch(e) {
     this.state.searchProducts = [];
     this.state[e.target.getAttribute("data-id")] = e.target.value;
@@ -137,25 +164,6 @@ export class Home extends Component {
         this.state.showStore = false;
     }
     this.setState({})
-}
-addCard(item) {
-  item.count = 1
-  let local = localStorage.getItem("item")
-  let names;
-  if (local === null) {
-      names = []
-  } else {
-      names = JSON.parse(local)
-      let d = names.find(elem => elem.id == item.id)
-      if (d) {
-          item.count = 2
-          names = names.filter(elem => elem !== item)
-          return
-      }
-  }
-  names.push(item)
-  localStorage.setItem("item", JSON.stringify(names))
-  this.setState({})
 }
 
     render() {
@@ -198,8 +206,9 @@ addCard(item) {
                             this.state.searchProducts.map((a) => (
                               <div key={a.id} >
                                 <p>
-                                  <Link style = {{color:"#FFFFFF"}} to={`/dispatch/${a.codeOfProduct}`}>
-                                    {a['productName' + this.props.langData.langId]}
+
+                                  <Link style = {{color:"#FFFFFF"}} to={`/details/${a.productType}/${a.codeOfProduct}`}>
+                                    <p>{a.productType} ` {a['productName' + this.props.langData.langId]}</p> 
                                   </Link>
                                 </p>
                               </div>
@@ -208,6 +217,7 @@ addCard(item) {
                         </div>
                   </div>
                   <div className="four header-card">
+                  <div className = "notifications">{this.state.basketCount}</div>
                     <Link to = "/basket"><i className="fa fa-shopping-cart" aria-hidden="true"></i></Link>
                   </div>
                   <div className="five header-card">
@@ -255,17 +265,17 @@ addCard(item) {
                           <nav className = "new-menu">
           <ul className="header-menu-list">
             <li className="list-item">
-              <Link to={`/filter/${lang[this.props.langData.langId].types[0]}`} className="list-item-link">
-                {lang[this.props.langData.langId].types[0]}
+              <Link to={`/filter/${this.state.types[0]}`} className="list-item-link">
+                {lang[this.props.langData.langId].types[0]}  
               </Link>
             </li>
             <li className="list-item">
-              <Link to={`/filter/${lang[this.props.langData.langId].types[1]}`} className="list-item-link">
+              <Link to={`/filter/${this.state.types[1]}`} className="list-item-link">
                   {lang[this.props.langData.langId].types[1]}
               </Link>
             </li>
             <li className="list-item">
-              <Link to={`/filter/${lang[this.props.langData.langId].types[2]}`} className="list-item-link">
+              <Link to={`/filter/${this.state.types[2]}`} className="list-item-link">
                   {lang[this.props.langData.langId].types[2]}
               </Link>
             </li>
@@ -340,7 +350,7 @@ addCard(item) {
                       }}>
                         <img src="./images/card-background.svg" />
                         <img src={elem} className="bicycle-img" />
-                        <Link to = {`/details/${elem.productType}/${elem.codeOfProduct}`}><i className="fa fa-shopping-cart" aria-hidden="true"></i></Link>
+                        <Link to = "/basket"><i onClick={this.addCard.bind(this, product)} className="fa fa-shopping-cart" aria-hidden="true"></i></Link>
                       </div>
                        
                        )}
@@ -404,17 +414,17 @@ addCard(item) {
                   this.state.sale.map(elem => (
                     
                   <div className="discount-home-cards-one">
-                     {JSON.parse(elem.imagePath).map((elem, i) => 
+                     {JSON.parse(elem.imagePath).map((e, i) => 
                   <div className="discount-home-img">
                     <div>
                       <img src="./images/sale.png" className = "sale-background-img" />
                       <div className = "sale-img-text">{elem.discounts}</div>
                     </div>
                     <img src="./images/card-background.svg" />
-                    <img src={elem} className="bicycle-img" />
-                    {console.log(elem)}
+                    <img src={e} className="bicycle-img" />
+                   
                     
-                    <Link to = "/basket"><i className="fa fa-shopping-cart" aria-hidden="true" ></i></Link>
+                    <Link to = "/basket"><i onClick={this.addCard.bind(this, elem)} className="fa fa-shopping-cart" aria-hidden="true" ></i></Link>
                   </div>
                     )}
                     <div>
@@ -433,7 +443,7 @@ addCard(item) {
                     <div>{elem['description' + this.props.langData.langId]}</div>
                     <div className="price-add">
                       <p>{elem.price} Դր</p>
-                      <Link to = {`/details/${elem.productType}/${elem.codeOfProduct}`}>
+                      <Link  to = {`/details/${elem.productType}/${elem.codeOfProduct}`}>
                               <button className="price-btn">{lang[this.props.langData.langId].buy}</button>
                       </Link>
                     </div>

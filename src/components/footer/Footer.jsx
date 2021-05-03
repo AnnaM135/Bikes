@@ -54,6 +54,5 @@ export class Footer extends Component {
         )
     }
 }
-{/* <Route path = "/rules" component ={Rules} /> */}
 
 export default Footer
