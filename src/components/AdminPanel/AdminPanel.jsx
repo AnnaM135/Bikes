@@ -1,6 +1,7 @@
   
 import React, { useState, useEffect, memo, FC } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import AdminAdd from '../AdminAdd/AdminAdd';
 import axios from '../AxiosPost/AxiosPost';
 import "./AdminPanel.css"
 
@@ -153,61 +154,61 @@ const AdminPanel = () => {
                     </div>
                 </div>
             </div>
-            <div className = "admin-header-search">
-                <button className = "change-btn">Հաստատել փոփոխությունները</button>
-                    <div className = "admin-search-area">
-                        <input type = "text" placeholder = "Փնտրել"/>
-                        <i className = "fa fa-search"></i>
-                    </div>
-            </div>
-            <div className = "type-area">
-               <div className = "type-area-head">
-                    <img src = "/images/adminTypes.svg" />
-                    <h1>Բաժիններ</h1>
-               </div>
-               <nav className = "nav-bar-admin">
-                   <ul className = "ul-list">
-                       <li className = "list-item">
-                           <a className = "list-item-link-admin">Հեծանիվ</a>
-                       </li>
-                       <li className = "list-item">
-                           <a className = "list-item-link-admin">Հեծանիվ</a>
-                       </li>
-                       <li className = "list-item">
-                           <a className = "list-item-link-admin">Հեծանիվ</a>
-                       </li>
-                       <li className = "list-item">
-                           <a className = "list-item-link-admin">Հեծանիվ</a>
-                       </li>
-                       <li className = "list-item">
-                           <a className = "list-item-link-admin">Հեծանիվ</a>
-                       </li>
-                       <li className = "list-item">
-                           <a className = "list-item-link-admin">Հեծանիվ</a>
-                       </li>
-                       <li className = "list-item">
-                           <a className = "list-item-link-admin">Հեծանիվ</a>
-                       </li>
-                       <li className = "list-item">
-                           <a className = "list-item-link-admin">Հեծանիվ</a>
-                       </li>
-                       <li className = "list-item">
-                           <a className = "list-item-link-admin">Հեծանիվ</a>
-                       </li>
-                   </ul>
-                   <div className = "add-icons">
-                        <i className = "fa fa-plus"></i>
-                        <i className = "fa fa-plus"></i>
-                        <i className = "fa fa-plus"></i>
-                        <i className = "fa fa-plus"></i>
-                        <i className = "fa fa-plus"></i>
-                        <i className = "fa fa-plus"></i>
-                        <i className = "fa fa-plus"></i>
-                        <i className = "fa fa-plus"></i>
-                        <i className = "fa fa-plus"></i>
-                   </div>
-               </nav>
+       
+            <div className = "admin-page-main">
 
+                <div className = "type-area">
+                <div className = "type-area-head">
+                        <img src = "/images/adminTypes.svg" />
+                        <h1>Բաժիններ</h1>
+                </div>
+                <nav className = "nav-bar-admin">
+                    <ul className = "admin-ul-list">
+                        <li className = "admin-list-item">
+                            <a className = "admin-list-item-link">Հեծանիվ</a>
+                        </li>
+                        <li className = "admin-list-item">
+                            <a className = "admin-list-item-link">Հեծանիվ</a>
+                        </li>
+                        <li className = "admin-list-item">
+                            <a className = "admin-list-item-link">Հեծանիվ</a>
+                        </li>
+                        <li className = "admin-list-item">
+                            <a className = "admin-list-item-link">Հեծանիվ</a>
+                        </li>
+                        <li className = "admin-list-item">
+                            <a className = "admin-list-item-link">Հեծանիվ</a>
+                        </li>
+                        <li className = "admin-list-item">
+                            <a className = "admin-list-item-link">Հեծանիվ</a>
+                        </li>
+                        <li className = "admin-list-item">
+                            <a className = "admin-list-item-link">Հեծանիվ</a>
+                        </li>
+                        <li className = "admin-list-item">
+                            <a className = "admin-list-item-link">Հեծանիվ</a>
+                        </li>
+                        <li className = "admin-list-item">
+                            <a className = "admin-list-item-link">Հեծանիվ</a>
+                        </li>
+                    </ul>
+                    <div className = "admin-add-icons">
+                            <i className = "fa fa-plus"></i>
+                            <i className = "fa fa-plus"></i>
+                            <i className = "fa fa-plus"></i>
+                            <i className = "fa fa-plus"></i>
+                            <i className = "fa fa-plus"></i>
+                            <i className = "fa fa-plus"></i>
+                            <i className = "fa fa-plus"></i>
+                            <i className = "fa fa-plus"></i>
+                            <i className = "fa fa-plus"></i>
+                    </div>
+                </nav>
+
+                </div>
+                <div className = "admin-another-page">.
+                    <AdminAdd />
+                </div>
             </div>
             {/* <header className="admin-header">
                 <i className="fa fa-pencil-square-o" aria-hidden="true" onClick={()=> setForm(prev=>!prev)}></i>

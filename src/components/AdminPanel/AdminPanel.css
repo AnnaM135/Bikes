@@ -1,4 +1,4 @@
-.admin-header{
+/* .admin-header{
 	max-width: 100%;
 	background-color: #000000;
 	padding: 20px;
@@ -177,17 +177,20 @@
 		margin: 10px;
 	}
 	
-  }
+  } */
 
 
 
   /* HEADER START  */
 
-  /* .admin-header-black{
+  .admin-header-black{
 	  padding: 20px;
 	  background-color: #000000;
   }
 
+  .admin-page-main{
+	  display: flex;
+  }
 
   .archive-trash{
 	  display: flex;
@@ -216,12 +219,12 @@
 	color: #B42F32;
 }
 
-.admin-header-search{
-	display: flex;
-	justify-content: flex-end;
-	max-width: 100%;
-	align-items: flex-end;
-	height: 60px;
+.admin-header-search {
+    display: flex;
+    justify-content: flex-end;
+    max-width: 95%;
+    align-items: flex-end;
+    height: 40px;
 }
 
 .admin-search-area{
@@ -241,7 +244,7 @@
 }
 .admin-search-area i{
 	position: absolute;
-	margin-left: 360px;
+	margin-left: 345px;
 	margin-top: 10px;
 }
 .change-btn{
@@ -253,9 +256,10 @@
 }
 
 .type-area{
-	background-color: red;
+		/* background-color: red; */
 	width: 20%;
 	padding: 30px;
+	margin-top: 50px;
 }
 
 .type-area-head{
@@ -275,29 +279,108 @@
 	letter-spacing: 3px;
 	color: #49494D;
 }
-.nav-bar-admin{
-	display: flex;
-	justify-content: space-between;
+.nav-bar-admin {
+    display: flex;
+    justify-content: center;
+    width: 140px;
 }
-.add-icons{
+.admin-add-icons{
 	display: flex;
 	justify-content: space-around;
 	flex-direction: column;
 }
-.add-icons i{
+.admin-add-icons i{
 	margin-top: 10px;
 }
-.ul-list{
+.admin-ul-list{
 	list-style-type: none;	
 }
 
-.list-item{
+.admin-list-item{
 	margin-top: 15px;
 	margin-left: -30px;
 }
 
-.list-item-link-admin{
+.admin-list-item-link{
 	text-decoration: none;
 	color: #49494D;
 	font-size: 13px;
-} */
+}
+
+/* ANOTHER */
+.admin-another-page{
+	/* background-color: #B42F32; */
+	width: 80%;
+	padding: 5px;
+}
+
+/*  ADMIN ADD IMAGE  */
+.admin-add-section{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
+}
+.admin-static-add{
+	/* background-color: aqua; */
+	margin-top: 130px;
+	width: 500px;
+	height: 500px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.admin-add-image img{
+	width: 320px;
+	height: 319px;
+}
+
+
+.admin-add-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    border: 1px solid #1D1D1D;
+    padding: 8px;
+    border-radius: 20px;
+    width: 170px;
+}
+.admin-add-btn i{
+	margin-top: 4px;
+}
+.admin-add-btn button{
+	outline: none;
+	border: none;
+	background-color: transparent;
+	margin-left: 10px;
+}
+
+
+
+
+/* 
+
+<div>
+                <div className = "admin-header-search">
+                        <button className = "change-btn">Հաստատել փոփոխությունները</button>
+                        <div className = "admin-search-area">
+                            <input type = "text" placeholder = "Փնտրել"/>
+                            <i className = "fa fa-search"></i>
+                        </div>
+                </div>
+                    tarber componentner
+            </div>
+*/
+
+/* 
+
+  <div className = "admin-header-search">
+                        <button className = "change-btn">Հաստատել փոփոխությունները</button>
+                        <div className = "admin-search-area">
+                            <input type = "text" placeholder = "Փնտրել"/>
+                            <i className = "fa fa-search"></i>
+                        </div>
+                </div>
+*/
