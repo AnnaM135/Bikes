@@ -1,6 +1,7 @@
   
 import React, { useState, useEffect, memo, FC } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import AdminAdd from '../AdminAdd/AdminAdd';
 import axios from '../AxiosPost/AxiosPost';
 import "./AdminPanel.css"
@@ -144,19 +145,6 @@ const AdminPanel = () => {
    
     return (
         <>
-            <div className = "admin-header-black"></div>
-            <div className = "archive-trash">
-                <div className = "archive-elements">
-                    <h4>PRODUCT TYPE</h4>
-                    <div className = "archive-icon">
-                        <h4>Արխիվ</h4>
-                        <i class="fa fa-archive" aria-hidden="true"></i>
-                    </div>
-                </div>
-            </div>
-       
-            <div className = "admin-page-main">
-
                 <div className = "type-area">
                 <div className = "type-area-head">
                         <img src = "/images/adminTypes.svg" />
@@ -165,31 +153,31 @@ const AdminPanel = () => {
                 <nav className = "nav-bar-admin">
                     <ul className = "admin-ul-list">
                         <li className = "admin-list-item">
-                            <a className = "admin-list-item-link">Հեծանիվ</a>
+                            <a className = "admin-list-item-link">Հեծանիվներ</a>
                         </li>
                         <li className = "admin-list-item">
-                            <a className = "admin-list-item-link">Հեծանիվ</a>
+                            <a className = "admin-list-item-link">Սայլակներ</a>
                         </li>
                         <li className = "admin-list-item">
-                            <a className = "admin-list-item-link">Հեծանիվ</a>
+                            <a className = "admin-list-item-link">Եռանիվ հեծանիվներ</a>
                         </li>
                         <li className = "admin-list-item">
-                            <a className = "admin-list-item-link">Հեծանիվ</a>
+                            <a className = "admin-list-item-link">Սքեյթ</a>
                         </li>
                         <li className = "admin-list-item">
-                            <a className = "admin-list-item-link">Հեծանիվ</a>
+                            <a className = "admin-list-item-link">Մանկական մոտոցիկլետներ</a>
                         </li>
                         <li className = "admin-list-item">
-                            <a className = "admin-list-item-link">Հեծանիվ</a>
+                            <a className = "admin-list-item-link">Մանկական Սայլակներ</a>
                         </li>
                         <li className = "admin-list-item">
-                            <a className = "admin-list-item-link">Հեծանիվ</a>
+                            <a className = "admin-list-item-link">Ռոլիկներ</a>
                         </li>
                         <li className = "admin-list-item">
-                            <a className = "admin-list-item-link">Հեծանիվ</a>
+                            <a className = "admin-list-item-link">Լողավազաններ</a>
                         </li>
                         <li className = "admin-list-item">
-                            <a className = "admin-list-item-link">Հեծանիվ</a>
+                            <a className = "admin-list-item-link">Տոնածառներ</a>
                         </li>
                     </ul>
                     <div className = "admin-add-icons">
@@ -204,12 +192,15 @@ const AdminPanel = () => {
                             <i className = "fa fa-plus"></i>
                     </div>
                 </nav>
-
+                    <div className = "type-area-discount">
+                        <a href = "#">Ակցիա</a>
+                        <i className = "fa fa-plus"></i>
+                    </div>
+                    <div className = "type-area-contacts">
+                        <Link className = "contact-link" to = "/admin/contact">Կոնտակտներ</Link>
+                    </div>
                 </div>
-                <div className = "admin-another-page">.
-                    <AdminAdd />
-                </div>
-            </div>
+                    
             {/* <header className="admin-header">
                 <i className="fa fa-pencil-square-o" aria-hidden="true" onClick={()=> setForm(prev=>!prev)}></i>
                 <button name='hy' onClick={changeLanguage}>հայերեն</button>

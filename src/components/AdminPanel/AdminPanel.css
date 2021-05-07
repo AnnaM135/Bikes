@@ -200,7 +200,7 @@
 	  height: 60px;
   }
   .archive-elements{
-	  width: 80%;
+	  width: 95%;
 	 display: flex;
 	 justify-content: space-between;
 	  border-bottom: 3px solid #878D92;
@@ -224,7 +224,7 @@
     justify-content: flex-end;
     max-width: 95%;
     align-items: flex-end;
-    height: 40px;
+    height: 55px;
 }
 
 .admin-search-area{
@@ -233,7 +233,7 @@
 }
 
 .admin-search-area input{
-	border: 2px solid grey;
+	border: 2px solid #C4C4C4;
 	width: 400px;
 	outline: none;
 	padding: 4px;
@@ -242,10 +242,10 @@
 	border: 2px solid lightblue;
 	outline: none;
 }
-.admin-search-area i{
-	position: absolute;
-	margin-left: 345px;
-	margin-top: 10px;
+.admin-search-area img{
+    position: absolute;
+    margin-left: 330px;
+    margin-top: 6px;
 }
 .change-btn{
 	margin-right: 100px;
@@ -255,11 +255,10 @@
     border-radius: 21px;
 }
 
-.type-area{
-		/* background-color: red; */
-	width: 20%;
-	padding: 30px;
-	margin-top: 50px;
+.type-area {
+    width: 16%;
+    padding: 30px;
+    margin-top: 50px;
 }
 
 .type-area-head{
@@ -267,44 +266,75 @@
 	border-bottom: 2px solid #1d1d1d;
 	padding: 10px;
 }
+.type-area-discount {
+    display: flex;
+	justify-content: space-between;
+    border-top: 2px solid #1d1d1d;
+    padding: 2px;
+    margin-top: 45px;
+}
+.type-area-contacts{
+	margin-top: 16px;
+}
+
+.type-area-contacts .contact-link{
+	font-size: 16px;
+    margin-left: 8px;
+    margin-top: 8px;
+    color: #49494D;
+	text-decoration: none;
+}
 
 .type-area-head img{
 	width: 30px;
 	height: 30px;
 }
 
-.type-area-head h1{
-	font-size: 18px;
-	margin-left: 20px;
-	letter-spacing: 3px;
-	color: #49494D;
+.type-area-head h1 {
+    font-size: 16px;
+    margin-left: 8px;
+    margin-top: 8px;
+    color: #49494D;
+}
+.type-area-discount a{
+	font-size: 16px;
+    margin-left: 8px;
+    margin-top: 8px;
+    color: #49494D;
+	text-decoration: none;
+}
+.type-area-discount i {
+    margin-top: 11px;
+    margin-left: 122px;
 }
 .nav-bar-admin {
     display: flex;
-    justify-content: center;
-    width: 140px;
+    justify-content: space-between;
+    width: 200px;
 }
+
 .admin-add-icons{
 	display: flex;
 	justify-content: space-around;
 	flex-direction: column;
 }
-.admin-add-icons i{
-	margin-top: 10px;
+.admin-add-icons i {
+    margin-top: 13px;
 }
 .admin-ul-list{
 	list-style-type: none;	
 }
 
-.admin-list-item{
-	margin-top: 15px;
-	margin-left: -30px;
+.admin-list-item {
+    margin-top: 17px;
+    margin-left: -30px;
 }
 
-.admin-list-item-link{
-	text-decoration: none;
-	color: #49494D;
-	font-size: 13px;
+.admin-list-item-link {
+    text-decoration: none;
+    color: #49494D;
+    font-size: 12px;
+    font-weight: 600;
 }
 
 /* ANOTHER */
@@ -321,31 +351,31 @@
 	align-items: center;
 	margin-top: 20px;
 }
-.admin-static-add{
-	/* background-color: aqua; */
-	margin-top: 130px;
-	width: 500px;
-	height: 500px;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+.admin-static-add {
+    /* background-color: aqua; */
+    margin-top: 60px;
+    margin-left: -46px;
+    width: 500px;
+    height: 492px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-.admin-add-image img{
-	width: 320px;
-	height: 319px;
+.admin-add-image img {
+    width: 320px;
+    height: 258px;
 }
-
 
 .admin-add-btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 40px;
+    margin-top: 20px;
     border: 1px solid #1D1D1D;
-    padding: 8px;
+    padding: 4px;
     border-radius: 20px;
-    width: 170px;
+    width: 136px;
 }
 .admin-add-btn i{
 	margin-top: 4px;
@@ -357,10 +387,254 @@
 	margin-left: 10px;
 }
 
+/*  ADMIN CONTACTS  */
+
+.admin-contact-page {
+    display: flex;
+    margin-top: 40px;
+    width: 100%;
+    justify-content: center;
+}
+.admin-contact-page > div{
+    padding: 20px;
+}
+.admin-contact-img img{
+	width: 390px;
+	height: 410px;
+}
+.admin-contact-info{
+    display: flex;	
+}
+.contatc-main-icons, .contact-main-info, .contatc-main-icons-edit{
+	display: flex;
+	flex-direction: column;
+	margin: 15px;
+}
+.contatc-main-icons i {
+    font-size: 26px;
+    margin: 10px;
+    font-weight: bold;
+}
+.contatc-main-icons-edit i {
+    font-size: 20px;
+    margin: 12px;
+    color: #3990D5;
+}
+
+.contact-main-info a{
+	text-decoration: none;
+	color: #000000;
+	font-size: 18px;
+	margin: 10px;
+}
 
 
+/* Add Product Modal */
 
+.admin-modal-img{
+    display: flex;
+    justify-content:center;
+}
+
+.admin-modal-img img{
+    width: 100px;
+    height: 100px;
+}
+
+.admin-add-body{
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 50px;
+}
+.admin-add-types{
+    display: flex;
+    flex-direction:column;
+    text-align: right;
+}
+.admin-add-right {
+    margin-left: 44px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+.admin-add-right > div{
+    display: flex;
+    justify-content:space-evenly;
+    align-items:center;
+}
+.admin-select-menu-types{
+    border-bottom: 2px solid #E3E3CD;
+    width: 200px;
+}
+.dropdown-menu-admin{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+.admin-add-product-name{
+    display: flex;
+}
+.not-active{
+    display: none;
+}
+.menu-list{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.active-btn{
+	background-color: white;
+}
+
+.size-list > li{
+    text-decoration: none;
+}
+
+.admin-product-button{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+.admin-product-buy-btn{
+	background-color: #C61212;
+	color: #FFFFFF;
+	padding: 4px;
+    border: none;
+	outline: none;
+	width: 170px;
+    height: 40px;
+	text-align: center;
+	font-size: 16px;	
+	border-radius: 20px;
+	border: 2px solid grey;
+	margin: 8px;
+	cursor: pointer
+}
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    border-radius: 4px;
+    background-color: #eee;
+  }
+  
+  .container input:checked ~ .checkmark {
+    background-color: #C61212;
+  }
+  
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  .container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 7px;
+    height: 13px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+
+  .admin-add-product-name input {
+    width: 192px;
+    height: 32px;
+    border-radius: 16px;
+    background: #FAFAFA;
+    border: 1px solid #AEADB3;
+    margin-left: 13px;
+    margin-top: 13px;
+}
+.admin-add-product-color {
+    display: flex;
+    margin-top: 13px;
+}
+
+
+.admin-add-product-color input {
+    width: 17px;
+    height: 17px;
+    margin-left: 15px;
+    border: 1px solid #AEADB3;
+    border-radius: 3px;
+}
+
+.admin-add-product-color a{
+    margin-left: 50px;
+    border-bottom: 2px solid #6F6767;
+    color: #6F6767;
+}
+.admin-select-menu-sale{
+    margin-right: 500px;
+    margin-top: 13px;
+}
+.admin-select-menu-price{
+    margin-top: 13px;
+}
+.admin-select-menu-banner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* width: 179px; */
+    margin-left: 84px;
+    border-bottom: 1px solid grey;
+}
+
+.admin-discounts-area {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 300px;
+    margin-right: 232px;
+    margin-top: 15px;
+    /* background-color: rebeccapurple; */
+}
 /* 
+
+ <div className = "archive-trash">
+                <div className = "archive-elements">
+                    <h4>PRODUCT TYPE</h4>
+                    <div className = "archive-icon">
+                        <h4>Արխիվ</h4>
+                        <i class="fa fa-archive" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+
+			
 
 <div>
                 <div className = "admin-header-search">

@@ -14,6 +14,8 @@ import AdminPanel from './components/AdminPanel/AdminPanel.jsx';
 import  Rules  from './components/Rules/Rules';
 import  About  from './components/About/About';
 import SelectPayment from './components/Modal/SelectPayment';
+import AdminAdd from './components/AdminAdd/AdminAdd';
+import AdminContact from './components/AdminAdd/AdminContact';
 
 let store = configStore()
 
@@ -25,7 +27,8 @@ class App extends Component {
         <BrowserRouter>
           <Switch>
             <Route path='/login'><AdminLogin /></Route>
-            <Route path='/admin'><AdminPanel /></Route>
+            <Route path='/admin' exact ><AdminAdd /></Route>
+            <Route path = "/admin/contact" component = {AdminContact} />
 
             <Route path="/" exact component={Home} />
 
