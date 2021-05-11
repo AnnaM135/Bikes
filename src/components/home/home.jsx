@@ -43,13 +43,13 @@ export class Home extends Component {
     }
 }
     componentDidMount() {
-      let item = JSON.parse(localStorage.getItem("item"))
-      let basketArr = []
-      basketArr.push(item)
-      basketArr.forEach(item => {
-        console.log(item.length)
-        this.state.basketCount = item.length
-      })
+      // let item = JSON.parse(localStorage.getItem("item"))
+      // let basketArr = []
+      // basketArr.push(item)
+      // basketArr.forEach(item => {
+      //   console.log(item.length)
+      //   this.state.basketCount = item.length
+      // })
       AdminServices.getProducts().then((r) => {
         this.state.data = r.data
         this.setState({
@@ -107,25 +107,25 @@ export class Home extends Component {
     }
   }
   
-addCard(item) {
-    item.count = 1
-    let local = localStorage.getItem("item")
-    let names;
-    if (local === null) {
-        names = []
-    } else {
-        names = JSON.parse(local)
-        let d = names.find(elem => elem.id == item.id)
-        if (d) {
-            item.count = 2
-            names = names.filter(elem => elem !== item)
-            return
-        }
-    }
-    names.push(item)
-    localStorage.setItem("item", JSON.stringify(names))
-    this.setState({})
-}
+// addCard(item) {
+//     item.count = 1
+//     let local = localStorage.getItem("item")
+//     let names;
+//     if (local === null) {
+//         names = []
+//     } else {
+//         names = JSON.parse(local)
+//         let d = names.find(elem => elem.id == item.id)
+//         if (d) {
+//             item.count = 2
+//             names = names.filter(elem => elem !== item)
+//             return
+//         }
+//     }
+//     names.push(item)
+//     localStorage.setItem("item", JSON.stringify(names))
+//     this.setState({})
+// }
 
 
   changeSearch(e) {
@@ -350,7 +350,8 @@ addCard(item) {
                       }}>
                         <img src="./images/card-background.svg" />
                         <img src={elem} className="bicycle-img" />
-                        <Link to = "/basket"><i onClick={this.addCard.bind(this, product)} className="fa fa-shopping-cart" aria-hidden="true"></i></Link>
+                        {/* <Link to = "/basket"><i onClick={this.addCard.bind(this, product)} className="fa fa-shopping-cart" aria-hidden="true"></i></Link> */}
+                        <Link to = "/basket"><i className="fa fa-shopping-cart" aria-hidden="true"></i></Link>
                       </div>
                        
                        )}
@@ -424,7 +425,9 @@ addCard(item) {
                     <img src={e} className="bicycle-img" />
                    
                     
-                    <Link to = "/basket"><i onClick={this.addCard.bind(this, elem)} className="fa fa-shopping-cart" aria-hidden="true" ></i></Link>
+                    {/* <Link to = "/basket"><i onClick={this.addCard.bind(this, elem)} className="fa fa-shopping-cart" aria-hidden="true" ></i></Link> */}
+                    <Link to = "/basket"><i className="fa fa-shopping-cart" aria-hidden="true" ></i></Link>
+
                   </div>
                     )}
                     <div>

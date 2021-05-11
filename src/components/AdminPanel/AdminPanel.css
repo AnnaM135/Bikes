@@ -622,6 +622,9 @@
     margin-top: 15px;
     /* background-color: rebeccapurple; */
 }
+#imagePath{
+    display: none;
+}
 /* 
 
  <div className = "archive-trash">

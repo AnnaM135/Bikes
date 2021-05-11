@@ -6,6 +6,9 @@ import { lang } from "../../lang"
 import Header from "../header/header"
 import "../AdminPanel/AdminPanel.css"
 import classnames from "classnames";
+import { Children } from 'react'
+import axios from "../AxiosPost/AxiosPost";
+
 
 
 
@@ -18,9 +21,38 @@ class AddProductModal extends Component {
              showMenu: false,
              menu: [
                  "Հեծանիվներ", "saylak", "tonacar"
-             ]
+             ],
+             product: {
+                    productNameHY:'',
+                    productNameRU:'',
+                    productNameEN:'',
+                    productType:'',
+                    price:'',
+                    oldPrice:'',
+                    colors:'',
+                    sizes:'',
+                    descriptionRU:'',
+                    descriptionEN:'',
+                    descriptionHY:'',
+                    promotions: false,
+                    discounts: false,
+                    codeOfProduct: '',
+                    theBestProduct: false,
+                    height:'',
+                    banner: '',
+                    hashtag:'',
+                    imagePath: ""
+            },              
         }
     }
+    getProducts = async () => {
+        const { data } = await axios.get(`/product/products`)
+        console.log(data)
+    }
+    componentDidMount() {
+        this.getProducts()
+    }
+
     handelChangeLang = (id) => {
         this.props.changeData(id)
 
@@ -48,7 +80,31 @@ class AddProductModal extends Component {
         //   console.log(this.state.data.sizes, id)
         // }
       }
+      handleChange = (e) => {
+          if(e.target.type == "file"){
+            this.state.product[e.target.getAttribute("id")] = e.target.files;
+          }
+        if(e.target.type === 'checkbox'){
+            this.state.product[e.target.getAttribute("data-id")] = e.target.checked;           
+        }
+        else{
+            this.state.product[e.target.getAttribute("data-id")] = e.target.value;
+        }
+        this.setState({  })
+      }
 
+      add = async () => {
+        let formData = new FormData()
+        for(let i of Object.keys(this.state.product)){
+            formData.append("data", JSON.stringify(this.state.product[i]))         
+        }
+        //     for(let i of Object.keys(this.state.inp.photos)){
+        //         formData.append("photo_url", this.state.inp.photos[i])
+        //     }
+        //   await axios.post('/product/add', this.state.product)   
+          console.log(formData)   
+      }
+    
     render() {
         const cnMenu = classnames({ "menu-list": true, "not-active": !this.state.showMenu,})
         const currentType = this.state.menu.find((type) => type.id == this.state.menu)
@@ -63,7 +119,10 @@ class AddProductModal extends Component {
               </Modal.Footer>
               <Modal.Body>
                         <div className = "admin-modal-img">
-                            <img src = "./images/addPhoto.svg" width = "200px" />
+                            <label htmlFor = "imagePath">
+                                <img src = "./images/addPhoto.svg" width = "200px" />                           
+                            </label>
+                            <input  type='file' multiple id = "imagePath" onChange = {this.handleChange}/>
                         </div>
 
                        <div className = "admin-add-body">
@@ -75,8 +134,9 @@ class AddProductModal extends Component {
                                     <p>Չափ</p>
                                     <p>Հասակ</p>
                                     <p>Նկարագիր</p>
-                                    <p>Զեղչ</p>
+                                    <p>Կոդ</p>
                                     <p>Արժեք</p>
+                                    <p>Զեղչ</p>
                                     <p>Ակցիա</p>
                                     <p>Լավագույն առաջարկ</p>
                                 </div>
@@ -84,79 +144,91 @@ class AddProductModal extends Component {
                             <div className = "admin-add-right">
                                 <div onClick={this.handelClickMenu} className = "admin-select-menu-types">
                                     <div className = "dropdown-menu-admin">
-                                        <p>{this.state.menu[0]}</p>
-                                        <ul className = {cnMenu} onClick={this.handelClickFlag}>
-                                            
-                                                    <li >
-                                                    <button  type="button" className = "active-btn">
-                                                        <p selected value = ""></p>
-                                                        <p data-id="heco">heco</p>
-                                                    </button>
-                                                    </li>                                                                                            
-                                        </ul>
+                                         <select data-id = "productType"  onChange = {this.handleChange}>
+                                            <option >Հեծանիվներ</option>
+                                            <option >Սայլակներ</option>
+                                            <option >Տոնածառներ</option>
+                                            <option >Սքեյթ</option>
+                                        </select>
                                     </div>
                                    <i style = {{cursor: "pointer"}} class="fa fa-angle-down" aria-hidden="true"></i>
                                 </div>
                                 <div>
                                     <div className = "admin-add-product-name">
-                                        <input placeholder = "Հայերեն"/>
-                                        <input placeholder = "Ռուսերեն"/>
-                                        <input placeholder = "Անգլերեն" />
+                                        <input placeholder = "Հայերեն" data-id = "productNameHY" onChange = {this.handleChange} value = {this.state.productNameHY}/>
+                                        <input placeholder = "Ռուսերեն" data-id = "productNameRU" onChange = {this.handleChange} value = {this.state.productNameRU}/>
+                                        <input placeholder = "Անգլերեն" data-id = "productNameEN" onChange = {this.handleChange} value = {this.state.productNameEN}/>
                                     </div>
 
                                 </div>
                                 <div >
                                     <div className = "admin-add-product-color">
-                                            <input type="color" value="#B42F32" />
+                                            <input type="color" value="#B42F32" data-id = "colors" onChange = {this.handleChange}/>
                                         
-                                            <input type="color" value="#E8A631" />
+                                            <input type="color" value="#E8A631" data-id = "colors" onChange = {this.handleChange}/>
                                         
-                                            <input type="color" value="#E3E3CD" />
+                                            <input type="color" value="#E3E3CD" data-id = "colors" onChange = {this.handleChange}/>
                                         
-                                            <input type="color" value="#878D92" />
+                                            <input type="color" value="#878D92" data-id = "colors" onChange = {this.handleChange}/>
                                         
-                                            <input type="color" value="#49494D" />
+                                            <input type="color" value="#49494D" data-id = "colors" onChange = {this.handleChange}/>
                                         <a>Ավելին</a>
                                     </div>
                                 </div>
                                 <div className = "admin-select-menu-types">
-                                   <p>Չափս</p>
+                                    <select data-id = "sizes"  onChange = {this.handleChange}>
+                                        <option >16</option>
+                                        <option >24</option>
+                                        <option >25</option>
+                                        <option >23</option>
+                                    </select>
                                    <i class="fa fa-angle-down" aria-hidden="true"></i>
-
                                 </div>
                                 <div className = "admin-select-menu-types">
-                                   <p>Հասակ</p>
+                                         <select data-id = "height"  onChange = {this.handleChange}>
+                                            <option >110-120</option>
+                                            <option >80-90</option>
+                                            <option >60-70</option>
+                                            <option >20-30</option>
+                                        </select>
                                    <i class="fa fa-angle-down" aria-hidden="true"></i>
-
                                 </div>
                                 <div >
                                     <div className = "admin-add-product-name">
-                                        <input placeholder = "Հայերեն"/>
-                                        <input placeholder = "Ռուսերեն"/>
-                                        <input placeholder = "Անգլերեն" />
+                                    <input placeholder = "Հայերեն" data-id = "descriptionHY" onChange = {this.handleChange} value = {this.state.descriptionHY}/>
+                                        <input placeholder = "Ռուսերեն" data-id = "descriptionRU" onChange = {this.handleChange} value = {this.state.descriptionRU}/>
+                                        <input placeholder = "Անգլերեն" data-id = "descriptionEN" onChange = {this.handleChange} value = {this.state.descriptionEN}/>
+                                    </div>
+                                </div>
+                                <div className = "admin-select-menu-price">
+                                    <div className = "admin-add-product-name">
+                                        <input placeholder = "Ապրանքի կոդ" data-id = "codeOfProduct" onChange = {this.handleChange} value = {this.state.codeOfProduct}/>
+                                        <input placeholder = "Հաշթեգ" data-id = "hashtag" onChange = {this.handleChange} value = {this.state.hashtag}/>
+                                    </div>
+                                </div>
+                                <div className = "admin-select-menu-price">
+                                    <div className = "admin-add-product-name">
+                                        <input placeholder = "Հին գին" data-id = "oldPrice" onChange = {this.handleChange} value = {this.state.oldPrice}/>
+                                        <input placeholder = "Նոր գին" data-id = "price" onChange = {this.handleChange} value = {this.state.price}/>
                                     </div>
                                 </div>
                                 <div className = "admin-select-menu-sale">
                                     <label class="container">
-                                        <input type="checkbox"/>
+                                        <input type="checkbox" data-id = "promotions" onChange = {this.handleChange} defaultChecked={!!this.state.promotions}/>
                                         <span class="checkmark"></span>
                                     </label>
                                 </div> 
-                                <div className = "admin-select-menu-price">
-                                    <div className = "admin-add-product-name">
-                                        <input placeholder = "Հին գին"/>
-                              
-                                        <input placeholder = "Նոր գին" />
-                                    </div>
-                                </div>
                                 <div className = "admin-select-menu-discounts">
                                     <div className = "admin-discounts-area">
                                         <label class="container">
-                                            <input type="checkbox"/>
+                                            <input type="checkbox" data-id='discounts' onChange = {this.handleChange} defaultChecked={!!this.state.discounts}/>
                                             <span class="checkmark"></span>
                                         </label>
                                         <div className = "admin-select-menu-banner">
-                                            <p>Բաններ</p>                                  
+                                            <select data-id = "banner"  onChange = {this.handleChange}>
+                                                <option >Բաններ_1</option>
+                                                <option >Բաններ_2</option>                                               
+                                            </select>
                                             <i class="fa fa-angle-down" aria-hidden="true"></i>
                                         </div>
                                     </div>
@@ -164,14 +236,14 @@ class AddProductModal extends Component {
                                 </div>
                                 <div className = "admin-select-menu-sale">
                                     <label class="container">
-                                        <input type="checkbox"/>
+                                        <input type="checkbox" data-id='theBestProduct' onChange = {this.handleChange} defaultChecked={!!this.state.theBestProduct}/>
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
                             </div>
                        </div>
                        <div className="admin-product-button">
-                            <button className="admin-product-buy-btn">
+                            <button className="admin-product-buy-btn" onClick = {this.add}>
                                 Ավելացնել
                             </button>
                         </div>                       

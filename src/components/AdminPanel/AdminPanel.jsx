@@ -34,6 +34,7 @@ const AdminPanel = () => {
     });
     const language = useSelector((state) => state.Reducer1.language);
     const [image, setimage] = useState([]);
+
     const [changeProducts, setchangeProducts] = useState([]);
     const changeValue = (e) =>{
         console.log(state)
@@ -111,37 +112,38 @@ const AdminPanel = () => {
         await axios.post('/product/edit',data)
         setload(false)
     }
-    const AddProduct = async () =>{
-        setload(true)
-        const data = new FormData()
-        data.append('data', JSON.stringify(state))
-        for (let i = 0; i < image.length; i++) {
-            data.append(`product_image${i}`, image[i])
-        }
+    // const AddProduct = async () =>{
+    //     setload(true)
+    //     const data = new FormData()
+    //     data.append('data', JSON.stringify(state))
+    //     for (let i = 0; i < image.length; i++) {
+    //         data.append(`product_image${i}`, image[i])
+    //     }
+    
 
-        await axios.post('/product/add', data)
-        setload(false)
-    }
+    //     await axios.post('/product/add', data)
+    //     setload(false)
+    // }
     const Deleteproducts = async (e) => {
         setload(true)
         // @ts-ignore
         const data = await axios.post('/trash/addToTrash', {product:e})
         setload(false)
     }
-    const changeLanguage = async (e) => {
-        dispatch({type:'LANG',payload:e.target.name})
-    }
+    // const changeLanguage = async (e) => {
+    //     dispatch({type:'LANG',payload:e.target.name})
+    // }
 
-    const search = async (e) => {
-        const { value } = e.target
-        if (!value) { 
-            const { data } = await axios.get(`/product/products`)
-            setproducts(data)  
-            return 
-        }
-        const { data:{data} } = await axios.get(`/product/tools/search?info=${value}`)
-        setproducts(data)
-    }
+    // const search = async (e) => {
+    //     const { value } = e.target
+    //     if (!value) { 
+    //         const { data } = await axios.get(`/product/products`)
+    //         setproducts(data)  
+    //         return 
+    //     }
+    //     const { data:{data} } = await axios.get(`/product/tools/search?info=${value}`)
+    //     setproducts(data)
+    // }
    
     return (
         <>

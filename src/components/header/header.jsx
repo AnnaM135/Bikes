@@ -24,12 +24,12 @@ export class Header extends Component {
     }
   }
   componentDidMount() {
-    let item = JSON.parse(localStorage.getItem("item"))
-    this.setState({
-      basketCount: item.length
-    })
-    console.log("poxvum e" + item.length)
-    console.log("poxvum e" + this.state.basketCount)
+    // let item = JSON.parse(localStorage.getItem("item"))
+    // this.setState({
+    //   basketCount: item.length
+    // })
+    // console.log("poxvum e" + item.length)
+    // console.log("poxvum e" + this.state.basketCount)
     AdminServices.getProducts().then(r => {
       let filtObj = getAllFilters(r.data);
 
@@ -200,8 +200,6 @@ export class Header extends Component {
                                 {elem}
                                 </Link>
                               </li>
-
-
                                 )
                               } 
                             </ul>
